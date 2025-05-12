@@ -6,6 +6,11 @@ import {
   toEmbedUrl,
   makeIdFromUrl,
 } from "@/utils/episodes";
+import {
+  scoreAndSortEpisodes,
+  interleaveEpisodesByPodcast,
+  enhanceEpisodes,
+} from "@/utils/episodeProcessing";
 
 type Episode = {
   title: string;
@@ -18,8 +23,6 @@ type Episode = {
   image: string;
   duration?: string;
 };
-
-const SUMMARY_CUTOFF = 100;
 
 const MAX_EPISODES = 1000;
 
@@ -39,50 +42,8 @@ export function useEpisodes(section: string = "home") {
         return res.json();
       })
       .then((data: Episode[]) => {
-        const now = Date.now();
-
-        // Step 1: Score and sort
-        const scored = data
-          .map((ep) => ({
-            ...ep,
-            release_ts: new Date(ep.release_date).getTime(),
-          }))
-          .sort((a, b) => {
-            const ageA = 1 - (now - a.release_ts) / (1000 * 60 * 60 * 24 * 365);
-            const ageB = 1 - (now - b.release_ts) / (1000 * 60 * 60 * 24 * 365);
-            const weightA = 0.6 * ageA + 0.4 * a.score;
-            const weightB = 0.6 * ageB + 0.4 * b.score;
-            return weightB - weightA;
-          });
-
-        // Step 2: Group by podcast_name
-        const groups = new Map<string, Episode[]>();
-        for (const ep of scored) {
-          if (!groups.has(ep.podcast_name)) {
-            groups.set(ep.podcast_name, []);
-          }
-          groups.get(ep.podcast_name)!.push(ep);
-        }
-
-        // Step 3: Interleave episodes from each podcast
-        const interleaved: Episode[] = [];
-        const groupIterators = Array.from(groups.values()).map((group) =>
-          group[Symbol.iterator]()
-        );
-        let added = true;
-
-        while (added && interleaved.length < MAX_EPISODES) {
-          added = false;
-          for (const iter of groupIterators) {
-            const next = iter.next();
-            if (!next.done) {
-              interleaved.push(next.value);
-              added = true;
-              if (interleaved.length >= MAX_EPISODES) break;
-            }
-          }
-        }
-
+        const scored = scoreAndSortEpisodes(data);
+        const interleaved = interleaveEpisodesByPodcast(scored, MAX_EPISODES);
         setEpisodes(interleaved);
         setLoading(false);
       })
@@ -93,32 +54,7 @@ export function useEpisodes(section: string = "home") {
   }, [section]);
 
   const enhancedEpisodes = useMemo(() => {
-    return episodes.map((episode) => {
-      const embedId = makeIdFromUrl(episode.url);
-      const formattedDate = formatTime(episode.release_date);
-      const formattedDuration = episode.duration
-        ? formatDuration(episode.duration)
-        : "";
-      const cleanSummary =
-        removeEmojis(episode.summary) || "No summary available.";
-      const shortSummary =
-        cleanSummary.length > SUMMARY_CUTOFF
-          ? cleanSummary.slice(0, SUMMARY_CUTOFF) + "..."
-          : cleanSummary;
-      const embedUrl = episode.embed_url || toEmbedUrl(episode.url);
-      const showUrl = episode.url.split("?")[0];
-
-      return {
-        ...episode,
-        embedId,
-        formattedDate,
-        formattedDuration,
-        summary: cleanSummary,
-        shortSummary,
-        embedUrl,
-        showUrl,
-      };
-    });
+    return enhanceEpisodes(episodes);
   }, [episodes]);
 
   const toggleSummary = (id: string) => {
