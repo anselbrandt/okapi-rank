@@ -1,9 +1,6 @@
 import sqlite3
 
-from prefect import task
 
-
-@task
 def create_tables():
     conn = sqlite3.connect("../podcasts.db")
     cursor = conn.cursor()

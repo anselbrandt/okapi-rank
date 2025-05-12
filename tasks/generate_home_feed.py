@@ -2,12 +2,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import json
 
-from prefect import task
 
-
-@task
 def generate_home_feed():
-    out_dir = Path("../frontend/public/sections")
+    ROOT_DIR = Path(__file__).resolve().parents[1]
+    out_dir = ROOT_DIR / "frontend" / "public" / "sections"
 
     all_episodes = []
     for file in out_dir.glob("*.json"):

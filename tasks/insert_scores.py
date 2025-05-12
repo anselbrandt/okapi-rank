@@ -2,10 +2,7 @@ import sqlite3
 from datetime import datetime
 from math import log
 
-from prefect import task
 
-
-@task
 def insert_scores():
     date = datetime.now().isoformat()
 

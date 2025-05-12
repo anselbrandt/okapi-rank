@@ -4,8 +4,6 @@ import sqlite3
 from transformers.pipelines import pipeline
 from urllib.parse import urlparse
 
-from prefect import task
-
 
 def to_embed_url(url: str) -> str:
     """Convert Apple Podcasts URLs to embeddable URLs."""
@@ -15,9 +13,9 @@ def to_embed_url(url: str) -> str:
     return url
 
 
-@task
 def generate_section_feeds():
-    out_dir = Path("../frontend/public/sections")
+    ROOT_DIR = Path(__file__).resolve().parents[1]
+    out_dir = ROOT_DIR / "frontend" / "public" / "sections"
     out_dir.mkdir(exist_ok=True)
 
     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
@@ -25,7 +23,9 @@ def generate_section_feeds():
     conn = sqlite3.connect("../podcasts.db")
     cursor = conn.cursor()
 
-    with open("../categories/category_mapping.json", "r", encoding="utf-8") as f:
+    categories_dir = ROOT_DIR / "categories"
+    category_mapping = categories_dir / "category_mapping.json"
+    with open(category_mapping, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     for section in data.values():

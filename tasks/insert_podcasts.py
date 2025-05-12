@@ -4,7 +4,6 @@ import re
 import sqlite3
 
 from selectolax.parser import HTMLParser
-from prefect import task
 
 
 def extract_list(html):
@@ -50,13 +49,13 @@ def extract_show_id(url):
     return match.group(1) if match else None
 
 
-@task
 def insert_podcasts():
     conn = sqlite3.connect("../podcasts.db")
     cursor = conn.cursor()
 
     timestamp = datetime.now().isoformat()
-    charts_dir = Path("../charts")
+    ROOT_DIR = Path(__file__).resolve().parents[1]
+    charts_dir = ROOT_DIR / "charts"
     dirs = [
         dir
         for dir in charts_dir.iterdir()

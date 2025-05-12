@@ -127,7 +127,7 @@ async function scrape(country, category) {
 
   const html = await page.content();
 
-  const filepath = `../charts/${country.code}/${category.filename}.html`;
+  const filepath = `charts/${country.code}/${category.filename}.html`;
   await fs.writeFile(filepath, html);
 
   await browser.close();
@@ -175,7 +175,7 @@ const totalStart = Date.now();
 let filesScraped = 0;
 
 for (const country of countries) {
-  await fs.mkdir(`../charts/${country.code}`, { recursive: true });
+  await fs.mkdir(`charts/${country.code}`, { recursive: true });
   for (const category of categories) {
     const start = Date.now();
     await scrape(country, category);

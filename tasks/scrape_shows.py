@@ -7,7 +7,6 @@ import sqlite3
 import time
 
 import httpx
-from prefect import task
 
 logging.getLogger("httpx").setLevel(logging.CRITICAL)
 
@@ -17,12 +16,12 @@ def extract_show_id(url):
     return match.group(1) if match else None
 
 
-@task
 def scrape_shows(retry=False):
     status = "error" if retry else "pending"
     scraped_at = datetime.now().isoformat()
 
-    out_dir = Path("../shows")
+    ROOT_DIR = Path(__file__).resolve().parents[1]
+    out_dir = ROOT_DIR / "shows"
     out_dir.mkdir(exist_ok=True)
 
     categories = [

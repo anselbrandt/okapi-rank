@@ -4,8 +4,6 @@ from selectolax.parser import HTMLParser
 import json
 from datetime import datetime, timedelta, timezone
 
-from prefect import task
-
 
 def get_image(item, key):
     value = item.get(key)
@@ -180,14 +178,14 @@ def process_file(file_path, podcast_id, cursor, scraped_at):
                 print(f"Error updating frequency for podcast {podcast_id}: {e}")
 
 
-@task
 def insert_episodes():
     scraped_at = datetime.now(timezone.utc).isoformat()
     conn = sqlite3.connect("../podcasts.db")
     cursor = conn.cursor()
     conn.execute("PRAGMA foreign_keys = ON")
 
-    shows_dir = Path("../shows")
+    ROOT_DIR = Path(__file__).resolve().parents[1]
+    shows_dir = ROOT_DIR / "shows"
     for file_path in shows_dir.rglob("*.html"):
         show_id = file_path.stem
         cursor.execute("SELECT id FROM podcast WHERE show_id = ?", (show_id,))

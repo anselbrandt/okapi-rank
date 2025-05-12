@@ -3,7 +3,6 @@ from git import Repo
 from dotenv import load_dotenv
 from pathlib import Path
 
-from prefect import task
 
 load_dotenv()
 TOKEN = os.getenv("GITHUB_TOKEN")
@@ -11,7 +10,6 @@ USER = os.getenv("GITHUB_USER")
 EMAIL = os.getenv("GITHUB_EMAIL")
 
 
-@task
 def push_feeds():
     if not TOKEN:
         raise ValueError("GITHUB_TOKEN not found in .env")
