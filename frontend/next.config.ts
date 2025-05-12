@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
+const now = new Date().toISOString();
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    NEXT_PUBLIC_BUILD_TIME: now,
+  },
 };
 
 export default nextConfig;

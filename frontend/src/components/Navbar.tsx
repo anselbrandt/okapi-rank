@@ -2,6 +2,13 @@ import { useParams } from "next/navigation";
 import { CATEGORIES } from "@/data/categories";
 import Link from "next/link";
 
+const updatedAt = process.env.NEXT_PUBLIC_BUILD_TIME || "";
+const timeString = new Date(updatedAt).toLocaleTimeString("en-GB", {
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: true,
+});
+
 export const Navbar = () => {
   const params = useParams<{ categories?: string[] }>();
   const categoryParam = params?.categories?.[0];
@@ -17,6 +24,7 @@ export const Navbar = () => {
         <div className="font-mono tracking-widest font-semibold text-4xl md:text-6xl p-3">
           OKAPI
         </div>
+        <div className="mb-2 font-sans text-sm">Updated at {timeString}</div>
       </div>
 
       {/* Main Category Tabs */}
