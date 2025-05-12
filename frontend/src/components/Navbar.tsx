@@ -5,6 +5,7 @@ import Link from "next/link";
 export const Navbar = () => {
   const params = useParams<{ categories?: string[] }>();
   const categoryParam = params?.categories?.[0];
+  const subcatParam = params?.categories?.[1];
   const category =
     categoryParam && CATEGORIES.hasOwnProperty(categoryParam)
       ? CATEGORIES[categoryParam]
@@ -45,16 +46,21 @@ export const Navbar = () => {
               {category.displayName}
             </div>
             <ul className="flex flex-wrap justify-center gap-4 text-sm font-bold">
-              {Object.values(category.subcategories).map((subcat) => (
-                <li key={subcat.name}>
-                  <Link
-                    href={`/${category.name}/${subcat.name}`}
-                    className="hover:text-orange-500 transition"
-                  >
-                    {subcat.displayName.toUpperCase()}
-                  </Link>
-                </li>
-              ))}
+              {Object.values(category.subcategories).map((subcat) => {
+                const isActiveSubcat = subcatParam == subcat.name;
+                return (
+                  <li key={subcat.name}>
+                    <Link
+                      href={`/${category.name}/${subcat.name}`}
+                      className={`hover:text-orange-500 transition ${
+                        isActiveSubcat ? "text-orange-500" : ""
+                      }`}
+                    >
+                      {subcat.displayName.toUpperCase()}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         )}
