@@ -1,0 +1,595 @@
+{
+  "latest": {
+    "name": "latest",
+    "displayName": "Latest",
+    "subcategories": {
+      "latest": {
+        "name": "latest",
+        "displayName": "Latest",
+        "match_categories": [
+          ["arts", "Books"],
+          ["education", "Education"],
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News Commentary"],
+          ["news", "News"],
+          ["news", "Politics"],
+          ["society_and_culture", "Documentary"],
+          ["society_and_culture", "Philosophy"],
+          ["society_and_culture", "Society & Culture"]
+        ]
+      }
+    }
+  },
+  "news": {
+    "name": "news",
+    "displayName": "News",
+    "subcategories": {
+      "news": {
+        "name": "news",
+        "displayName": "News",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      },
+      "world": {
+        "name": "world",
+        "displayName": "World",
+        "desc": "World news and international affairs",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      },
+      "us": {
+        "name": "us",
+        "displayName": "US",
+        "desc": "News about the United States",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      },
+      "canada": {
+        "name": "canada",
+        "displayName": "Canada",
+        "desc": "News about Canada",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      },
+      "uk": {
+        "name": "uk",
+        "displayName": "UK",
+        "desc": "News about the United Kingdom",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      },
+      "europe": {
+        "name": "europe",
+        "displayName": "Europe",
+        "desc": "News about Europe",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      },
+      "ukraine": {
+        "name": "ukraine",
+        "displayName": "Ukraine",
+        "desc": "News related to Ukraine and the war",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      },
+      "middleeast": {
+        "name": "middleeast",
+        "displayName": "Middle East",
+        "desc": "News from the Middle East region",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      }
+    }
+  },
+  "business": {
+    "name": "business",
+    "displayName": "Business",
+    "subcategories": {
+      "business": {
+        "name": "business",
+        "displayName": "Business",
+        "match_categories": [["news", "Business News"]]
+      },
+      "autos": {
+        "name": "autos",
+        "displayName": "Autos",
+        "desc": "Business news about the automotive industry",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "Tech News"],
+          ["leisure", "Automotive"]
+        ]
+      },
+      "airlines": {
+        "name": "airlines",
+        "displayName": "Airlines",
+        "desc": "Business news about airlines and aviation",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "Tech News"],
+          ["leisure", "Aviation"]
+        ]
+      },
+      "retail": {
+        "name": "retail",
+        "displayName": "Retail",
+        "desc": "News on the retail industry and consumer goods",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "Tech News"]
+        ]
+      },
+      "food": {
+        "name": "food",
+        "displayName": "Food",
+        "desc": "Business news about the food industry",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "Tech News"]
+        ]
+      },
+      "pharma": {
+        "name": "pharma",
+        "displayName": "Pharma",
+        "desc": "Business news about pharmaceuticals and healthcare companies",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "Tech News"],
+          ["health_and_fitness", "Medicine"]
+        ]
+      },
+      "politicsgov": {
+        "name": "politicsgov",
+        "displayName": "Politics and Government",
+        "desc": "News on business regulation, government policy, and politics affecting commerce",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "Tech News"],
+          ["news", "Politics"],
+          ["government", "Government"]
+        ]
+      }
+    }
+  },
+  "moneymarkets": {
+    "name": "moneymarkets",
+    "displayName": "Money & Markets",
+    "subcategories": {
+      "moneymarkets": {
+        "name": "moneymarkets",
+        "displayName": "Money & Markets",
+        "match_categories": [["news", "Business News"]]
+      },
+      "personalfinance": {
+        "name": "personalfinance",
+        "displayName": "Personal Finance",
+        "desc": "Advice and news on managing personal finances, savings, and budgeting",
+        "match_categories": [["business", "Investing"]]
+      },
+      "economicindicators": {
+        "name": "economicindicators",
+        "displayName": "Economic Indicators",
+        "desc": "Updates on inflation, GDP, unemployment, and other macroeconomic signals",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"]
+        ]
+      },
+      "earnings": {
+        "name": "earnings",
+        "displayName": "Earnings",
+        "desc": "Company earnings reports and financial performance",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"],
+          ["news", "Tech News"]
+        ]
+      },
+      "markets": {
+        "name": "markets",
+        "displayName": "Markets",
+        "desc": "News on stock markets, bonds, and financial markets",
+        "match_categories": [
+          ["news", "Business News"],
+          ["news", "Daily News"],
+          ["news", "News"],
+          ["news", "News Commentary"],
+          ["news", "Politics"],
+          ["news", "Tech News"],
+          ["business", "Investing"]
+        ]
+      },
+      "smartinvesting": {
+        "name": "smartinvesting",
+        "displayName": "Smart Investing",
+        "desc": "Strategies and news related to investing and portfolio management",
+        "match_categories": [["business", "Investing"]]
+      }
+    }
+  },
+  "techinnovation": {
+    "name": "techinnovation",
+    "displayName": "Tech & Innovation",
+    "subcategories": {
+      "techinnovation": {
+        "name": "techinnovation",
+        "displayName": "Tech & Innovation",
+        "match_categories": [["news", "Tech News"]]
+      },
+      "news": {
+        "name": "technews",
+        "displayName": "News",
+        "desc": "General technology news and developments",
+        "match_categories": [
+          ["news", "Tech News"],
+          ["technology", "Technology"]
+        ]
+      },
+      "ai": {
+        "name": "ai",
+        "displayName": "AI",
+        "desc": "News and developments in artificial intelligence",
+        "match_categories": [
+          ["news", "Tech News"],
+          ["technology", "Technology"]
+        ]
+      },
+      "emergingtechnologies": {
+        "name": "emergingtechnologies",
+        "displayName": "Emerging Technologies",
+        "desc": "News on new and emerging technologies across industries",
+        "match_categories": [
+          ["news", "Tech News"],
+          ["technology", "Technology"]
+        ]
+      },
+      "cloudcomputing": {
+        "name": "cloudcomputing",
+        "displayName": "Cloud Computing",
+        "desc": "News about cloud platforms, infrastructure, and services",
+        "match_categories": [
+          ["news", "Tech News"],
+          ["technology", "Technology"]
+        ]
+      },
+      "space": {
+        "name": "space",
+        "displayName": "Space",
+        "desc": "News on space exploration and the space industry",
+        "match_categories": [
+          ["news", "Tech News"],
+          ["technology", "Technology"]
+        ]
+      },
+      "cybersecurity": {
+        "name": "cybersecurity",
+        "displayName": "Cybersecurity",
+        "desc": "News about data security, cyber threats, and digital safety",
+        "match_categories": [
+          ["news", "Tech News"],
+          ["technology", "Technology"]
+        ]
+      }
+    }
+  },
+  "science": {
+    "name": "science",
+    "displayName": "Science",
+    "subcategories": {
+      "scienc": {
+        "name": "science",
+        "displayName": "Science",
+        "match_categories": [
+          ["science", "Astronomy"],
+          ["science", "Chemistry"],
+          ["science", "Earth Sciences"],
+          ["science", "History"],
+          ["science", "Life Sciences"],
+          ["science", "Mathematics"],
+          ["science", "Natural Sciences"],
+          ["science", "Nature"],
+          ["science", "Physics"],
+          ["science", "Science"],
+          ["science", "Social Sciences"]
+        ]
+      },
+      "nature": {
+        "name": "nature",
+        "displayName": "Nature",
+        "desc": "News about the natural world and ecosystems",
+        "match_categories": [
+          ["science", "Earth Sciences"],
+          ["science", "Life Sciences"],
+          ["science", "Natural Sciences"],
+          ["science", "Nature"],
+          ["science", "Science"]
+        ]
+      },
+      "naturalsciences": {
+        "name": "naturalsciences",
+        "displayName": "Natural Sciences",
+        "desc": "Scientific news in disciplines like chemistry, biology, and physics",
+        "match_categories": [
+          ["science", "Chemistry"],
+          ["science", "Earth Sciences"],
+          ["science", "Life Sciences"],
+          ["science", "Natural Sciences"],
+          ["science", "Nature"],
+          ["science", "Physics"],
+          ["science", "Science"]
+        ]
+      },
+      "socialsciences": {
+        "name": "socialsciences",
+        "displayName": "Social Sciences",
+        "desc": "Research and news in psychology, sociology, economics, and related fields",
+        "match_categories": [["science", "Social Sciences"]]
+      },
+      "lifesciences": {
+        "name": "lifesciences",
+        "displayName": "Life Sciences",
+        "desc": "News on biology, genetics, and biomedical science",
+        "match_categories": [
+          ["science", "Life Sciences"],
+          ["science", "Science"]
+        ]
+      },
+      "earthsciences": {
+        "name": "earthsciences",
+        "displayName": "Earth Sciences",
+        "desc": "News on geology, climate science, and natural disasters",
+        "match_categories": [
+          ["science", "Earth Sciences"],
+          ["science", "Natural Sciences"],
+          ["science", "Nature"],
+          ["science", "Science"]
+        ]
+      },
+      "astronomy": {
+        "name": "astronomy",
+        "displayName": "Astronomy",
+        "desc": "News about planets, stars, and the universe",
+        "match_categories": [
+          ["science", "Astronomy"],
+          ["science", "Science"]
+        ]
+      },
+      "physics": {
+        "name": "physics",
+        "displayName": "Physics",
+        "desc": "News on theoretical and applied physics research",
+        "match_categories": [
+          ["science", "Physics"],
+          ["science", "Science"]
+        ]
+      }
+    }
+  },
+  "culture": {
+    "name": "culture",
+    "displayName": "Culture",
+    "subcategories": {
+      "culture": {
+        "name": "culture",
+        "displayName": "Culture",
+        "match_categories": [
+          ["arts", "Arts"],
+          ["arts", "Books"],
+          ["arts", "Design"],
+          ["arts", "Fashion & Beauty"],
+          ["arts", "Food"],
+          ["arts", "Performing Arts"],
+          ["arts", "Visual Arts"],
+          ["music", "Music Commentary"],
+          ["music", "Music History"],
+          ["music", "Music Interviews"],
+          ["tv_and_film", "After Shows"],
+          ["tv_and_film", "Film History"],
+          ["tv_and_film", "Film Interviews"],
+          ["tv_and_film", "Film Reviews"],
+          ["tv_and_film", "TV & Film"],
+          ["tv_and_film", "TV Reviews"]
+        ]
+      },
+      "books": {
+        "name": "books",
+        "displayName": "Books",
+        "desc": "News and reviews about books and authors",
+        "match_categories": [
+          ["arts", "Arts"],
+          ["arts", "Books"]
+        ]
+      },
+      "music": {
+        "name": "music",
+        "displayName": "Music",
+        "desc": "News, trends, and reviews in the music world",
+        "match_categories": [
+          ["music", "Music Commentary"],
+          ["music", "Music History"],
+          ["music", "Music Interviews"]
+        ]
+      },
+      "tvfilm": {
+        "name": "tvfilm",
+        "displayName": "TV and Film",
+        "desc": "News and reviews about television and movies",
+        "match_categories": [
+          ["tv_and_film", "After Shows"],
+          ["tv_and_film", "Film History"],
+          ["tv_and_film", "Film Interviews"],
+          ["tv_and_film", "Film Reviews"],
+          ["tv_and_film", "TV & Film"],
+          ["tv_and_film", "TV Reviews"]
+        ]
+      },
+      "artdesign": {
+        "name": "artdesign",
+        "displayName": "Art and Design",
+        "desc": "Coverage of visual arts, architecture, and design",
+        "match_categories": [
+          ["arts", "Arts"],
+          ["arts", "Books"],
+          ["arts", "Design"],
+          ["arts", "Visual Arts"]
+        ]
+      },
+      "games": {
+        "name": "games",
+        "displayName": "Games",
+        "desc": "News and reviews about video and tabletop games",
+        "match_categories": [
+          ["leisure", "Games"],
+          ["leisure", "Video Games"]
+        ]
+      },
+      "classicalmusic": {
+        "name": "classicalmusic",
+        "displayName": "Classical Music",
+        "desc": "Coverage of classical music, composers, and performances",
+        "match_categories": [
+          ["music", "Music Commentary"],
+          ["music", "Music History"],
+          ["music", "Music Interviews"]
+        ]
+      },
+      "stage": {
+        "name": "stage",
+        "displayName": "Stage",
+        "desc": "News and reviews of theatre, musicals, and live performance",
+        "match_categories": [["arts", "Performing Arts"]]
+      }
+    }
+  },
+  "lifestyle": {
+    "name": "lifestyle",
+    "displayName": "Lifestyle",
+    "subcategories": {
+      "lifestyle": {
+        "name": "lifestyle",
+        "displayName": "Lifestyle",
+        "match_categories": [
+          ["leisure", "Automotive"],
+          ["leisure", "Aviation"],
+          ["leisure", "Crafts"],
+          ["leisure", "Games"],
+          ["leisure", "Hobbies"],
+          ["leisure", "Home & Garden"],
+          ["leisure", "Leisure"],
+          ["health_and_fitness", "Fitness"],
+          ["health_and_fitness", "Health & Fitness"],
+          ["health_and_fitness", "Medicine"],
+          ["health_and_fitness", "Nutrition"]
+        ]
+      },
+      "fashion": {
+        "name": "fashion",
+        "displayName": "Fashion",
+        "desc": "News and trends in fashion and style",
+        "match_categories": [["arts", "Fashion & Beauty"]]
+      },
+      "food": {
+        "name": "food",
+        "displayName": "Food",
+        "desc": "Lifestyle content about cooking, cuisine, and restaurants",
+        "match_categories": [["arts", "Food"]]
+      },
+      "cars": {
+        "name": "cars",
+        "displayName": "Cars",
+        "desc": "Lifestyle coverage of cars and driving culture",
+        "match_categories": [["leisure", "Automotive"]]
+      },
+      "healthfitness": {
+        "name": "healthfitness",
+        "displayName": "Health and Fitness",
+        "desc": "Tips and news about health, wellness, and physical fitness",
+        "match_categories": [
+          ["health_and_fitness", "Fitness"],
+          ["health_and_fitness", "Health & Fitness"],
+          ["health_and_fitness", "Nutrition"]
+        ]
+      },
+      "homegarden": {
+        "name": "homegarden",
+        "displayName": "Home and Garden",
+        "desc": "Content about interior design, gardening, and DIY home care",
+        "match_categories": [["leisure", "Home & Garden"]]
+      },
+      "travel": {
+        "name": "travel",
+        "displayName": "Travel",
+        "desc": "News and guides about destinations, travel, and tourism",
+        "match_categories": [["society_and_culture", "Places & Travel"]]
+      },
+      "realestate": {
+        "name": "realestate",
+        "displayName": "Real Estate",
+        "desc": "News and trends in housing, real estate, and home buying",
+        "match_categories": [
+          ["education", "How To"],
+          ["business", "Investing"]
+        ]
+      }
+    }
+  }
+}
