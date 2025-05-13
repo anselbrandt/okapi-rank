@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-import shutil
 import subprocess
 
 from tasks import (
@@ -14,28 +13,6 @@ from tasks import (
     push_feeds,
     scrape_shows,
 )
-
-
-def cleanup():
-    ROOT = Path.cwd()
-    charts_dir = ROOT / "charts"
-    shows_dir = ROOT / "shows"
-    sections_dir = ROOT / "frontend" / "public" / "sections"
-
-    dirs_to_delete = [charts_dir, shows_dir, sections_dir]
-    for dir in dirs_to_delete:
-        if os.path.exists(dir):
-            shutil.rmtree(dir)
-            print(f"{str(dir)} deleted.")
-        else:
-            print(f"{str(dir)} does not exist.")
-
-    log_path = "log.txt"
-    if os.path.exists(log_path):
-        os.remove(log_path)
-        print(f"{str(log_path)} deleted.")
-    else:
-        print(f"{str(log_path)} does not exist.")
 
 
 def scrape_charts():
