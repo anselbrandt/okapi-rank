@@ -50,7 +50,7 @@ def extract_show_id(url):
 
 
 def insert_podcasts():
-    conn = sqlite3.connect("../podcasts.db")
+    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
     cursor = conn.cursor()
 
     timestamp = datetime.now().isoformat()

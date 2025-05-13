@@ -5,7 +5,7 @@ from datetime import datetime
 def insert_downloads():
     date = datetime.now().isoformat()
 
-    conn = sqlite3.connect("../podcasts.db")
+    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
     cursor = conn.cursor()
 
     cursor.execute(

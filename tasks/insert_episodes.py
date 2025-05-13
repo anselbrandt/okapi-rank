@@ -180,7 +180,7 @@ def process_file(file_path, podcast_id, cursor, scraped_at):
 
 def insert_episodes():
     scraped_at = datetime.now(timezone.utc).isoformat()
-    conn = sqlite3.connect("../podcasts.db")
+    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
     cursor = conn.cursor()
     conn.execute("PRAGMA foreign_keys = ON")
 

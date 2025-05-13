@@ -46,7 +46,7 @@ def scrape_shows(retry=False):
         "government",
     ]
 
-    conn = sqlite3.connect("../podcasts.db")
+    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
     cursor = conn.cursor()
 
     for category in categories:

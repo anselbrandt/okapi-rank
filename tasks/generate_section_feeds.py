@@ -20,7 +20,7 @@ def generate_section_feeds():
 
     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
-    conn = sqlite3.connect("../podcasts.db")
+    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
     cursor = conn.cursor()
 
     categories_dir = ROOT_DIR / "categories"

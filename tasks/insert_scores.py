@@ -6,7 +6,7 @@ from math import log
 def insert_scores():
     date = datetime.now().isoformat()
 
-    conn = sqlite3.connect("../podcasts.db")
+    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
     cursor = conn.cursor()
 
     conn.execute("BEGIN TRANSACTION")
