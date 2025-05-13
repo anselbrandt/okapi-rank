@@ -16,7 +16,11 @@ from tasks import (
 def scrape_charts():
     script_path = os.path.join("scraper", "scrape_charts.js")
     try:
-        result = subprocess.run(["node", script_path], check=True, text=True)
+        result = subprocess.run(
+            ["/home/ansel/.nvm/versions/node/v22.13.1/bin/node", script_path],
+            check=True,
+            text=True,
+        )
         print("STDOUT:", result.stdout)
         print("STDERR:", result.stderr)
     except subprocess.CalledProcessError as e:
