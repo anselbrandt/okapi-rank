@@ -2,7 +2,7 @@ import sqlite3
 from datetime import datetime
 
 
-def insert_downloads():
+def insert_downloads(status="pending"):  # or active
     date = datetime.now().isoformat()
 
     conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
@@ -11,10 +11,10 @@ def insert_downloads():
     cursor.execute(
         """
         INSERT OR IGNORE INTO download (id, status, scraped_at)
-        SELECT id, 'pending', ?
+        SELECT id, ?, ?
         FROM podcast
         """,
-        (date,),
+        (status, date),
     )
 
     conn.commit()
