@@ -1,11 +1,13 @@
 import sqlite3
 from datetime import datetime
+from typing import Literal
+from pathlib import Path
 
 
-def insert_downloads(status="pending"):  # or active
+def insert_downloads(db_path: Path, status: Literal["pending", "active"]):  # or active
     date = datetime.now().isoformat()
 
-    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     cursor.execute(
@@ -22,4 +24,4 @@ def insert_downloads(status="pending"):  # or active
 
 
 if __name__ == "__main__":
-    insert_downloads()
+    insert_downloads(db_path=Path("db.sqlite"), status="pending")

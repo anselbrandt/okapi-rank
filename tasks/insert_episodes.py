@@ -4,6 +4,8 @@ from selectolax.parser import HTMLParser
 import json
 from datetime import datetime, timedelta, timezone
 
+from storage import DataIO
+
 
 def get_image(item, key):
     value = item.get(key)
@@ -178,15 +180,14 @@ def process_file(file_path, podcast_id, cursor, scraped_at):
                 print(f"Error updating frequency for podcast {podcast_id}: {e}")
 
 
-def insert_episodes():
+def insert_episodes(db_path: Path, shows_dir: Path):
     scraped_at = datetime.now(timezone.utc).isoformat()
-    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     conn.execute("PRAGMA foreign_keys = ON")
 
-    ROOT_DIR = Path(__file__).resolve().parents[1]
-    shows_dir = ROOT_DIR / "shows"
-    for file_path in shows_dir.rglob("*.html"):
+    files = DataIO(path=shows_dir).list_files()
+    for file_path in files:
         show_id = file_path.stem
         cursor.execute("SELECT id FROM podcast WHERE show_id = ?", (show_id,))
         row = cursor.fetchone()
@@ -199,4 +200,4 @@ def insert_episodes():
 
 
 if __name__ == "__main__":
-    insert_episodes()
+    insert_episodes(db_path=Path("db.sqlite"), shows_dir=Path("shows"))

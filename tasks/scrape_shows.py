@@ -8,6 +8,8 @@ import time
 
 import httpx
 
+from storage import DataIO
+
 logging.getLogger("httpx").setLevel(logging.CRITICAL)
 
 
@@ -16,42 +18,12 @@ def extract_show_id(url):
     return match.group(1) if match else None
 
 
-def scrape_shows(retry=False):
+def scrape_shows(db_path: Path, shows_dir: Path, retry=False):
     status = "error" if retry else "pending"
     scraped_at = datetime.now().isoformat()
 
-    ROOT_DIR = Path(__file__).resolve().parents[1]
-    out_dir = ROOT_DIR / "shows"
-    out_dir.mkdir(exist_ok=True)
-
-    categories = [
-        "news",
-        "comedy",
-        "society_and_culture",
-        "business",
-        "true_crime",
-        "sports",
-        "health_and_fitness",
-        "religion_and_spirituality",
-        "arts",
-        "education",
-        "history",
-        "tv_and_film",
-        "science",
-        "technology",
-        "music",
-        "kids_and_family",
-        "leisure",
-        "fiction",
-        "government",
-    ]
-
-    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-
-    for category in categories:
-        out_path = out_dir / category
-        out_path.mkdir(exist_ok=True)
 
     cursor.execute(
         """
@@ -78,7 +50,7 @@ def scrape_shows(retry=False):
     with httpx.Client(headers=headers, timeout=10.0, follow_redirects=True) as client:
         for podcast_id, name, category, url, status in results:
             show_id = extract_show_id(url)
-            filepath = out_dir / category / f"{show_id}.html"
+            filepath = shows_dir / category / f"{show_id}.html"
             download_start_time = time.time()
 
             try:
@@ -92,8 +64,8 @@ def scrape_shows(retry=False):
                     )
                     conn.commit()
 
-                with open(filepath, "w", encoding="utf-8") as f:
-                    f.write(response.text)
+                file = DataIO(path=filepath, mode="w", encoding="utf-8")
+                file.write(response.text)
 
                 cursor.execute(
                     """
@@ -137,4 +109,4 @@ def scrape_shows(retry=False):
 
 
 if __name__ == "__main__":
-    scrape_shows(retry=False)
+    scrape_shows(db_path=Path("db.sqlite"), shows_dir=Path("shows"), retry=False)

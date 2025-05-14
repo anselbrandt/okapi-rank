@@ -1,12 +1,13 @@
 import sqlite3
 from datetime import datetime
 from math import log
+from pathlib import Path
 
 
-def insert_scores():
+def insert_scores(db_path: Path):
     date = datetime.now().isoformat()
 
-    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     conn.execute("BEGIN TRANSACTION")
@@ -55,4 +56,4 @@ def insert_scores():
 
 
 if __name__ == "__main__":
-    insert_scores()
+    insert_scores(db_path=Path("db.sqlite"))

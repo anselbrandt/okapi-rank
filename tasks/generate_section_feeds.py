@@ -3,6 +3,9 @@ import json
 import sqlite3
 from transformers.pipelines import pipeline
 from urllib.parse import urlparse
+from pathlib import Path
+from storage import DataIO
+from categories import CATEGORY_MAPPINGS
 
 
 def to_embed_url(url: str) -> str:
@@ -13,22 +16,14 @@ def to_embed_url(url: str) -> str:
     return url
 
 
-def generate_section_feeds():
-    ROOT_DIR = Path(__file__).resolve().parents[1]
-    out_dir = ROOT_DIR / "frontend" / "public" / "sections"
-    out_dir.mkdir(exist_ok=True)
+def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
 
     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
-    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    categories_dir = ROOT_DIR / "categories"
-    category_mapping = categories_dir / "category_mapping.json"
-    with open(category_mapping, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    for section in data.values():
+    for section in categories.values():
         subcategories = section.get("subcategories")
         if subcategories:
             for subcat in subcategories.values():
@@ -115,14 +110,17 @@ def generate_section_feeds():
                         if score > 0.9:
                             episode["label_score"] = score
                             matching_episodes.append(episode)
-                out_file = out_dir / f"{subcat_name}.json"
+                out_path = sections_dir / f"{subcat_name}.json"
                 print(subcat_name, len(matching_episodes))
-                with open(out_file, "w", encoding="utf-8") as f:
-                    json.dump(matching_episodes, f)
-                    f.close()
+                file = DataIO(path=out_path, mode="w", encoding="utf-8")
+                file.write_json(matching_episodes)
 
     conn.close()
 
 
 if __name__ == "__main__":
-    generate_section_feeds()
+    generate_section_feeds(
+        db_path=Path("db.sqlite"),
+        sections_dir=Path("sections"),
+        categories=CATEGORY_MAPPINGS,
+    )

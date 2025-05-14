@@ -2,6 +2,9 @@ import fs from "fs/promises";
 
 import puppeteer from "puppeteer";
 
+const args = process.argv.slice(2);
+const CHARTS_DIR = args[0];
+
 const scroll = async (page, idx, distance, timeout) => {
   await page.evaluate(
     (idx, distance) => {
@@ -127,7 +130,7 @@ async function scrape(country, category) {
 
   const html = await page.content();
 
-  const filepath = `charts/${country.code}/${category.filename}.html`;
+  const filepath = `${CHARTS_DIR}/${country.code}/${category.filename}.html`;
   await fs.writeFile(filepath, html);
 
   await browser.close();
@@ -175,7 +178,7 @@ const totalStart = Date.now();
 let filesScraped = 0;
 
 for (const country of countries) {
-  await fs.mkdir(`charts/${country.code}`, { recursive: true });
+  await fs.mkdir(`${CHARTS_DIR}/${country.code}`, { recursive: true });
   for (const category of categories) {
     const start = Date.now();
     await scrape(country, category);

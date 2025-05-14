@@ -1,8 +1,9 @@
 import sqlite3
+from pathlib import Path
 
 
-def create_tables():
-    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
+def create_tables(db_path: Path):
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     conn.execute("PRAGMA foreign_keys = ON;")
@@ -217,4 +218,4 @@ def create_tables():
 
 
 if __name__ == "__main__":
-    create_tables()
+    create_tables(db_path=Path("db.sqlite"))

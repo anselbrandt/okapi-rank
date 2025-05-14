@@ -1,17 +1,16 @@
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 import json
+from storage import DataIO
 
 
-def generate_home_feed():
-    ROOT_DIR = Path(__file__).resolve().parents[1]
-    out_dir = ROOT_DIR / "frontend" / "public" / "sections"
+def generate_home_feed(sections_dir: Path):
 
     all_episodes = []
-    for file in out_dir.glob("*.json"):
-        with open(file, "r", encoding="utf-8") as f:
-            episodes = json.load(f)
-            all_episodes.extend(episodes)
+    files = DataIO(path=sections_dir).list_files()
+    for file in files:
+        episodes = DataIO(path=file, mode="r", encoding="utf-8").read_json()
+        all_episodes.extend(episodes)
 
     now = datetime.now(timezone.utc)
     yesterday = now - timedelta(days=1)
@@ -42,10 +41,12 @@ def generate_home_feed():
     top_episodes = sorted(
         unique_episodes, key=lambda ep: ep.get("score", 0), reverse=True
     )[:200]
-
-    with open(out_dir / "home.json", "w", encoding="utf-8") as f:
-        json.dump(top_episodes, f, ensure_ascii=False)
+    out_path = sections_dir / "home.json"
+    out_file = DataIO(path=out_path, mode="w", encoding="utf-8")
+    out_file.write_json(top_episodes)
 
 
 if __name__ == "__main__":
-    generate_home_feed()
+    generate_home_feed(
+        sections_dir=Path("sections"),
+    )

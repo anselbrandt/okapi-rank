@@ -5,6 +5,8 @@ import sqlite3
 
 from selectolax.parser import HTMLParser
 
+from storage import DataIO
+
 
 def extract_list(html):
     tree = HTMLParser(html)
@@ -49,61 +51,54 @@ def extract_show_id(url):
     return match.group(1) if match else None
 
 
-def insert_podcasts():
-    conn = sqlite3.connect("/home/ansel/dev/okapi-rank/podcasts.db")
+def insert_podcasts(db_path: Path, charts_dir: Path):
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     timestamp = datetime.now().isoformat()
-    ROOT_DIR = Path(__file__).resolve().parents[1]
-    charts_dir = ROOT_DIR / "charts"
-    dirs = [
-        dir
-        for dir in charts_dir.iterdir()
-        if ".DS_Store" not in str(dir) and dir.is_dir()
-    ]
 
     ranking_batch = []
 
     conn.execute("BEGIN TRANSACTION")
 
-    for dir in dirs:
-        country = dir.stem
-        files = [file for file in dir.iterdir() if ".DS_Store" not in str(file)]
-        for file in files:
-            category = file.stem
-            links = get_links(file)
-            for i, (url, name) in enumerate(links):
-                show_id = extract_show_id(url)
-                if not show_id:
-                    continue
+    dir = DataIO(path=charts_dir)
+    files = dir.list_files()
+    for file in files:
+        country = str(file.parent)
+        category = file.stem
+        links = get_links(file)
+        for i, (url, name) in enumerate(links):
+            show_id = extract_show_id(url)
+            if not show_id:
+                continue
 
-                cursor.execute(
-                    """
-                    INSERT OR IGNORE INTO podcast (
-                        name, category, url, show_id, created_at, last_seen_at
-                    )
-                    VALUES (?, ?, ?, ?, ?, ?)
-                    """,
-                    (name, category, url, show_id, timestamp, timestamp),
+            cursor.execute(
+                """
+                INSERT OR IGNORE INTO podcast (
+                    name, category, url, show_id, created_at, last_seen_at
                 )
+                VALUES (?, ?, ?, ?, ?, ?)
+                """,
+                (name, category, url, show_id, timestamp, timestamp),
+            )
 
-                cursor.execute(
-                    """
-                    UPDATE podcast SET last_seen_at = ? WHERE show_id = ?
-                    """,
-                    (timestamp, show_id),
-                )
+            cursor.execute(
+                """
+                UPDATE podcast SET last_seen_at = ? WHERE show_id = ?
+                """,
+                (timestamp, show_id),
+            )
 
-                cursor.execute(
-                    "SELECT id FROM podcast WHERE show_id = ?",
-                    (show_id,),
-                )
-                row = cursor.fetchone()
-                if not row:
-                    continue
-                podcast_id = row[0]
+            cursor.execute(
+                "SELECT id FROM podcast WHERE show_id = ?",
+                (show_id,),
+            )
+            row = cursor.fetchone()
+            if not row:
+                continue
+            podcast_id = row[0]
 
-                ranking_batch.append((podcast_id, country, i + 1, timestamp, timestamp))
+            ranking_batch.append((podcast_id, country, i + 1, timestamp, timestamp))
 
     cursor.executemany(
         """
@@ -118,4 +113,4 @@ def insert_podcasts():
 
 
 if __name__ == "__main__":
-    insert_podcasts()
+    insert_podcasts(db_path=Path("db.sqlite"), charts_dir=Path("charts"))
