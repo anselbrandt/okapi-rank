@@ -54,7 +54,7 @@ def update_feeds():
     scrape_charts(charts_dir=paths.charts_dir)
     create_tables(db_path=paths.db_path)
     insert_podcasts(db_path=paths.db_path, charts_dir=paths.charts_dir)
-    insert_downloads(db_path=paths.db_path, status="active")
+    insert_downloads(db_path=paths.db_path, status="pending")
     scrape_shows(db_path=paths.db_path, shows_dir=paths.shows_dir)
     insert_episodes(db_path=paths.db_path, shows_dir=paths.shows_dir)
     insert_scores(db_path=paths.db_path)

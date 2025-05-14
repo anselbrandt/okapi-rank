@@ -98,7 +98,7 @@ async function scrape(country, category) {
       }
     }, country);
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 600));
 
     await page.click(
       '#body-container > div > div.banner-container > div > button[aria-label="Close"]'
@@ -121,12 +121,12 @@ async function scrape(country, category) {
     }
   });
 
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 900));
 
-  await scroll(page, 0, 3000, 1000);
-  await scroll(page, 0, 3000, 1000);
-  await scroll(page, 0, 3000, 1000);
-  await scroll(page, 0, 3000, 1000);
+  await scroll(page, 0, 3000, 900);
+  await scroll(page, 0, 3000, 900);
+  await scroll(page, 0, 3000, 900);
+  await scroll(page, 0, 3000, 900);
 
   const html = await page.content();
 

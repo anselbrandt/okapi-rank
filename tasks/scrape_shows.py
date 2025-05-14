@@ -103,7 +103,7 @@ def scrape_shows(db_path: Path, shows_dir: Path, retry=False):
                 )
                 conn.commit()
 
-            time.sleep(0.6 + random.uniform(0, 0.2))
+            time.sleep(0.3 + random.uniform(0, 0.1))
 
     conn.close()
 
