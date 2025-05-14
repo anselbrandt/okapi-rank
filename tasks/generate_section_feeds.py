@@ -112,6 +112,7 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                             matching_episodes.append(episode)
                 out_path = sections_dir / f"{subcat_name}.json"
                 print(subcat_name, len(matching_episodes))
+                matching_episodes.sort(key=lambda ep: ep["release_date"], reverse=True)
                 file = DataIO(path=out_path, mode="w", encoding="utf-8")
                 file.write_json(matching_episodes)
 

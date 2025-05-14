@@ -43,6 +43,7 @@ def generate_home_feed(sections_dir: Path):
     )[:200]
     out_path = sections_dir / "home.json"
     out_file = DataIO(path=out_path, mode="w", encoding="utf-8")
+    top_episodes.sort(key=lambda ep: ep["release_date"], reverse=True)
     out_file.write_json(top_episodes)
 
 
