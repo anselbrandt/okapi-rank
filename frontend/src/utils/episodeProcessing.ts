@@ -20,7 +20,7 @@ type Episode = {
 
 const SUMMARY_CUTOFF = 100;
 
-export function scoreAndSortEpisodes(
+export function scoreAndSortEpisodes_by_score(
   episodes: Episode[]
 ): (Episode & { release_ts: number })[] {
   const now = Date.now();
@@ -37,6 +37,17 @@ export function scoreAndSortEpisodes(
       const weightB = 0.6 * ageB + 0.4 * b.score;
       return weightB - weightA;
     });
+}
+
+export function scoreAndSortEpisodes(
+  episodes: Episode[]
+): (Episode & { release_ts: number })[] {
+  return episodes
+    .map((ep) => ({
+      ...ep,
+      release_ts: new Date(ep.release_date).getTime(),
+    }))
+    .sort((a, b) => b.release_ts - a.release_ts);
 }
 
 export function interleaveEpisodesByPodcast(
