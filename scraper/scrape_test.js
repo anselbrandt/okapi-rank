@@ -77,10 +77,58 @@ async function scrape(country, category) {
     await page.click('button.select-button[data-testid="select-button"]');
 
     await scroll(page, 1, country.scrollDistance, 500);
+
+    await page.evaluate((country) => {
+      const regionContainer = document.querySelector("div.region-container");
+      const regionLinks = regionContainer.querySelectorAll(
+        'a[data-testid="region-list-link"]'
+      );
+
+      for (const link of regionLinks) {
+        const spanText = link.querySelector("span")?.textContent.trim();
+        if (spanText === country.name) {
+          link.click();
+          break;
+        }
+      }
+    }, country);
+
+    await new Promise((resolve) => setTimeout(resolve, 900));
+
+    await page.click(
+      '#body-container > div > div.banner-container > div > button[aria-label="Close"]'
+    );
+
+    await page.goto(url, {
+      waitUntil: "networkidle2",
+    });
   }
+
+  await page.evaluate(() => {
+    const button = [...document.querySelectorAll("button.title__button")].find(
+      (btn) =>
+        btn.querySelector("span.dir-wrapper")?.textContent.trim() ===
+        "Top Shows"
+    );
+
+    if (button) {
+      button.click();
+    }
+  });
+
+  await new Promise((resolve) => setTimeout(resolve, 900));
+
+  await scroll(page, 0, 3000, 900);
+  await scroll(page, 0, 3000, 900);
+  await scroll(page, 0, 3000, 900);
+  await scroll(page, 0, 3000, 900);
+
+  const html = await page.content();
 }
 
 await scrape(
-  { name: "Irelnd", code: "ie", scrollDistance: 700 },
+  { name: "United Kingdom", code: "gb", scrollDistance: 1000 },
   { name: "News", genre: 1489, filename: "news" }
 );
+
+// { name: "United States", code: "us", scrollDistance: 2000 }
