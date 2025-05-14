@@ -98,7 +98,7 @@ async function scrape(country, category) {
       }
     }, country);
 
-    await new Promise((resolve) => setTimeout(resolve, 600));
+    await new Promise((resolve) => setTimeout(resolve, 900));
 
     await page.click(
       '#body-container > div > div.banner-container > div > button[aria-label="Close"]'
