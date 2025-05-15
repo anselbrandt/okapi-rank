@@ -3,6 +3,8 @@ import shutil
 import subprocess
 import sys
 
+from dotenv import load_dotenv
+
 from constants import paths
 from categories import CATEGORY_MAPPINGS
 
@@ -18,6 +20,8 @@ from tasks import (
     scrape_shows,
 )
 
+load_dotenv()
+
 
 def make_dirs():
     dirs = [paths.data_dir, paths.charts_dir, paths.shows_dir, paths.sections_dir]
@@ -27,7 +31,7 @@ def make_dirs():
 
 def scrape_charts(charts_dir=paths.charts_dir):
     charts_dir.mkdir(exist_ok=True, parents=True)
-    node_path = shutil.which("node")
+    node_path = os.getenv("NODE_PATH") or shutil.which("node")
     if node_path is None:
         print("Node.js not found in PATH.")
         return
