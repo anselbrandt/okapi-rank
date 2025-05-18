@@ -14,10 +14,9 @@ export const Feed = ({
   currentEmbedUrl,
   setCurrentEmbedUrl,
 }: Props) => {
-  const { episodes, expandedSummaries, toggleSummary, loading, error } =
+  const { episodes, expandedSummaries, toggleSummary, error } =
     useEpisodes(section);
 
-  if (loading) return <main className="p-8">Loading...</main>;
   if (error) return <main className="p-8 text-red-600">Error: {error}</main>;
 
   return (
