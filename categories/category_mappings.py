@@ -335,7 +335,7 @@ CATEGORY_MAPPINGS = {
         "name": "science",
         "displayName": "Science",
         "subcategories": {
-            "scienc": {
+            "science": {
                 "name": "science",
                 "displayName": "Science",
                 "match_categories": [
