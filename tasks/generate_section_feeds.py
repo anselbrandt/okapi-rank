@@ -57,10 +57,10 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                     ) s ON p.id = s.podcast_id
                     WHERE
                         (p.category, p.subcategory) IN ({placeholders})
-                        AND e.release_date <= date('now')
+                        AND replace(substr(e.release_date, 1, 19), 'T', ' ') <= datetime('now')
                         AND CAST(e.duration AS INTEGER) > 600
                     ORDER BY 
-                        e.release_date DESC
+                        replace(substr(e.release_date, 1, 19), 'T', ' ') DESC
                     LIMIT 1000;
                 """
 
