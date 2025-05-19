@@ -34,7 +34,7 @@ export const CaptionHero = ({
   };
 
   return (
-    <article className="flex flex-col">
+    <article className="flex flex-col p-4">
       <img
         src={image.replaceAll("270", imageSize.toString())}
         alt="Episode image"

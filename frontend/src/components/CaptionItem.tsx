@@ -36,7 +36,9 @@ export const CaptionItem = ({
   };
 
   return (
-    <article className={`flex flex-row lg:flex-${rowOrColumn} gap-2 mt-4`}>
+    <article
+      className={`flex flex-row sm:flex-col  lg:flex-${rowOrColumn} gap-2 p-4`}
+    >
       <img
         src={image}
         alt="Episode image"
