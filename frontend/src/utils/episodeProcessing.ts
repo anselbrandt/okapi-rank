@@ -18,6 +18,16 @@ type Episode = {
   duration?: string;
 };
 
+export type EnhancedEpisode = Episode & {
+  embedId: string;
+  formattedDate: string;
+  formattedDuration: string;
+  summary: string;
+  shortSummary: string;
+  embedUrl: string;
+  showUrl: string;
+};
+
 const SUMMARY_CUTOFF = 100;
 
 export function scoreAndSortEpisodes_by_score(
@@ -83,7 +93,7 @@ export function interleaveEpisodesByPodcast(
   return interleaved;
 }
 
-export function enhanceEpisodes(episodes: Episode[]) {
+export function enhanceEpisodes(episodes: Episode[]): EnhancedEpisode[] {
   return episodes.map((episode) => {
     const embedId = makeIdFromUrl(episode.url);
     const formattedDate = formatTime(episode.release_date);

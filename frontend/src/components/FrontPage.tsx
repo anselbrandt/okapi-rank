@@ -18,13 +18,23 @@ type Episode = {
   duration?: string;
 };
 
+export type EnhancedEpisode = Episode & {
+  embedId: string;
+  formattedDate: string;
+  formattedDuration: string;
+  summary: string;
+  shortSummary: string;
+  embedUrl: string;
+  showUrl: string;
+};
+
 interface Props {
   section?: string;
   currentEmbedUrl: string | null;
   setCurrentEmbedUrl: (url: string | null) => void;
 }
 
-function sortEpisodesByScore(episodes: Episode[]) {
+function sortEpisodesByScore(episodes: EnhancedEpisode[]) {
   return [...episodes].sort((a, b) => b.score - a.score);
 }
 

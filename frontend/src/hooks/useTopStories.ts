@@ -14,10 +14,20 @@ type Episode = {
   duration?: string;
 };
 
+export type EnhancedEpisode = Episode & {
+  embedId: string;
+  formattedDate: string;
+  formattedDuration: string;
+  summary: string;
+  shortSummary: string;
+  embedUrl: string;
+  showUrl: string;
+};
+
 export function useTopStories(section: string = "latest") {
-  const [episodes, setEpisodesBySection] = useState<Record<string, Episode[]>>(
-    {}
-  );
+  const [episodes, setEpisodesBySection] = useState<
+    Record<string, EnhancedEpisode[]>
+  >({});
   const [expandedSummaries, setExpandedSummaries] = useState<
     Record<string, boolean>
   >({});
@@ -32,7 +42,7 @@ export function useTopStories(section: string = "latest") {
         return res.json();
       })
       .then((data: Record<string, Episode[]>) => {
-        const processed: Record<string, Episode[]> = {};
+        const processed: Record<string, EnhancedEpisode[]> = {};
 
         for (const [key, episodeList] of Object.entries(data)) {
           if (!Array.isArray(episodeList) || episodeList.length === 0) continue;
