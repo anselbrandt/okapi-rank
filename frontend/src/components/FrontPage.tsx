@@ -3,8 +3,7 @@
 import { useEpisodes } from "@/hooks/useEpisodes";
 import { Hero } from "@/components/Hero";
 import { FrontPageItem } from "./FrontPageItem";
-import { CaptionItem } from "./CaptionItem";
-import { CaptionHero } from "./CaptionHero";
+import { GridItem } from "./GridItem";
 import { SidebarBlock } from "./SidebarBlock";
 
 interface Props {
@@ -76,11 +75,71 @@ export const FrontPage = ({
             />
           </div>
         </div>
+        <div className="flex flex-row">
+          <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
+            {first && (
+              <Hero
+                key={first.embedId}
+                episode={first}
+                expandedSummaries={expandedSummaries}
+                toggleSummary={toggleSummary}
+                currentEmbedUrl={currentEmbedUrl}
+                setCurrentEmbedUrl={setCurrentEmbedUrl}
+              />
+            )}
+          </div>
+          <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
+            <SidebarBlock
+              episodes={episodes}
+              currentEmbedUrl={currentEmbedUrl}
+              setCurrentEmbedUrl={setCurrentEmbedUrl}
+              rowOrColumn="col"
+              sectionTitle="Section 1"
+            />
+          </div>
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-8 pb-50">
-          <div>Column 1</div>
-          <div>Column 2</div>
-          <div>Column 3</div>
-          <div>Column 4</div>
+          {rest.slice(0, 11).map((episode) => (
+            <GridItem
+              key={episode.embedId}
+              episode={episode}
+              currentEmbedUrl={currentEmbedUrl}
+              setCurrentEmbedUrl={setCurrentEmbedUrl}
+            />
+          ))}
+        </div>
+        <div className="flex flex-row">
+          <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
+            {first && (
+              <Hero
+                key={first.embedId}
+                episode={first}
+                expandedSummaries={expandedSummaries}
+                toggleSummary={toggleSummary}
+                currentEmbedUrl={currentEmbedUrl}
+                setCurrentEmbedUrl={setCurrentEmbedUrl}
+              />
+            )}
+          </div>
+          <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
+            <SidebarBlock
+              episodes={episodes}
+              currentEmbedUrl={currentEmbedUrl}
+              setCurrentEmbedUrl={setCurrentEmbedUrl}
+              rowOrColumn="col"
+              sectionTitle="Section 1"
+            />
+          </div>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-8 pb-50">
+          {rest.slice(0, 11).map((episode) => (
+            <GridItem
+              key={episode.embedId}
+              episode={episode}
+              currentEmbedUrl={currentEmbedUrl}
+              setCurrentEmbedUrl={setCurrentEmbedUrl}
+            />
+          ))}
         </div>
       </div>
     </main>
