@@ -6,13 +6,25 @@ import { FrontPageItem } from "./FrontPageItem";
 import { GridItem } from "./GridItem";
 import { SidebarBlock } from "./SidebarBlock";
 
+type Episode = {
+  title: string;
+  podcast_name: string;
+  release_date: string;
+  score: number;
+  summary?: string;
+  url: string;
+  embed_url?: string;
+  image: string;
+  duration?: string;
+};
+
 interface Props {
   section?: string;
   currentEmbedUrl: string | null;
   setCurrentEmbedUrl: (url: string | null) => void;
 }
 
-function sortEpisodesByScore(episodes: any[] = []) {
+function sortEpisodesByScore(episodes: Episode[]) {
   return [...episodes].sort((a, b) => b.score - a.score);
 }
 

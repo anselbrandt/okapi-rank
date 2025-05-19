@@ -1,9 +1,6 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 
-import {
-  scoreAndSortEpisodes,
-  enhanceEpisodes,
-} from "@/utils/episodeProcessing";
+import { enhanceEpisodes } from "@/utils/episodeProcessing";
 
 type Episode = {
   title: string;
