@@ -27,7 +27,7 @@ export const FrontPage = ({
   return (
     <main className="w-screen flex flex-col items-center">
       <div className="w-full lg:max-w-7xl ">
-        <div className="flex flex-row">
+        <div className="flex flex-row border-b">
           <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
             {first && (
               <Hero
@@ -46,12 +46,13 @@ export const FrontPage = ({
               currentEmbedUrl={currentEmbedUrl}
               setCurrentEmbedUrl={setCurrentEmbedUrl}
               rowOrColumn="col"
-              sectionTitle="Section 1"
+              sectionTitle="Sidebar 1"
             />
           </div>
         </div>
-        <div className="flex flex-row">
-          <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 space-y-6 pb-8">
+        <div className="flex flex-row border-b">
+          <div className="w-full lg:max-w-3xl xl:max-w-5xl px-8 pt-4 bg-neutral-50 text-gray-900 space-y-6 pb-8">
+            <div className="text-2xl font-bold">Section 1</div>
             <div className="space-y-6 lg:grid lg:grid-cols-2">
               {rest.map((episode) => (
                 <FrontPageItem
@@ -71,11 +72,11 @@ export const FrontPage = ({
               currentEmbedUrl={currentEmbedUrl}
               setCurrentEmbedUrl={setCurrentEmbedUrl}
               rowOrColumn="row"
-              sectionTitle="Section 2"
+              sectionTitle="Sidebar 2"
             />
           </div>
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row border-b">
           <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
             {first && (
               <Hero
@@ -94,11 +95,12 @@ export const FrontPage = ({
               currentEmbedUrl={currentEmbedUrl}
               setCurrentEmbedUrl={setCurrentEmbedUrl}
               rowOrColumn="col"
-              sectionTitle="Section 1"
+              sectionTitle="Sidebar 3"
             />
           </div>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-8 pb-50">
+        <div className="text-2xl font-bold px-8 pt-4">Section 2</div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-8 border-b">
           {rest.slice(0, 11).map((episode) => (
             <GridItem
               key={episode.embedId}
@@ -108,7 +110,7 @@ export const FrontPage = ({
             />
           ))}
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row border-b">
           <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
             {first && (
               <Hero
@@ -127,10 +129,11 @@ export const FrontPage = ({
               currentEmbedUrl={currentEmbedUrl}
               setCurrentEmbedUrl={setCurrentEmbedUrl}
               rowOrColumn="col"
-              sectionTitle="Section 1"
+              sectionTitle="Sidebar 4"
             />
           </div>
         </div>
+        <div className="text-2xl font-bold px-8 pt-4">Section 3</div>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-8 pb-50">
           {rest.slice(0, 11).map((episode) => (
             <GridItem
