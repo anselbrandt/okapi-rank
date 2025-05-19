@@ -27,7 +27,7 @@ export const FrontPage = ({
   return (
     <main className="w-screen flex flex-col items-center">
       <div className="w-full lg:max-w-7xl ">
-        <div className="flex flex-row border-b">
+        <div className="flex flex-col md:flex-row border-b">
           <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
             {first && (
               <Hero
@@ -40,7 +40,7 @@ export const FrontPage = ({
               />
             )}
           </div>
-          <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
+          <div className="w-full md:max-w-2xs lg:max-w-sm p-8">
             <SidebarBlock
               episodes={episodes}
               currentEmbedUrl={currentEmbedUrl}
@@ -50,7 +50,7 @@ export const FrontPage = ({
             />
           </div>
         </div>
-        <div className="flex flex-row border-b">
+        <div className="flex flex-col md:flex-row border-b">
           <div className="w-full lg:max-w-3xl xl:max-w-5xl px-8 pt-4 bg-neutral-50 text-gray-900 space-y-6 pb-8">
             <div className="text-2xl font-bold">Section 1</div>
             <div className="space-y-6 lg:grid lg:grid-cols-2">
@@ -66,7 +66,7 @@ export const FrontPage = ({
               ))}
             </div>
           </div>
-          <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
+          <div className="w-full md:max-w-2xs lg:max-w-sm p-8">
             <SidebarBlock
               episodes={episodes}
               currentEmbedUrl={currentEmbedUrl}
@@ -76,7 +76,7 @@ export const FrontPage = ({
             />
           </div>
         </div>
-        <div className="flex flex-row border-b">
+        <div className="flex flex-col md:flex-row border-b">
           <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
             {first && (
               <Hero
@@ -89,7 +89,7 @@ export const FrontPage = ({
               />
             )}
           </div>
-          <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
+          <div className="w-full md:max-w-2xs lg:max-w-sm p-8">
             <SidebarBlock
               episodes={episodes}
               currentEmbedUrl={currentEmbedUrl}
@@ -123,7 +123,7 @@ export const FrontPage = ({
               />
             )}
           </div>
-          <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
+          <div className="w-full md:max-w-2xs lg:max-w-sm p-8">
             <SidebarBlock
               episodes={episodes}
               currentEmbedUrl={currentEmbedUrl}
