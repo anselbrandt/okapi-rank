@@ -14,20 +14,16 @@ interface EnhancedEpisode {
   image: string;
 }
 
-type RowOrColumn = "row" | "col";
-
 interface EpisodeItemProps {
   episode: EnhancedEpisode;
   currentEmbedUrl: string | null;
   setCurrentEmbedUrl: (url: string | null) => void;
-  rowOrColumn?: RowOrColumn;
 }
 
-export const CaptionItem = ({
+export const CaptionHero = ({
   episode,
   currentEmbedUrl,
   setCurrentEmbedUrl,
-  rowOrColumn = "col",
 }: EpisodeItemProps) => {
   const { title, embedUrl, image } = episode;
 
@@ -36,17 +32,13 @@ export const CaptionItem = ({
   };
 
   return (
-    <article className={`flex flex-col lg:flex-${rowOrColumn} gap-2 mt-4`}>
-      <img
-        src={image}
-        alt="Episode image"
-        className="w-32 h-32 object-cover rounded"
-      />
+    <article className="flex flex-col">
+      <img src={image.replaceAll("270", "540")} alt="Episode image" />
       <div className="flex-1">
         <div className="flex justify-between">
           <div>
             <h2
-              className="text-md hover:text-sky-600 cursor-pointer hover:underline"
+              className="py-2 text-xl font-serif font-semibold hover:text-sky-600 cursor-pointer hover:underline"
               onClick={handleClick}
             >
               {title}
