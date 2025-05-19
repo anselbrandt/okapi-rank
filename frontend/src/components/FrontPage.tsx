@@ -110,7 +110,7 @@ export const FrontPage = ({
             />
           ))}
         </div>
-        <div className="flex flex-row border-b">
+        <div className="flex flex-col md:flex-row border-b">
           <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
             {first && (
               <Hero
