@@ -23,18 +23,14 @@ export const Feed = ({
     <main className="w-screen flex flex-col items-center">
       <section className="w-full xl:max-w-7xl p-8 bg-neutral-50 text-gray-900 space-y-6 pb-50">
         {episodes.map((episode) => {
-          const isExpanded = expandedSummaries[episode.embedId] ?? false;
-          const showToggle = episode.summary.length > 100;
-
           return (
             <EpisodeItem
               key={episode.embedId}
               episode={episode}
-              isExpanded={isExpanded}
-              showToggle={showToggle}
+              expandedSummaries={expandedSummaries}
+              toggleSummary={toggleSummary}
               currentEmbedUrl={currentEmbedUrl}
               setCurrentEmbedUrl={setCurrentEmbedUrl}
-              toggleSummary={toggleSummary}
             />
           );
         })}

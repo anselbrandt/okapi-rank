@@ -22,12 +22,12 @@ interface EpisodeItemProps {
   setCurrentEmbedUrl: (url: string | null) => void;
 }
 
-export const EpisodeItem = ({
+export const Hero = ({
   episode,
   expandedSummaries,
+  toggleSummary,
   currentEmbedUrl,
   setCurrentEmbedUrl,
-  toggleSummary,
 }: EpisodeItemProps) => {
   const {
     embedId,
@@ -50,17 +50,13 @@ export const EpisodeItem = ({
   };
 
   return (
-    <article className="flex flex-row gap-4 border-b pb-4 last:border-none">
-      <img
-        src={image}
-        alt="Episode image"
-        className="w-16 h-16 object-cover rounded"
-      />
+    <article className="flex flex-col">
+      <img src={image.replaceAll("270", "540")} alt="Episode image" />
       <div className="flex-1">
         <div className="flex justify-between">
           <div>
             <h2
-              className="text-lg font-semibold hover:text-sky-600 cursor-pointer hover:underline"
+              className="py-2 text-4xl font-serif font-bold hover:text-sky-600 cursor-pointer hover:underline"
               onClick={handleClick}
             >
               {title}

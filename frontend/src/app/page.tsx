@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
-import { Feed } from "@/components/Feed";
+import { FrontPage } from "@/components/FrontPage";
 import { useEmbedContext } from "@/context/EmbedContext";
 
 export default function Page() {
@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-neutral-50">
       <Navbar />
-      <Feed
+      <FrontPage
         section={section}
         setCurrentEmbedUrl={setCurrentEmbedUrl}
         currentEmbedUrl={currentEmbedUrl}

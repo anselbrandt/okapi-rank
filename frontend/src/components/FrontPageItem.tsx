@@ -22,7 +22,7 @@ interface EpisodeItemProps {
   setCurrentEmbedUrl: (url: string | null) => void;
 }
 
-export const EpisodeItem = ({
+export const FrontPageItem = ({
   episode,
   expandedSummaries,
   currentEmbedUrl,
@@ -50,11 +50,11 @@ export const EpisodeItem = ({
   };
 
   return (
-    <article className="flex flex-row gap-4 border-b pb-4 last:border-none">
+    <article className="flex flex-row gap-4">
       <img
         src={image}
         alt="Episode image"
-        className="w-16 h-16 object-cover rounded"
+        className="hidden sm:block w-32 h-32 object-cover rounded"
       />
       <div className="flex-1">
         <div className="flex justify-between">
