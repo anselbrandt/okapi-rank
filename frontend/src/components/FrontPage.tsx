@@ -23,12 +23,12 @@ export const FrontPage = ({
 
   if (error) return <main className="p-8 text-red-600">Error: {error}</main>;
 
-  const [first, ...rest] = episodes.slice(0, 9);
+  const [first, ...rest] = episodes.slice(1, 10);
 
   return (
     <main className="w-screen flex flex-col items-center">
-      <div className="flex flex-row">
-        <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 space-y-6 pb-8">
+      <div className="w-full lg:max-w-7xl flex flex-row">
+        <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 pb-8">
           {first && (
             <Hero
               key={first.embedId}
@@ -46,10 +46,11 @@ export const FrontPage = ({
             currentEmbedUrl={currentEmbedUrl}
             setCurrentEmbedUrl={setCurrentEmbedUrl}
             rowOrColumn="col"
+            sectionTitle="Section 1"
           />
         </div>
       </div>
-      <div className="flex flex-row">
+      <div className="w-full lg:max-w-7xl flex flex-row">
         <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 space-y-6 pb-8">
           <div className="space-y-6 lg:grid lg:grid-cols-2">
             {rest.map((episode) => (
@@ -70,8 +71,15 @@ export const FrontPage = ({
             currentEmbedUrl={currentEmbedUrl}
             setCurrentEmbedUrl={setCurrentEmbedUrl}
             rowOrColumn="row"
+            sectionTitle="Section 2"
           />
         </div>
+      </div>
+      <div className="w-full lg:max-w-7xl grid grid-cols-2 lg:grid-cols-4 gap-4 p-8 pb-50">
+        <div>Column 1</div>
+        <div>Column 2</div>
+        <div>Column 3</div>
+        <div>Column 4</div>
       </div>
     </main>
   );

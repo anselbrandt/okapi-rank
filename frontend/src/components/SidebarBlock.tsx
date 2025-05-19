@@ -25,6 +25,7 @@ interface EpisodeItemProps {
   setCurrentEmbedUrl: (url: string | null) => void;
   imageSize?: number;
   rowOrColumn?: RowOrColumn;
+  sectionTitle: string;
 }
 
 export const SidebarBlock = ({
@@ -33,12 +34,13 @@ export const SidebarBlock = ({
   setCurrentEmbedUrl,
   imageSize = 500,
   rowOrColumn = "col",
+  sectionTitle,
 }: EpisodeItemProps) => {
   const [first, ...rest] = episodes.slice(0, 9);
 
   return (
-    <>
-      <div className="text-2xl font-semibold pt-2 pb-8">Section Header</div>
+    <div className="flex flex-col">
+      <div className="text-2xl font-semibold pt-2 pb-8">{sectionTitle}</div>
       {first && (
         <CaptionHero
           key={first.embedId + 1}
@@ -63,6 +65,6 @@ export const SidebarBlock = ({
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
