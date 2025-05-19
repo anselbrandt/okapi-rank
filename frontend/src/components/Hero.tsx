@@ -20,6 +20,7 @@ interface EpisodeItemProps {
   toggleSummary: (id: string) => void;
   currentEmbedUrl: string | null;
   setCurrentEmbedUrl: (url: string | null) => void;
+  imageSize?: number;
 }
 
 export const Hero = ({
@@ -28,6 +29,7 @@ export const Hero = ({
   toggleSummary,
   currentEmbedUrl,
   setCurrentEmbedUrl,
+  imageSize = 1000,
 }: EpisodeItemProps) => {
   const {
     embedId,
@@ -51,7 +53,10 @@ export const Hero = ({
 
   return (
     <article className="flex flex-col">
-      <img src={image.replaceAll("270", "540")} alt="Episode image" />
+      <img
+        src={image.replaceAll("270", imageSize.toString())}
+        alt="Episode image"
+      />
       <div className="flex-1">
         <div className="flex justify-between">
           <div>

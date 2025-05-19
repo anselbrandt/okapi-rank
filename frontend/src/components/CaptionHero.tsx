@@ -18,12 +18,14 @@ interface EpisodeItemProps {
   episode: EnhancedEpisode;
   currentEmbedUrl: string | null;
   setCurrentEmbedUrl: (url: string | null) => void;
+  imageSize?: number;
 }
 
 export const CaptionHero = ({
   episode,
   currentEmbedUrl,
   setCurrentEmbedUrl,
+  imageSize = 500,
 }: EpisodeItemProps) => {
   const { title, embedUrl, image } = episode;
 
@@ -33,7 +35,10 @@ export const CaptionHero = ({
 
   return (
     <article className="flex flex-col">
-      <img src={image.replaceAll("270", "540")} alt="Episode image" />
+      <img
+        src={image.replaceAll("270", imageSize.toString())}
+        alt="Episode image"
+      />
       <div className="flex-1">
         <div className="flex justify-between">
           <div>

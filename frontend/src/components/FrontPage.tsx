@@ -52,12 +52,14 @@ export const FrontPage = ({
           </div>
         </section>
         <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
+          <div className="text-2xl font-semibold pt-2 pb-8">Section Header</div>
           {first && (
             <CaptionHero
               key={first.embedId}
               episode={first}
               currentEmbedUrl={currentEmbedUrl}
               setCurrentEmbedUrl={setCurrentEmbedUrl}
+              imageSize={500}
             />
           )}
           <div className="flex flex-col lg:flex-row pb-8">
@@ -70,12 +72,14 @@ export const FrontPage = ({
               />
             ))}
           </div>
+          <div className="text-2xl font-semibold pt-2 pb-8">Section Header</div>
           {first && (
             <CaptionHero
               key={first.embedId + 1}
               episode={first}
               currentEmbedUrl={currentEmbedUrl}
               setCurrentEmbedUrl={setCurrentEmbedUrl}
+              imageSize={500}
             />
           )}
           <div className="flex flex-col pb-8">
