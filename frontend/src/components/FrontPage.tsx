@@ -28,7 +28,7 @@ export const FrontPage = ({
   return (
     <main className="w-screen flex flex-col items-center">
       <div className="flex flex-row">
-        <section className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 space-y-6 pb-50">
+        <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 space-y-6 pb-8">
           {first && (
             <Hero
               key={first.embedId}
@@ -39,6 +39,18 @@ export const FrontPage = ({
               setCurrentEmbedUrl={setCurrentEmbedUrl}
             />
           )}
+        </div>
+        <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
+          <SidebarBlock
+            episodes={episodes}
+            currentEmbedUrl={currentEmbedUrl}
+            setCurrentEmbedUrl={setCurrentEmbedUrl}
+            rowOrColumn="col"
+          />
+        </div>
+      </div>
+      <div className="flex flex-row">
+        <div className="w-full lg:max-w-3xl xl:max-w-5xl p-8 bg-neutral-50 text-gray-900 space-y-6 pb-8">
           <div className="space-y-6 lg:grid lg:grid-cols-2">
             {rest.map((episode) => (
               <FrontPageItem
@@ -51,19 +63,13 @@ export const FrontPage = ({
               />
             ))}
           </div>
-        </section>
+        </div>
         <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
           <SidebarBlock
             episodes={episodes}
             currentEmbedUrl={currentEmbedUrl}
             setCurrentEmbedUrl={setCurrentEmbedUrl}
             rowOrColumn="row"
-          />
-          <SidebarBlock
-            episodes={episodes}
-            currentEmbedUrl={currentEmbedUrl}
-            setCurrentEmbedUrl={setCurrentEmbedUrl}
-            rowOrColumn="col"
           />
         </div>
       </div>
