@@ -1,4 +1,4 @@
-CATEGORY_MAPPINGS = {
+NEW_CATEGORY_MAPPINGS = {
     "arts": {
         "name": "arts",
         "displayName": "Arts",
