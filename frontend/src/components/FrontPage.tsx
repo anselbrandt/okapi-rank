@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { FrontPageItem } from "./FrontPageItem";
 import { CaptionItem } from "./CaptionItem";
 import { CaptionHero } from "./CaptionHero";
+import { SidebarBlock } from "./SidebarBlock";
 
 interface Props {
   section?: string;
@@ -52,47 +53,18 @@ export const FrontPage = ({
           </div>
         </section>
         <div className="hidden md:block md:max-w-2xs lg:max-w-sm pt-8 pr-8">
-          <div className="text-2xl font-semibold pt-2 pb-8">Section Header</div>
-          {first && (
-            <CaptionHero
-              key={first.embedId}
-              episode={first}
-              currentEmbedUrl={currentEmbedUrl}
-              setCurrentEmbedUrl={setCurrentEmbedUrl}
-              imageSize={500}
-            />
-          )}
-          <div className="flex flex-col lg:flex-row pb-8">
-            {rest.slice(0, 2).map((episode) => (
-              <CaptionItem
-                key={episode.embedId}
-                episode={episode}
-                currentEmbedUrl={currentEmbedUrl}
-                setCurrentEmbedUrl={setCurrentEmbedUrl}
-              />
-            ))}
-          </div>
-          <div className="text-2xl font-semibold pt-2 pb-8">Section Header</div>
-          {first && (
-            <CaptionHero
-              key={first.embedId + 1}
-              episode={first}
-              currentEmbedUrl={currentEmbedUrl}
-              setCurrentEmbedUrl={setCurrentEmbedUrl}
-              imageSize={500}
-            />
-          )}
-          <div className="flex flex-col pb-8">
-            {rest.slice(0, 2).map((episode) => (
-              <CaptionItem
-                key={episode.embedId + 1}
-                episode={episode}
-                currentEmbedUrl={currentEmbedUrl}
-                setCurrentEmbedUrl={setCurrentEmbedUrl}
-                rowOrColumn="row"
-              />
-            ))}
-          </div>
+          <SidebarBlock
+            episodes={episodes}
+            currentEmbedUrl={currentEmbedUrl}
+            setCurrentEmbedUrl={setCurrentEmbedUrl}
+            rowOrColumn="row"
+          />
+          <SidebarBlock
+            episodes={episodes}
+            currentEmbedUrl={currentEmbedUrl}
+            setCurrentEmbedUrl={setCurrentEmbedUrl}
+            rowOrColumn="col"
+          />
         </div>
       </div>
     </main>
