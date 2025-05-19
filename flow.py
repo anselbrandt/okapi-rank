@@ -10,7 +10,7 @@ from categories import CATEGORY_MAPPINGS
 
 from tasks import (
     create_tables,
-    generate_home_feed,
+    generate_top_stories,
     generate_section_feeds,
     insert_downloads,
     insert_episodes,
@@ -67,7 +67,7 @@ def update_feeds():
         sections_dir=paths.sections_dir,
         categories=CATEGORY_MAPPINGS,
     )
-    generate_home_feed(
+    generate_top_stories(
         sections_dir=paths.sections_dir,
     )
     push_feeds()

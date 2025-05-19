@@ -2,7 +2,6 @@ import { useEffect, useState, useMemo } from "react";
 
 import {
   scoreAndSortEpisodes,
-  interleaveEpisodesByPodcast,
   enhanceEpisodes,
 } from "@/utils/episodeProcessing";
 
@@ -18,10 +17,10 @@ type Episode = {
   duration?: string;
 };
 
-const MAX_EPISODES = 1000;
-
-export function useEpisodes(section: string = "latest") {
-  const [episodes, setEpisodes] = useState<Episode[]>([]);
+export function useTopStories(section: string = "latest") {
+  const [episodes, setEpisodesBySection] = useState<Record<string, Episode[]>>(
+    {}
+  );
   const [expandedSummaries, setExpandedSummaries] = useState<
     Record<string, boolean>
   >({});
@@ -35,10 +34,18 @@ export function useEpisodes(section: string = "latest") {
         if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
         return res.json();
       })
-      .then((data: Episode[]) => {
-        const scored = scoreAndSortEpisodes(data);
-        const interleaved = interleaveEpisodesByPodcast(scored, MAX_EPISODES);
-        setEpisodes(interleaved);
+      .then((data: Record<string, Episode[]>) => {
+        const processed: Record<string, Episode[]> = {};
+
+        for (const [key, episodeList] of Object.entries(data)) {
+          if (!Array.isArray(episodeList) || episodeList.length === 0) continue;
+
+          const sorted = [...episodeList].sort((a, b) => b.score - a.score);
+          const enhanced = enhanceEpisodes(sorted);
+          processed[key] = enhanced;
+        }
+
+        setEpisodesBySection(processed);
         setLoading(false);
       })
       .catch((err) => {
@@ -46,10 +53,6 @@ export function useEpisodes(section: string = "latest") {
         setLoading(false);
       });
   }, [section]);
-
-  const enhancedEpisodes = useMemo(() => {
-    return enhanceEpisodes(episodes);
-  }, [episodes]);
 
   const toggleSummary = (id: string) => {
     setExpandedSummaries((prev) => ({
@@ -59,7 +62,7 @@ export function useEpisodes(section: string = "latest") {
   };
 
   return {
-    episodes: enhancedEpisodes,
+    episodes,
     expandedSummaries,
     toggleSummary,
     loading,

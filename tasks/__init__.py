@@ -1,5 +1,5 @@
 from .create_tables import create_tables
-from .generate_home_feed import generate_home_feed
+from .generate_top_stories import generate_top_stories
 from .generate_section_feeds import generate_section_feeds
 from .insert_downloads import insert_downloads
 from .insert_episodes import insert_episodes
@@ -10,7 +10,7 @@ from .scrape_shows import scrape_shows
 
 __all__ = [
     "create_tables",
-    "generate_home_feed",
+    "generate_top_stories",
     "generate_section_feeds",
     "insert_downloads",
     "insert_episodes",

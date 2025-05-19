@@ -40,7 +40,7 @@ export const SidebarBlock = ({
 
   return (
     <>
-      <div className="text-2xl font-semibold">{sectionTitle}</div>
+      <div className="text-2xl font-semibold p-4">{sectionTitle}</div>
       <div className="flex flex-col sm:flex-row md:flex-col">
         {first && (
           <CaptionHero
