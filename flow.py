@@ -6,7 +6,7 @@ import sys
 from dotenv import load_dotenv
 
 from constants import paths
-from categories import CATEGORY_MAPPINGS
+from categories import NEW_CATEGORY_MAPPINGS
 
 from tasks import (
     create_tables,
@@ -65,7 +65,7 @@ def update_feeds():
     generate_section_feeds(
         db_path=paths.db_path,
         sections_dir=paths.sections_dir,
-        categories=CATEGORY_MAPPINGS,
+        categories=NEW_CATEGORY_MAPPINGS,
     )
     generate_home_feed(
         sections_dir=paths.sections_dir,
