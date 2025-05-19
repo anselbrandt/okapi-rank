@@ -12,6 +12,7 @@ interface EnhancedEpisode {
   embedUrl: string;
   showUrl: string;
   image: string;
+  score: string;
 }
 
 interface EpisodeItemProps {
