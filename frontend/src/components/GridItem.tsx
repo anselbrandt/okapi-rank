@@ -14,8 +14,6 @@ interface EnhancedEpisode {
   image: string;
 }
 
-type RowOrColumn = "row" | "col";
-
 interface EpisodeItemProps {
   episode: EnhancedEpisode;
   currentEmbedUrl: string | null;
