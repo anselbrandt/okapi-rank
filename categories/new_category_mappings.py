@@ -38,11 +38,6 @@ CATEGORY_MAPPINGS = {
                 "displayName": "Visual Arts",
                 "match_categories": [["arts", "Visual Arts"]],
             },
-            "subcategory": {
-                "name": "arts",
-                "displayName": "Arts",
-                "match_categories": [["arts", "Arts"]],
-            },
         },
     },
     "business": {
@@ -84,11 +79,6 @@ CATEGORY_MAPPINGS = {
                 "displayName": "Non-Profit",
                 "match_categories": [["business", "Non-Profit"]],
             },
-            "subcategory": {
-                "name": "business",
-                "displayName": "Business",
-                "match_categories": [["business", "Business"]],
-            },
         },
     },
     "education": {
@@ -120,11 +110,6 @@ CATEGORY_MAPPINGS = {
                 "displayName": "Self-Improvement",
                 "match_categories": [["education", "Self-Improvement"]],
             },
-            "subcategory": {
-                "name": "education",
-                "displayName": "Education",
-                "match_categories": [["education", "Education"]],
-            },
         },
     },
     "fiction": {
@@ -151,11 +136,6 @@ CATEGORY_MAPPINGS = {
                 "displayName": "Science Fiction",
                 "match_categories": [["fiction", "Science Fiction"]],
             },
-            "subcategory": {
-                "name": "fiction",
-                "displayName": "Fiction",
-                "match_categories": [["fiction", "Fiction"]],
-            },
         },
     },
     "government": {
@@ -163,11 +143,6 @@ CATEGORY_MAPPINGS = {
         "displayName": "Government",
         "subcategories": {
             "government": {
-                "name": "government",
-                "displayName": "Government",
-                "match_categories": [["government", "Government"]],
-            },
-            "subcategory": {
                 "name": "government",
                 "displayName": "Government",
                 "match_categories": [["government", "Government"]],
@@ -213,11 +188,6 @@ CATEGORY_MAPPINGS = {
                 "displayName": "Sexuality",
                 "match_categories": [["health_and_fitness", "Sexuality"]],
             },
-            "subcategory": {
-                "name": "health_and_fitness",
-                "displayName": "Health & Fitness",
-                "match_categories": [["health_and_fitness", "Health & Fitness"]],
-            },
         },
     },
     "kids_and_family": {
@@ -248,11 +218,6 @@ CATEGORY_MAPPINGS = {
                 "name": "stories_for_kids",
                 "displayName": "Stories for Kids",
                 "match_categories": [["kids_and_family", "Stories for Kids"]],
-            },
-            "subcategory": {
-                "name": "kids_and_family",
-                "displayName": "Kids & Family",
-                "match_categories": [["kids_and_family", "Kids & Family"]],
             },
         },
     },
@@ -305,11 +270,6 @@ CATEGORY_MAPPINGS = {
                 "displayName": "Video Games",
                 "match_categories": [["leisure", "Video Games"]],
             },
-            "subcategory": {
-                "name": "leisure",
-                "displayName": "Leisure",
-                "match_categories": [["leisure", "Leisure"]],
-            },
         },
     },
     "music": {
@@ -335,11 +295,6 @@ CATEGORY_MAPPINGS = {
                 "name": "music_interviews",
                 "displayName": "Music Interviews",
                 "match_categories": [["music", "Music Interviews"]],
-            },
-            "subcategory": {
-                "name": "music",
-                "displayName": "Music",
-                "match_categories": [["music", "Music"]],
             },
         },
     },
@@ -386,11 +341,6 @@ CATEGORY_MAPPINGS = {
                 "name": "tech_news",
                 "displayName": "Tech News",
                 "match_categories": [["news", "Tech News"]],
-            },
-            "subcategory": {
-                "name": "news",
-                "displayName": "News",
-                "match_categories": [["news", "News"]],
             },
         },
     },
@@ -439,13 +389,6 @@ CATEGORY_MAPPINGS = {
                 "name": "spirituality",
                 "displayName": "Spirituality",
                 "match_categories": [["religion_and_spirituality", "Spirituality"]],
-            },
-            "subcategory": {
-                "name": "religion_and_spirituality",
-                "displayName": "Religion & Spirituality",
-                "match_categories": [
-                    ["religion_and_spirituality", "Religion & Spirituality"]
-                ],
             },
         },
     },
@@ -508,11 +451,6 @@ CATEGORY_MAPPINGS = {
                 "displayName": "Social Sciences",
                 "match_categories": [["science", "Social Sciences"]],
             },
-            "subcategory": {
-                "name": "science",
-                "displayName": "Science",
-                "match_categories": [["science", "Science"]],
-            },
         },
     },
     "society_and_culture": {
@@ -545,11 +483,6 @@ CATEGORY_MAPPINGS = {
                 "match_categories": [["society_and_culture", "Relationships"]],
             },
             "society_and_culture": {
-                "name": "society_and_culture",
-                "displayName": "Society & Culture",
-                "match_categories": [["society_and_culture", "Society & Culture"]],
-            },
-            "subcategory": {
                 "name": "society_and_culture",
                 "displayName": "Society & Culture",
                 "match_categories": [["society_and_culture", "Society & Culture"]],
@@ -645,11 +578,6 @@ CATEGORY_MAPPINGS = {
                 "displayName": "Wrestling",
                 "match_categories": [["sports", "Wrestling"]],
             },
-            "subcategory": {
-                "name": "sports",
-                "displayName": "Sports",
-                "match_categories": [["sports", "Sports"]],
-            },
         },
     },
     "technology": {
@@ -657,11 +585,6 @@ CATEGORY_MAPPINGS = {
         "displayName": "Technology",
         "subcategories": {
             "technology": {
-                "name": "technology",
-                "displayName": "Technology",
-                "match_categories": [["technology", "Technology"]],
-            },
-            "subcategory": {
                 "name": "technology",
                 "displayName": "Technology",
                 "match_categories": [["technology", "Technology"]],
@@ -701,11 +624,6 @@ CATEGORY_MAPPINGS = {
                 "name": "tv_reviews",
                 "displayName": "TV Reviews",
                 "match_categories": [["tv_and_film", "TV Reviews"]],
-            },
-            "subcategory": {
-                "name": "tv_and_film",
-                "displayName": "TV & Film",
-                "match_categories": [["tv_and_film", "TV & Film"]],
             },
         },
     },
