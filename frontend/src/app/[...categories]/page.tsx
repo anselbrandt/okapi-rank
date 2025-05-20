@@ -12,7 +12,7 @@ export default function Page() {
   const { currentEmbedUrl, setCurrentEmbedUrl } = useEmbedContext();
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       <Navbar />
       <Feed
         section={section}
