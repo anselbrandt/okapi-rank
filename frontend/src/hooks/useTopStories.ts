@@ -24,7 +24,7 @@ export type EnhancedEpisode = Episode & {
   showUrl: string;
 };
 
-export function useTopStories(section: string = "home/home") {
+export function useTopStories(section: string = "top_stories/top_stories") {
   const [episodes, setEpisodesBySection] = useState<
     Record<string, EnhancedEpisode[]>
   >({});
