@@ -3,6 +3,14 @@ from pathlib import Path
 from storage import DataIO
 
 
+def parse_date(date_str: str):
+    try:
+        dt = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
+        return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
+    except Exception:
+        return None
+
+
 def generate_top_stories(sections_dir: Path):
     target_files = [
         "news/news",
@@ -13,13 +21,6 @@ def generate_top_stories(sections_dir: Path):
         "society_and_culture/society_and_culture",
         "arts/arts",
     ]
-
-    def parse_date(date_str: str):
-        try:
-            dt = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
-            return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
-        except Exception:
-            return None
 
     top_stories_by_file = {}
     seen_urls = set()
