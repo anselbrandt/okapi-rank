@@ -24,6 +24,7 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
     cursor = conn.cursor()
 
     for section in categories.values():
+        section_name = section.get("name")
         subcategories = section.get("subcategories")
         if subcategories:
             for subcat in subcategories.values():
@@ -110,7 +111,11 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                         if score > 0.9:
                             episode["label_score"] = score
                             matching_episodes.append(episode)
-                out_path = sections_dir / f"{subcat_name}.json"
+
+                out_dir = sections_dir / section_name
+                out_dir.mkdir(exist_ok=True, parents=True)
+                out_path = out_dir / f"{subcat_name}.json"
+
                 print(subcat_name, len(matching_episodes))
                 matching_episodes.sort(key=lambda ep: ep["release_date"], reverse=True)
                 file = DataIO(path=out_path, mode="w", encoding="utf-8")
