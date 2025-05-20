@@ -32,12 +32,17 @@ def generate_top_stories(sections_dir: Path):
         episodes = DataIO(path=file_path, mode="r", encoding="utf-8").read_json()
         filtered = []
 
+        seen_podcast_names = set()
+
         for ep in episodes:
             url = ep.get("url")
             score = ep.get("score", 0)
             release_date = ep.get("release_date", "")
+            podcast_name = ep.get("podcast_name")
 
             if not url or url in seen_urls or score <= 1:
+                continue
+            if not podcast_name or podcast_name in seen_podcast_names:
                 continue
 
             parsed_date = parse_date(release_date)
@@ -46,6 +51,7 @@ def generate_top_stories(sections_dir: Path):
 
             ep["_parsed_date"] = parsed_date
             seen_urls.add(url)
+            seen_podcast_names.add(podcast_name)
             filtered.append(ep)
 
         filtered.sort(key=lambda ep: ep["_parsed_date"], reverse=True)
