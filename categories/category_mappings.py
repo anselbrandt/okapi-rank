@@ -4,7 +4,7 @@ CATEGORY_MAPPINGS = {
         "displayName": "Latest",
         "subcategories": {
             "latest": {
-                "name": "latest",
+                "name": "latest_latest",
                 "displayName": "Latest",
                 "match_categories": [
                     ["arts", "Books"],
