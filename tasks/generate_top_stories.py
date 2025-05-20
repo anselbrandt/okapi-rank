@@ -5,13 +5,13 @@ from storage import DataIO
 
 def generate_top_stories(sections_dir: Path):
     target_files = [
-        "news_news",
-        "news_world",
-        "news_europe",
-        "news_news_commentary",
-        "news_politics",
-        "society_and_culture_society_and_culture",
-        "arts_arts",
+        "news/news",
+        "news/world",
+        "news/europe",
+        "news/news_commentary",
+        "news/politics",
+        "society_and_culture/society_and_culture",
+        "arts/arts",
     ]
 
     def parse_date(date_str: str):
@@ -55,7 +55,11 @@ def generate_top_stories(sections_dir: Path):
             ep.pop("_parsed_date", None)
 
         top_stories_by_file[name] = top_episodes
-    output_path = sections_dir / "top_stories.json"
+
+    out_dir = sections_dir / "top_stories"
+    out_dir.mkdir(exist_ok=True, parents=True)
+    output_path = out_dir / "top_stories.json"
+
     DataIO(path=output_path, mode="w", encoding="utf-8").write_json(top_stories_by_file)
 
 
