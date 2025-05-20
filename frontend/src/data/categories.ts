@@ -18,7 +18,7 @@ type Categories = {
 };
 
 export const CATEGORIES: Categories = {
-  home: { name: "home", displayName: "Home" },
+  home: { name: "", displayName: "Home" },
   latest: {
     name: "latest",
     displayName: "Latest",
