@@ -54,7 +54,10 @@ export const Hero = ({
   return (
     <article className="flex flex-col">
       <img
-        src={image.replaceAll("270", imageSize.toString())}
+        src={image.replaceAll(
+          "270x270",
+          `${imageSize.toString()}x${imageSize.toString()}`
+        )}
         alt="Episode image"
       />
       <div className="flex-1">
