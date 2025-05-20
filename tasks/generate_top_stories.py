@@ -5,13 +5,13 @@ from storage import DataIO
 
 def generate_top_stories(sections_dir: Path):
     target_files = [
-        "news",
-        "world",
-        "europe",
-        "news_commentary",
-        "politics",
-        "society_and_culture",
-        "arts",
+        "news_news",
+        "news_world",
+        "news_europe",
+        "news_news_commentary",
+        "news_politics",
+        "society_and_culture_society_and_culture",
+        "arts_arts",
     ]
 
     def parse_date(date_str: str):

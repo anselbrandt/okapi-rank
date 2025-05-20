@@ -6,9 +6,7 @@ import { useEmbedContext } from "@/context/EmbedContext";
 
 export default function Page() {
   const params = useParams<{ categories?: string[] }>();
-  const section = params?.categories?.[1]
-    ? `${params?.categories?.[0]}_${params?.categories?.[1]}`
-    : `${params?.categories?.[0]}_${params?.categories?.[0]}`;
+  const section = params?.categories?.[1] ?? params?.categories?.[0];
   const { currentEmbedUrl, setCurrentEmbedUrl } = useEmbedContext();
 
   return (
