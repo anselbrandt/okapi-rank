@@ -1,4 +1,26 @@
 CATEGORY_MAPPINGS = {
+    "latest": {
+        "name": "latest",
+        "displayName": "Latest",
+        "subcategories": {
+            "latest": {
+                "name": "latest",
+                "displayName": "Latest",
+                "match_categories": [
+                    ["arts", "Books"],
+                    ["education", "Education"],
+                    ["news", "Business News"],
+                    ["news", "Daily News"],
+                    ["news", "News Commentary"],
+                    ["news", "News"],
+                    ["news", "Politics"],
+                    ["society_and_culture", "Documentary"],
+                    ["society_and_culture", "Philosophy"],
+                    ["society_and_culture", "Society & Culture"],
+                ],
+            }
+        },
+    },
     "arts": {
         "name": "arts",
         "displayName": "Arts",
