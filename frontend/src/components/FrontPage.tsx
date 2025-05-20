@@ -29,7 +29,6 @@ export type EnhancedEpisode = Episode & {
 };
 
 interface Props {
-  section?: string;
   currentEmbedUrl: string | null;
   setCurrentEmbedUrl: (url: string | null) => void;
 }
@@ -38,13 +37,9 @@ function sortEpisodesByScore(episodes: EnhancedEpisode[]) {
   return [...episodes].sort((a, b) => b.score - a.score);
 }
 
-export const FrontPage = ({
-  section = "top_stories",
-  currentEmbedUrl,
-  setCurrentEmbedUrl,
-}: Props) => {
+export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
   const { episodes, expandedSummaries, toggleSummary, loading, error } =
-    useTopStories(section);
+    useTopStories("top_stories/top_stories");
 
   if (error) return <main className="p-8 text-red-600">Error: {error}</main>;
 

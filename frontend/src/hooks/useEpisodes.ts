@@ -20,7 +20,7 @@ type Episode = {
 
 const MAX_EPISODES = 1000;
 
-export function useEpisodes(section: string = "latest") {
+export function useEpisodes(section: string = "latest/latest") {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const [expandedSummaries, setExpandedSummaries] = useState<
     Record<string, boolean>

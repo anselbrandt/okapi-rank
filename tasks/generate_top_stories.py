@@ -54,7 +54,7 @@ def generate_top_stories(sections_dir: Path):
         for ep in top_episodes:
             ep.pop("_parsed_date", None)
 
-        top_stories_by_file[name] = top_episodes
+        top_stories_by_file[name.split("/")[1]] = top_episodes
 
     out_dir = sections_dir / "top_stories"
     out_dir.mkdir(exist_ok=True, parents=True)

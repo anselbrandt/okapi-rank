@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const Feed = ({
-  section = "latest",
+  section = "latest/latest",
   currentEmbedUrl,
   setCurrentEmbedUrl,
 }: Props) => {
