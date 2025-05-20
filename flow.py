@@ -55,13 +55,13 @@ def scrape_charts(charts_dir=paths.charts_dir):
 
 def update_feeds():
     make_dirs()
-    scrape_charts(charts_dir=paths.charts_dir)
-    create_tables(db_path=paths.db_path)
-    insert_podcasts(db_path=paths.db_path, charts_dir=paths.charts_dir)
-    insert_downloads(db_path=paths.db_path, status="pending")
-    scrape_shows(db_path=paths.db_path, shows_dir=paths.shows_dir)
-    insert_episodes(db_path=paths.db_path, shows_dir=paths.shows_dir)
-    insert_scores(db_path=paths.db_path)
+    # scrape_charts(charts_dir=paths.charts_dir)
+    # create_tables(db_path=paths.db_path)
+    # insert_podcasts(db_path=paths.db_path, charts_dir=paths.charts_dir)
+    # insert_downloads(db_path=paths.db_path, status="pending")
+    # scrape_shows(db_path=paths.db_path, shows_dir=paths.shows_dir)
+    # insert_episodes(db_path=paths.db_path, shows_dir=paths.shows_dir)
+    # insert_scores(db_path=paths.db_path)
     generate_section_feeds(
         db_path=paths.db_path,
         sections_dir=paths.sections_dir,
@@ -70,7 +70,7 @@ def update_feeds():
     generate_top_stories(
         sections_dir=paths.sections_dir,
     )
-    push_feeds()
+    # push_feeds()
 
 
 if __name__ == "__main__":
