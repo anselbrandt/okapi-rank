@@ -41,7 +41,7 @@ export const CATEGORIES: Categories = {
       },
     },
   },
-    news: {
+  news: {
     name: "news",
     displayName: "News",
     subcategories: {
@@ -174,6 +174,45 @@ export const CATEGORIES: Categories = {
       },
     },
   },
+  society_and_culture: {
+    name: "society_and_culture",
+    displayName: "Society & Culture",
+    subcategories: {
+      documentary: {
+        name: "documentary",
+        displayName: "Documentary",
+        match_categories: [["society_and_culture", "Documentary"]],
+      },
+      personal_journals: {
+        name: "personal_journals",
+        displayName: "Personal Journals",
+        match_categories: [["society_and_culture", "Personal Journals"]],
+      },
+      philosophy: {
+        name: "philosophy",
+        displayName: "Philosophy",
+        match_categories: [["society_and_culture", "Philosophy"]],
+      },
+      places_and_travel: {
+        name: "places_and_travel",
+        displayName: "Places & Travel",
+        match_categories: [["society_and_culture", "Places & Travel"]],
+      },
+      relationships: {
+        name: "relationships",
+        displayName: "Relationships",
+        match_categories: [["society_and_culture", "Relationships"]],
+      },
+      society_and_culture: {
+        name: "society_and_culture",
+        displayName: "Society & Culture",
+        match_categories: [
+          ["society_and_culture", "Society & Culture"],
+          ["society_and_culture", "UNKNOWN"],
+        ],
+      },
+    },
+  },
   arts: {
     name: "arts",
     displayName: "Arts",
@@ -215,6 +254,89 @@ export const CATEGORIES: Categories = {
         name: "visual_arts",
         displayName: "Visual Arts",
         match_categories: [["arts", "Visual Arts"]],
+      },
+    },
+  },
+  technology: {
+    name: "technology",
+    displayName: "Technology",
+    subcategories: {
+      courses: {
+        name: "courses",
+        displayName: "Courses",
+        match_categories: [["technology", "Courses"]],
+      },
+      technology: {
+        name: "technology",
+        displayName: "Technology",
+        match_categories: [
+          ["technology", "Technology"],
+          ["technology", "UNKNOWN"],
+        ],
+      },
+    },
+  },
+  science: {
+    name: "science",
+    displayName: "Science",
+    subcategories: {
+      astronomy: {
+        name: "astronomy",
+        displayName: "Astronomy",
+        match_categories: [["science", "Astronomy"]],
+      },
+      chemistry: {
+        name: "chemistry",
+        displayName: "Chemistry",
+        match_categories: [["science", "Chemistry"]],
+      },
+      earth_sciences: {
+        name: "earth_sciences",
+        displayName: "Earth Sciences",
+        match_categories: [["science", "Earth Sciences"]],
+      },
+      education: {
+        name: "education",
+        displayName: "Education",
+        match_categories: [["science", "Education"]],
+      },
+      life_sciences: {
+        name: "life_sciences",
+        displayName: "Life Sciences",
+        match_categories: [["science", "Life Sciences"]],
+      },
+      mathematics: {
+        name: "mathematics",
+        displayName: "Mathematics",
+        match_categories: [["science", "Mathematics"]],
+      },
+      natural_sciences: {
+        name: "natural_sciences",
+        displayName: "Natural Sciences",
+        match_categories: [["science", "Natural Sciences"]],
+      },
+      nature: {
+        name: "nature",
+        displayName: "Nature",
+        match_categories: [["science", "Nature"]],
+      },
+      physics: {
+        name: "physics",
+        displayName: "Physics",
+        match_categories: [["science", "Physics"]],
+      },
+      science: {
+        name: "science",
+        displayName: "Science",
+        match_categories: [
+          ["science", "Science"],
+          ["science", "UNKNOWN"],
+        ],
+      },
+      social_sciences: {
+        name: "social_sciences",
+        displayName: "Social Sciences",
+        match_categories: [["science", "Social Sciences"]],
       },
     },
   },
@@ -410,54 +532,6 @@ export const CATEGORIES: Categories = {
       },
     },
   },
-  fiction: {
-    name: "fiction",
-    displayName: "Fiction",
-    subcategories: {
-      comedy_fiction: {
-        name: "comedy_fiction",
-        displayName: "Comedy Fiction",
-        match_categories: [["fiction", "Comedy Fiction"]],
-      },
-      drama: {
-        name: "drama",
-        displayName: "Drama",
-        match_categories: [["fiction", "Drama"]],
-      },
-      fiction: {
-        name: "fiction",
-        displayName: "Fiction",
-        match_categories: [
-          ["fiction", "Fiction"],
-          ["fiction", "UNKNOWN"],
-        ],
-      },
-      science_fiction: {
-        name: "science_fiction",
-        displayName: "Science Fiction",
-        match_categories: [["fiction", "Science Fiction"]],
-      },
-    },
-  },
-  government: {
-    name: "government",
-    displayName: "Government",
-    subcategories: {
-      government: {
-        name: "government",
-        displayName: "Government",
-        match_categories: [
-          ["government", "Government"],
-          ["government", "UNKNOWN"],
-        ],
-      },
-      management: {
-        name: "management",
-        displayName: "Management",
-        match_categories: [["government", "Management"]],
-      },
-    },
-  },
   health_and_fitness: {
     name: "health_and_fitness",
     displayName: "Health & Fitness",
@@ -502,6 +576,25 @@ export const CATEGORIES: Categories = {
       },
     },
   },
+  government: {
+    name: "government",
+    displayName: "Government",
+    subcategories: {
+      government: {
+        name: "government",
+        displayName: "Government",
+        match_categories: [
+          ["government", "Government"],
+          ["government", "UNKNOWN"],
+        ],
+      },
+      management: {
+        name: "management",
+        displayName: "Management",
+        match_categories: [["government", "Management"]],
+      },
+    },
+  },
   history: {
     name: "history",
     displayName: "History",
@@ -513,45 +606,6 @@ export const CATEGORIES: Categories = {
           ["history", "History"],
           ["history", "UNKNOWN"],
         ],
-      },
-    },
-  },
-  kids_and_family: {
-    name: "kids_and_family",
-    displayName: "Kids & Family",
-    subcategories: {
-      daily_news: {
-        name: "daily_news",
-        displayName: "Daily News",
-        match_categories: [["kids_and_family", "Daily News"]],
-      },
-      education_for_kids: {
-        name: "education_for_kids",
-        displayName: "Education For Kids",
-        match_categories: [["kids_and_family", "Education for Kids"]],
-      },
-      kids_and_family: {
-        name: "kids_and_family",
-        displayName: "Kids & Family",
-        match_categories: [
-          ["kids_and_family", "Kids & Family"],
-          ["kids_and_family", "UNKNOWN"],
-        ],
-      },
-      parenting: {
-        name: "parenting",
-        displayName: "Parenting",
-        match_categories: [["kids_and_family", "Parenting"]],
-      },
-      pets_and_animals: {
-        name: "pets_and_animals",
-        displayName: "Pets & Animals",
-        match_categories: [["kids_and_family", "Pets & Animals"]],
-      },
-      stories_for_kids: {
-        name: "stories_for_kids",
-        displayName: "Stories For Kids",
-        match_categories: [["kids_and_family", "Stories for Kids"]],
       },
     },
   },
@@ -653,6 +707,45 @@ export const CATEGORIES: Categories = {
       },
     },
   },
+  tv_and_film: {
+    name: "tv_and_film",
+    displayName: "Tv & Film",
+    subcategories: {
+      after_shows: {
+        name: "after_shows",
+        displayName: "After Shows",
+        match_categories: [["tv_and_film", "After Shows"]],
+      },
+      film_history: {
+        name: "film_history",
+        displayName: "Film History",
+        match_categories: [["tv_and_film", "Film History"]],
+      },
+      film_interviews: {
+        name: "film_interviews",
+        displayName: "Film Interviews",
+        match_categories: [["tv_and_film", "Film Interviews"]],
+      },
+      film_reviews: {
+        name: "film_reviews",
+        displayName: "Film Reviews",
+        match_categories: [["tv_and_film", "Film Reviews"]],
+      },
+      tv_and_film: {
+        name: "tv_and_film",
+        displayName: "Tv & Film",
+        match_categories: [
+          ["tv_and_film", "TV & Film"],
+          ["tv_and_film", "UNKNOWN"],
+        ],
+      },
+      tv_reviews: {
+        name: "tv_reviews",
+        displayName: "Tv Reviews",
+        match_categories: [["tv_and_film", "TV Reviews"]],
+      },
+    },
+  },
   religion_and_spirituality: {
     name: "religion_and_spirituality",
     displayName: "Religion & Spirituality",
@@ -699,109 +792,6 @@ export const CATEGORIES: Categories = {
         name: "spirituality",
         displayName: "Spirituality",
         match_categories: [["religion_and_spirituality", "Spirituality"]],
-      },
-    },
-  },
-  science: {
-    name: "science",
-    displayName: "Science",
-    subcategories: {
-      astronomy: {
-        name: "astronomy",
-        displayName: "Astronomy",
-        match_categories: [["science", "Astronomy"]],
-      },
-      chemistry: {
-        name: "chemistry",
-        displayName: "Chemistry",
-        match_categories: [["science", "Chemistry"]],
-      },
-      earth_sciences: {
-        name: "earth_sciences",
-        displayName: "Earth Sciences",
-        match_categories: [["science", "Earth Sciences"]],
-      },
-      education: {
-        name: "education",
-        displayName: "Education",
-        match_categories: [["science", "Education"]],
-      },
-      life_sciences: {
-        name: "life_sciences",
-        displayName: "Life Sciences",
-        match_categories: [["science", "Life Sciences"]],
-      },
-      mathematics: {
-        name: "mathematics",
-        displayName: "Mathematics",
-        match_categories: [["science", "Mathematics"]],
-      },
-      natural_sciences: {
-        name: "natural_sciences",
-        displayName: "Natural Sciences",
-        match_categories: [["science", "Natural Sciences"]],
-      },
-      nature: {
-        name: "nature",
-        displayName: "Nature",
-        match_categories: [["science", "Nature"]],
-      },
-      physics: {
-        name: "physics",
-        displayName: "Physics",
-        match_categories: [["science", "Physics"]],
-      },
-      science: {
-        name: "science",
-        displayName: "Science",
-        match_categories: [
-          ["science", "Science"],
-          ["science", "UNKNOWN"],
-        ],
-      },
-      social_sciences: {
-        name: "social_sciences",
-        displayName: "Social Sciences",
-        match_categories: [["science", "Social Sciences"]],
-      },
-    },
-  },
-  society_and_culture: {
-    name: "society_and_culture",
-    displayName: "Society & Culture",
-    subcategories: {
-      documentary: {
-        name: "documentary",
-        displayName: "Documentary",
-        match_categories: [["society_and_culture", "Documentary"]],
-      },
-      personal_journals: {
-        name: "personal_journals",
-        displayName: "Personal Journals",
-        match_categories: [["society_and_culture", "Personal Journals"]],
-      },
-      philosophy: {
-        name: "philosophy",
-        displayName: "Philosophy",
-        match_categories: [["society_and_culture", "Philosophy"]],
-      },
-      places_and_travel: {
-        name: "places_and_travel",
-        displayName: "Places & Travel",
-        match_categories: [["society_and_culture", "Places & Travel"]],
-      },
-      relationships: {
-        name: "relationships",
-        displayName: "Relationships",
-        match_categories: [["society_and_culture", "Relationships"]],
-      },
-      society_and_culture: {
-        name: "society_and_culture",
-        displayName: "Society & Culture",
-        match_categories: [
-          ["society_and_culture", "Society & Culture"],
-          ["society_and_culture", "UNKNOWN"],
-        ],
       },
     },
   },
@@ -899,22 +889,71 @@ export const CATEGORIES: Categories = {
       },
     },
   },
-  technology: {
-    name: "technology",
-    displayName: "Technology",
+  fiction: {
+    name: "fiction",
+    displayName: "Fiction",
     subcategories: {
-      courses: {
-        name: "courses",
-        displayName: "Courses",
-        match_categories: [["technology", "Courses"]],
+      comedy_fiction: {
+        name: "comedy_fiction",
+        displayName: "Comedy Fiction",
+        match_categories: [["fiction", "Comedy Fiction"]],
       },
-      technology: {
-        name: "technology",
-        displayName: "Technology",
+      drama: {
+        name: "drama",
+        displayName: "Drama",
+        match_categories: [["fiction", "Drama"]],
+      },
+      fiction: {
+        name: "fiction",
+        displayName: "Fiction",
         match_categories: [
-          ["technology", "Technology"],
-          ["technology", "UNKNOWN"],
+          ["fiction", "Fiction"],
+          ["fiction", "UNKNOWN"],
         ],
+      },
+      science_fiction: {
+        name: "science_fiction",
+        displayName: "Science Fiction",
+        match_categories: [["fiction", "Science Fiction"]],
+      },
+    },
+  },
+  kids_and_family: {
+    name: "kids_and_family",
+    displayName: "Kids & Family",
+    subcategories: {
+      daily_news: {
+        name: "daily_news",
+        displayName: "Daily News",
+        match_categories: [["kids_and_family", "Daily News"]],
+      },
+      education_for_kids: {
+        name: "education_for_kids",
+        displayName: "Education For Kids",
+        match_categories: [["kids_and_family", "Education for Kids"]],
+      },
+      kids_and_family: {
+        name: "kids_and_family",
+        displayName: "Kids & Family",
+        match_categories: [
+          ["kids_and_family", "Kids & Family"],
+          ["kids_and_family", "UNKNOWN"],
+        ],
+      },
+      parenting: {
+        name: "parenting",
+        displayName: "Parenting",
+        match_categories: [["kids_and_family", "Parenting"]],
+      },
+      pets_and_animals: {
+        name: "pets_and_animals",
+        displayName: "Pets & Animals",
+        match_categories: [["kids_and_family", "Pets & Animals"]],
+      },
+      stories_for_kids: {
+        name: "stories_for_kids",
+        displayName: "Stories For Kids",
+        match_categories: [["kids_and_family", "Stories for Kids"]],
       },
     },
   },
@@ -929,45 +968,6 @@ export const CATEGORIES: Categories = {
           ["true_crime", "True Crime"],
           ["true_crime", "UNKNOWN"],
         ],
-      },
-    },
-  },
-  tv_and_film: {
-    name: "tv_and_film",
-    displayName: "Tv & Film",
-    subcategories: {
-      after_shows: {
-        name: "after_shows",
-        displayName: "After Shows",
-        match_categories: [["tv_and_film", "After Shows"]],
-      },
-      film_history: {
-        name: "film_history",
-        displayName: "Film History",
-        match_categories: [["tv_and_film", "Film History"]],
-      },
-      film_interviews: {
-        name: "film_interviews",
-        displayName: "Film Interviews",
-        match_categories: [["tv_and_film", "Film Interviews"]],
-      },
-      film_reviews: {
-        name: "film_reviews",
-        displayName: "Film Reviews",
-        match_categories: [["tv_and_film", "Film Reviews"]],
-      },
-      tv_and_film: {
-        name: "tv_and_film",
-        displayName: "Tv & Film",
-        match_categories: [
-          ["tv_and_film", "TV & Film"],
-          ["tv_and_film", "UNKNOWN"],
-        ],
-      },
-      tv_reviews: {
-        name: "tv_reviews",
-        displayName: "Tv Reviews",
-        match_categories: [["tv_and_film", "TV Reviews"]],
       },
     },
   },
