@@ -423,115 +423,6 @@ export const CATEGORIES: Categories = {
       },
     },
   },
-  education: {
-    name: "education",
-    displayName: "Education",
-    subcategories: {
-      business: {
-        name: "business",
-        displayName: "Business",
-        match_categories: [["education", "Business"]],
-      },
-      business_news: {
-        name: "business_news",
-        displayName: "Business News",
-        match_categories: [["education", "Business News"]],
-      },
-      comedy: {
-        name: "comedy",
-        displayName: "Comedy",
-        match_categories: [["education", "Comedy"]],
-      },
-      courses: {
-        name: "courses",
-        displayName: "Courses",
-        match_categories: [["education", "Courses"]],
-      },
-      education: {
-        name: "education",
-        displayName: "Education",
-        match_categories: [
-          ["education", "Education"],
-          ["education", "UNKNOWN"],
-        ],
-      },
-      golf: {
-        name: "golf",
-        displayName: "Golf",
-        match_categories: [["education", "Golf"]],
-      },
-      health_and_fitness: {
-        name: "health_and_fitness",
-        displayName: "Health & Fitness",
-        match_categories: [["education", "Health & Fitness"]],
-      },
-      history: {
-        name: "history",
-        displayName: "History",
-        match_categories: [["education", "History"]],
-      },
-      how_to: {
-        name: "how_to",
-        displayName: "How To",
-        match_categories: [["education", "How To"]],
-      },
-      investing: {
-        name: "investing",
-        displayName: "Investing",
-        match_categories: [["education", "Investing"]],
-      },
-      language_learning: {
-        name: "language_learning",
-        displayName: "Language Learning",
-        match_categories: [["education", "Language Learning"]],
-      },
-      news: {
-        name: "news",
-        displayName: "News",
-        match_categories: [["education", "News"]],
-      },
-      news_commentary: {
-        name: "news_commentary",
-        displayName: "News Commentary",
-        match_categories: [["education", "News Commentary"]],
-      },
-      personal_journals: {
-        name: "personal_journals",
-        displayName: "Personal Journals",
-        match_categories: [["education", "Personal Journals"]],
-      },
-      politics: {
-        name: "politics",
-        displayName: "Politics",
-        match_categories: [["education", "Politics"]],
-      },
-      running: {
-        name: "running",
-        displayName: "Running",
-        match_categories: [["education", "Running"]],
-      },
-      "self-improvement": {
-        name: "self-improvement",
-        displayName: "Self-Improvement",
-        match_categories: [["education", "Self-Improvement"]],
-      },
-      society_and_culture: {
-        name: "society_and_culture",
-        displayName: "Society & Culture",
-        match_categories: [["education", "Society & Culture"]],
-      },
-      sport: {
-        name: "sport",
-        displayName: "Sport",
-        match_categories: [["education", "Sport"]],
-      },
-      true_crime: {
-        name: "true_crime",
-        displayName: "True Crime",
-        match_categories: [["education", "True Crime"]],
-      },
-    },
-  },
   health_and_fitness: {
     name: "health_and_fitness",
     displayName: "Health & Fitness",
@@ -743,6 +634,115 @@ export const CATEGORIES: Categories = {
         name: "tv_reviews",
         displayName: "Tv Reviews",
         match_categories: [["tv_and_film", "TV Reviews"]],
+      },
+    },
+  },
+  education: {
+    name: "education",
+    displayName: "Education",
+    subcategories: {
+      business: {
+        name: "business",
+        displayName: "Business",
+        match_categories: [["education", "Business"]],
+      },
+      business_news: {
+        name: "business_news",
+        displayName: "Business News",
+        match_categories: [["education", "Business News"]],
+      },
+      comedy: {
+        name: "comedy",
+        displayName: "Comedy",
+        match_categories: [["education", "Comedy"]],
+      },
+      courses: {
+        name: "courses",
+        displayName: "Courses",
+        match_categories: [["education", "Courses"]],
+      },
+      education: {
+        name: "education",
+        displayName: "Education",
+        match_categories: [
+          ["education", "Education"],
+          ["education", "UNKNOWN"],
+        ],
+      },
+      golf: {
+        name: "golf",
+        displayName: "Golf",
+        match_categories: [["education", "Golf"]],
+      },
+      health_and_fitness: {
+        name: "health_and_fitness",
+        displayName: "Health & Fitness",
+        match_categories: [["education", "Health & Fitness"]],
+      },
+      history: {
+        name: "history",
+        displayName: "History",
+        match_categories: [["education", "History"]],
+      },
+      how_to: {
+        name: "how_to",
+        displayName: "How To",
+        match_categories: [["education", "How To"]],
+      },
+      investing: {
+        name: "investing",
+        displayName: "Investing",
+        match_categories: [["education", "Investing"]],
+      },
+      language_learning: {
+        name: "language_learning",
+        displayName: "Language Learning",
+        match_categories: [["education", "Language Learning"]],
+      },
+      news: {
+        name: "news",
+        displayName: "News",
+        match_categories: [["education", "News"]],
+      },
+      news_commentary: {
+        name: "news_commentary",
+        displayName: "News Commentary",
+        match_categories: [["education", "News Commentary"]],
+      },
+      personal_journals: {
+        name: "personal_journals",
+        displayName: "Personal Journals",
+        match_categories: [["education", "Personal Journals"]],
+      },
+      politics: {
+        name: "politics",
+        displayName: "Politics",
+        match_categories: [["education", "Politics"]],
+      },
+      running: {
+        name: "running",
+        displayName: "Running",
+        match_categories: [["education", "Running"]],
+      },
+      "self-improvement": {
+        name: "self-improvement",
+        displayName: "Self-Improvement",
+        match_categories: [["education", "Self-Improvement"]],
+      },
+      society_and_culture: {
+        name: "society_and_culture",
+        displayName: "Society & Culture",
+        match_categories: [["education", "Society & Culture"]],
+      },
+      sport: {
+        name: "sport",
+        displayName: "Sport",
+        match_categories: [["education", "Sport"]],
+      },
+      true_crime: {
+        name: "true_crime",
+        displayName: "True Crime",
+        match_categories: [["education", "True Crime"]],
       },
     },
   },
