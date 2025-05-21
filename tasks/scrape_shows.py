@@ -27,12 +27,20 @@ def scrape_shows(db_path: Path, shows_dir: Path, retry=False):
 
     cursor.execute(
         """
-        SELECT podcast.id, podcast.name, podcast.category, podcast.url, download.status
+        SELECT 
+            podcast.id, 
+            podcast.name, 
+            podcast.category, 
+            podcast.url, 
+            download.status
         FROM podcast
         JOIN download ON podcast.id = download.id
         LEFT JOIN frequency ON podcast.id = frequency.podcast_id
+        LEFT JOIN score ON podcast.id = score.podcast_id
         WHERE download.status = ?
         OR (download.status = 'active' AND (frequency.next_scrape IS NULL OR frequency.next_scrape <= ?))
+        ORDER BY score.rank_score DESC
+        LIMIT 10000;
         """,
         (status, scraped_at),
     )
