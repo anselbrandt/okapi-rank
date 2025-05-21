@@ -1,5 +1,4 @@
 import os
-from pathlib import Path
 import shutil
 import subprocess
 import sys
@@ -7,10 +6,12 @@ import sys
 from dotenv import load_dotenv
 
 from constants import paths
-from categories import CATEGORY_MAPPINGS
+
+from categories import BASE_INDEX
 
 from tasks import (
     create_tables,
+    generate_category_mappings,
     generate_top_stories,
     generate_section_feeds,
     insert_downloads,
@@ -64,10 +65,13 @@ def update_feeds():
         scrape_shows(db_path=paths.db_path, shows_dir=paths.shows_dir)
         insert_episodes(db_path=paths.db_path, shows_dir=paths.shows_dir)
         insert_scores(db_path=paths.db_path)
+        category_mappings = generate_category_mappings(
+            db_path=paths.db_path, base_index=BASE_INDEX
+        )
         generate_section_feeds(
             db_path=paths.db_path,
             sections_dir=paths.sections_dir,
-            categories=CATEGORY_MAPPINGS,
+            categories=category_mappings,
         )
         generate_top_stories(
             sections_dir=paths.sections_dir,
