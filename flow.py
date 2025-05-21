@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import shutil
 import subprocess
 import sys
@@ -53,6 +54,11 @@ def scrape_charts(charts_dir=paths.charts_dir):
         print("STDERR:", e.stderr)
 
 
+def cleanup():
+    data_dir = Path("data")
+    shutil.rmtree(data_dir)
+
+
 def update_feeds():
     while True:
         make_dirs()
@@ -72,6 +78,7 @@ def update_feeds():
             sections_dir=paths.sections_dir,
         )
         push_feeds()
+        cleanup()
 
 
 if __name__ == "__main__":
