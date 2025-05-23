@@ -44,7 +44,6 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                         e.episode_image,
                         e.show_image,
                         e.duration
-                        p.url as podcast_url
                     FROM episode e
                     JOIN 
                         podcast p ON e.podcast_id = p.id
@@ -84,7 +83,6 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                         episode_image,
                         show_image,
                         duration,
-                        podcast_url,
                     ) = result
                     embed_url = to_embed_url(url)
                     image = episode_image or show_image
@@ -100,7 +98,6 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                         "embed_url": embed_url,
                         "duration": duration,
                         "tag": subcat_name,
-                        "podcast_url": podcast_url,
                     }
                     if desc is None:
                         matching_episodes.append(episode)
