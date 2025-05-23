@@ -60,11 +60,11 @@ export const GridItem = ({
                 href={showUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-sky-600 hover:underline font-medium"
+                className="hover:text-sky-600 hover:underline font-medium mr-3"
               >
                 {podcast_name}
               </a>
-              <span>{formattedDate}</span>
+              <span className="mr-3">{formattedDate}</span>
               {formattedDuration && <span>{formattedDuration}</span>}
             </div>
           </div>
