@@ -82,11 +82,6 @@ BASE_INDEX = {
         "displayName": "Music",
         "subcategories": {},
     },
-    "news": {
-        "name": "news",
-        "displayName": "News",
-        "subcategories": {},
-    },
     "religion_and_spirituality": {
         "name": "religion_and_spirituality",
         "displayName": "Religion & Spirituality",
