@@ -1,0 +1,33 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Misc
+.DS_Store
+
+# Data
+charts/
+shows/
+*.db
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# logs
+log.txt
+logs.txt
+error.txt
+errors.txt
+
+# temp working files
+working/
+
+# CDN static files
+static/

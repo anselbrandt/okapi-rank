@@ -1,0 +1,31 @@
+[project]
+name = "okapi-rank"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12.8"
+dependencies = [
+    "gitpython>=3.1.44",
+    "httpx>=0.28.1",
+    "ipykernel>=6.29.5",
+    "ipywidgets>=8.1.7",
+    "matplotlib>=3.10.3",
+    "prefect>=3.4.1",
+    "pydantic>=2.11.4",
+    "python-dotenv>=1.1.0",
+    "selectolax>=0.3.29",
+    "taskipy>=1.14.1",
+    "torch>=2.7.0",
+    "transformers>=4.51.3",
+]
+
+[tool.taskipy.tasks]
+server = "uv run prefect server start"
+pool = "prefect work-pool create --type process okapi-pool"
+worker = "PREFECT_API_URL=http://127.0.0.1:4200/api prefect worker start --pool okapi-pool"
+build = "uv run create_deployment.py"
+deploy = "prefect deployment run 'update-feeds/okapi-deployment'"
+publish = "uv run flow.py"
+
+[tool.uv.workspace]
+members = ["cdn"]
