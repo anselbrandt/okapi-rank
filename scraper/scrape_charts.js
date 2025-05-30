@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import puppeteer from "puppeteer";
 
 const args = process.argv.slice(2);
-const CHARTS_DIR = args[0];
+const CHARTS_DIR = args[0] || "data/charts";
 
 const scroll = async (page, idx, distance, timeout) => {
   await page.evaluate(
