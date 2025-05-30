@@ -3,8 +3,8 @@ import os
 import shutil
 import subprocess
 import sys
-import time
 
+import httpx
 from dotenv import load_dotenv
 
 from constants import paths
@@ -29,6 +29,8 @@ load_dotenv()
 UPDATE_INTERVAL = 15
 
 last_push_time = None
+
+VERCEL_DEPLOY_HOOK_URL=os.getenv("VERCEL_DEPLOY_HOOK_URL")
 
 
 def make_dirs():
@@ -88,6 +90,9 @@ def process_category(category, shows):
     ):
         push_feeds()
         last_push_time = now
+        if VERCEL_DEPLOY_HOOK_URL:
+            response = httpx.get(VERCEL_DEPLOY_HOOK_URL)
+            print(response.text)
 
 
 def update_feeds():
@@ -106,7 +111,6 @@ def update_feeds():
                 process_category("news", grouped["news"])
             if category != "news":
                 process_category(category, shows)
-
 
 if __name__ == "__main__":
     update_feeds()
