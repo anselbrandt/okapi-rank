@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
-      <Navbar />
+      <Navbar params={params} />
       <Feed
         section={section}
         setCurrentEmbedUrl={setCurrentEmbedUrl}

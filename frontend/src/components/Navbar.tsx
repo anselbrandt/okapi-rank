@@ -1,4 +1,3 @@
-import { useParams } from "next/navigation";
 import { CATEGORIES } from "@/data/categories";
 import Link from "next/link";
 
@@ -9,8 +8,13 @@ const timeString = new Date(updatedAt).toLocaleTimeString("en-GB", {
   hour12: true,
 });
 
-export const Navbar = () => {
-  const params = useParams<{ categories?: string[] }>();
+interface Props {
+  params: {
+    categories?: string[];
+  };
+}
+
+export const Navbar: React.FC<Props> = ({ params }) => {
   const categoryParam = params?.categories?.[0];
   const subcatParam = params?.categories?.[1];
   const category =

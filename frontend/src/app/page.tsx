@@ -8,7 +8,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-neutral-50">
-      <Navbar />
+      <Navbar params={{ categories: [] }} />
       <FrontPage
         setCurrentEmbedUrl={setCurrentEmbedUrl}
         currentEmbedUrl={currentEmbedUrl}
