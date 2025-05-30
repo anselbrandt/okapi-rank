@@ -101,7 +101,7 @@ def get_paths(categories):
     for key, value in categories.items():
         if "subcategories" in value:
             for subcategory in value["subcategories"]:
-                paths.append({"category": key, "subcategory": subcategory})
+                paths.append({"categories": [key, subcategory]})
 
     return paths
 

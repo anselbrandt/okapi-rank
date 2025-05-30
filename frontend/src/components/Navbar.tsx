@@ -1,4 +1,5 @@
 import { CATEGORIES } from "@/data/categories";
+import { use } from "react";
 import Link from "next/link";
 
 const updatedAt = process.env.NEXT_PUBLIC_BUILD_TIME || "";
@@ -8,15 +9,14 @@ const timeString = new Date(updatedAt).toLocaleTimeString("en-GB", {
   hour12: true,
 });
 
-interface Props {
-  params: {
-    categories?: string[];
-  };
-}
-
-export const Navbar: React.FC<Props> = ({ params }) => {
-  const categoryParam = params?.categories?.[0];
-  const subcatParam = params?.categories?.[1];
+export const Navbar = ({
+  params,
+}: {
+  params: Promise<{ categories: string[] }>;
+}) => {
+  const { categories } = use(params);
+  const categoryParam = categories?.[0];
+  const subcatParam = categories?.[1];
   const category =
     categoryParam && CATEGORIES.hasOwnProperty(categoryParam)
       ? CATEGORIES[categoryParam]

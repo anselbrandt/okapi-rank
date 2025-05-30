@@ -1,24 +1,24 @@
-"use client";
-import { useParams } from "next/navigation";
+import { FeedWrapper } from "./FeedWrapper";
 import { Navbar } from "@/components/Navbar";
-import { Feed } from "@/components/Feed";
-import { useEmbedContext } from "@/context/EmbedContext";
+import { PATHS } from "@/data/paths";
 
-export default function Page() {
-  const params = useParams<{ categories?: string[] }>();
-  const section = params?.categories?.[1]
-    ? `${params?.categories?.[0]}/${params?.categories?.[1]}`
-    : `${params?.categories?.[0]}/${params?.categories?.[0]}`;
-  const { currentEmbedUrl, setCurrentEmbedUrl } = useEmbedContext();
+export function generateStaticParams() {
+  return PATHS;
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ categories: string[] }>;
+}) {
+  const { categories } = await params;
+  const [main, sub] = categories;
+  const section = sub ? `${main}/${sub}` : `${main}/${main}`;
 
   return (
     <div className="min-h-screen bg-neutral-50 overflow-x-hidden">
       <Navbar params={params} />
-      <Feed
-        section={section}
-        setCurrentEmbedUrl={setCurrentEmbedUrl}
-        currentEmbedUrl={currentEmbedUrl}
-      />
+      <FeedWrapper section={section} />
     </div>
   );
 }
