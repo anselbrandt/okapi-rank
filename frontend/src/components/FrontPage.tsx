@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { useTopStories } from "@/hooks/useTopStories";
 import { Hero } from "@/components/Hero";
@@ -90,7 +91,7 @@ export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
 
         <div className="flex flex-col md:flex-row border-b">
           <div className="w-full lg:max-w-3xl xl:max-w-5xl px-8 pt-4 bg-neutral-50 text-gray-900 space-y-6 pb-8">
-            <div className="text-2xl font-bold">Top News</div>
+            <Link href="/news" className="text-2xl font-bold hover:text-sky-700 transition">Top News</Link>
             <div className="space-y-6 lg:grid lg:grid-cols-2">
               {news.slice(0, 12).map((episode) => (
                 <FrontPageItem
@@ -141,7 +142,7 @@ export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
           </div>
         </div>
 
-        <div className="text-2xl font-bold px-8 pt-4">Top Commentary</div>
+        <Link href="/news/news_commentary" className="text-2xl font-bold px-8 pt-4 hover:text-sky-700 transition">Top Commentary</Link>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-8 border-b">
           {commentary.slice(0, 12).map((episode) => (
             <GridItem
@@ -178,7 +179,7 @@ export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
           </div>
         </div>
 
-        <div className="text-2xl font-bold px-8 pt-4">Society and Culture</div>
+        <Link href="/society_and_culture" className="text-2xl font-bold px-8 pt-4 hover:text-sky-700 transition">Society and Culture</Link>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-8 pb-50">
           {society.slice(0, 12).map((episode) => (
             <GridItem
