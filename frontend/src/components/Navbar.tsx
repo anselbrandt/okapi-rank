@@ -1,13 +1,9 @@
 import { CATEGORIES } from "@/data/categories";
 import { use } from "react";
 import Link from "next/link";
+import { UpdatedAt } from "@/components/UpdatedAt";
 
 const updatedAt = process.env.NEXT_PUBLIC_BUILD_TIME || "";
-const timeString = new Date(updatedAt).toLocaleTimeString("en-GB", {
-  hour: "2-digit",
-  minute: "2-digit",
-  hour12: true,
-});
 
 export const Navbar = ({
   params,
@@ -28,7 +24,9 @@ export const Navbar = ({
         <div className="font-mono tracking-widest font-semibold text-4xl md:text-6xl p-3">
           OKAPI
         </div>
-        <div className="mb-2 font-sans text-sm">Updated at {timeString}</div>
+        <div className="mb-2 font-sans text-sm">
+          <UpdatedAt isoTime={updatedAt} />
+        </div>
       </div>
 
       {/* Main Category Tabs */}
