@@ -7,6 +7,8 @@ from pathlib import Path
 from storage import DataIO
 from categories import CATEGORY_MAPPINGS
 
+import httpx
+
 
 def to_embed_url(url: str) -> str:
     """Convert Apple Podcasts URLs to embeddable URLs."""
@@ -120,6 +122,18 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                 matching_episodes.sort(key=lambda ep: ep["release_date"], reverse=True)
                 file = DataIO(path=out_path, mode="w", encoding="utf-8")
                 file.write_json(matching_episodes)
+
+                url = "https://cdn.anselbrandt.net/upload"
+                headers = {
+                    "Content-Type": "application/json",
+                    "X-API-Token": "sample-api-token",
+                }
+                payload = {
+                    "filename": f"{section_name}/{subcat_name}.json",
+                    "data": matching_episodes,
+                }
+                response = httpx.post(url, headers=headers, json=payload)
+                print(response.text)
 
     conn.close()
 

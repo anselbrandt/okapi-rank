@@ -2,6 +2,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from storage import DataIO
 
+import httpx
+
 
 def parse_date(date_str: str):
     try:
@@ -68,6 +70,12 @@ def generate_top_stories(sections_dir: Path):
     output_path = out_dir / "top_stories.json"
 
     DataIO(path=output_path, mode="w", encoding="utf-8").write_json(top_stories_by_file)
+
+    url = "https://cdn.anselbrandt.net/upload"
+    headers = {"Content-Type": "application/json", "X-API-Token": "sample-api-token"}
+    payload = {"filename": "top_stories/top_stories.json", "data": top_stories_by_file}
+    response = httpx.post(url, headers=headers, json=payload)
+    print(response.text)
 
 
 if __name__ == "__main__":
