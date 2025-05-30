@@ -69,7 +69,7 @@ def generate_top_stories(sections_dir: Path):
     out_dir.mkdir(exist_ok=True, parents=True)
     output_path = out_dir / "top_stories.json"
 
-    DataIO(path=output_path, mode="w", encoding="utf-8").write_json(top_stories_by_file)
+    # DataIO(path=output_path, mode="w", encoding="utf-8").write_json(top_stories_by_file)
 
     url = "https://cdn.anselbrandt.net/upload"
     headers = {"Content-Type": "application/json", "X-API-Token": "sample-api-token"}

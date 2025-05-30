@@ -120,8 +120,8 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
 
                 print(subcat_name, len(matching_episodes))
                 matching_episodes.sort(key=lambda ep: ep["release_date"], reverse=True)
-                file = DataIO(path=out_path, mode="w", encoding="utf-8")
-                file.write_json(matching_episodes)
+                # file = DataIO(path=out_path, mode="w", encoding="utf-8")
+                # file.write_json(matching_episodes)
 
                 url = "https://cdn.anselbrandt.net/upload"
                 headers = {
