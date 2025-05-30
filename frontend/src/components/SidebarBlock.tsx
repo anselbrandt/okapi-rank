@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import { CaptionItem } from "./CaptionItem";
 import { CaptionHero } from "./CaptionHero";
@@ -26,6 +27,7 @@ interface EpisodeItemProps {
   imageSize?: number;
   rowOrColumn?: RowOrColumn;
   sectionTitle: string;
+  sectionLink: string;
 }
 
 export const SidebarBlock = ({
@@ -35,12 +37,13 @@ export const SidebarBlock = ({
   imageSize = 500,
   rowOrColumn = "col",
   sectionTitle,
+  sectionLink
 }: EpisodeItemProps) => {
   const [first, ...rest] = episodes.slice(0, 9);
 
   return (
     <>
-      <div className="text-2xl font-semibold p-4">{sectionTitle}</div>
+      <Link href={sectionLink} className="text-2xl font-semibold p-4 hover:text-sky-700 transition">{sectionTitle}</Link>
       <div className="flex flex-col sm:flex-row md:flex-col">
         {first && (
           <CaptionHero

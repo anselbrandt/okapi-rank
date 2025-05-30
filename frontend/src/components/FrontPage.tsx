@@ -83,6 +83,7 @@ export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
               setCurrentEmbedUrl={setCurrentEmbedUrl}
               rowOrColumn="col"
               sectionTitle="World"
+              sectionLink="/news/world"
             />
           </div>
         </div>
@@ -110,6 +111,7 @@ export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
               setCurrentEmbedUrl={setCurrentEmbedUrl}
               rowOrColumn="row"
               sectionTitle="Europe"
+              sectionLink="/news/europe"
             />
           </div>
         </div>
@@ -134,6 +136,7 @@ export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
               setCurrentEmbedUrl={setCurrentEmbedUrl}
               rowOrColumn="col"
               sectionTitle="Politics"
+              sectionLink="/news/politics"
             />
           </div>
         </div>
@@ -170,6 +173,7 @@ export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
               setCurrentEmbedUrl={setCurrentEmbedUrl}
               rowOrColumn="col"
               sectionTitle="Arts"
+              sectionLink="/arts"
             />
           </div>
         </div>
