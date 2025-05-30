@@ -13,7 +13,7 @@ STATIC_DIR.mkdir(parents=True, exist_ok=True)
 
 class Upload(BaseModel):
     filename: str
-    data: list[dict]
+    data: list[dict] | dict
 
 
 API_TOKEN = "sample-api-token"

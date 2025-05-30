@@ -28,11 +28,13 @@ def generate_top_stories(sections_dir: Path):
     seen_urls = set()
 
     for name in target_files:
-        file_path = sections_dir / f"{name}.json"
-        if not file_path.exists():
-            continue
+        url = f"https://cdn.anselbrandt.net/{name}.json"
+        response = httpx.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            
+        episodes = data
 
-        episodes = DataIO(path=file_path, mode="r", encoding="utf-8").read_json()
         filtered = []
 
         seen_podcast_names = set()
