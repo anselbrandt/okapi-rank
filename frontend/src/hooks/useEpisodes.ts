@@ -30,7 +30,7 @@ export function useEpisodes(section: string = "latest/latest") {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/sections/${section}.json`)
+    fetch(`https://cdn.anselbrandt.net/${section}.json`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
         return res.json();

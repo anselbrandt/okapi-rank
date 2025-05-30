@@ -95,6 +95,17 @@ more_news = {
 }
 
 
+def get_paths(categories):
+    paths = []
+
+    for key, value in categories.items():
+        if "subcategories" in value:
+            for subcategory in value["subcategories"]:
+                paths.append({"category": key, "subcategory": subcategory})
+
+    return paths
+
+
 def safe(str):
     return str.lower().replace("&", "and").replace(" ", "_")
 
@@ -189,6 +200,15 @@ export const CATEGORIES: Categories =
 
     with open(js_out_file, "w", encoding="utf-8") as f:
         f.write(js_str)
+
+    paths = get_paths(output)
+    paths_str = json.dumps(paths)
+    js_paths = re.sub(r'"(\w+)":', r"\1:", paths_str)
+    js_paths_str = f"export const PATHS = {js_paths}"
+    js_paths_file = Path("frontend/src/data/paths.ts")
+
+    with open(js_paths_file, "w", encoding="utf-8") as f:
+        f.write(js_paths_str)
 
     return output
 

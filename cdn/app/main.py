@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 
 from fastapi import FastAPI, HTTPException, Header
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Optional
@@ -17,7 +18,21 @@ class Upload(BaseModel):
 
 API_TOKEN = "sample-api-token"
 
+origins = [
+    "http://localhost:3000",
+    "https://air.anselbrandt.net",
+    "https://okapirank.com",
+    "https://www.okapirank.com",
+]
+
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.post("/upload")
