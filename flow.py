@@ -117,7 +117,7 @@ def update_feeds():
         for country in countries:
             for category in categories:
                 node_path = os.getenv("NODE_PATH") or shutil.which("node")
-                script_path = os.path.join("craper", "scrape_charts.js")
+                script_path = os.path.join("scraper", "scrape_charts.js")
                 commands = [
                     node_path,
                     script_path,
