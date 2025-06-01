@@ -13,6 +13,7 @@ EMAIL = os.getenv("GITHUB_EMAIL")
 def push_feeds():
     if not TOKEN:
         raise ValueError("GITHUB_TOKEN not found in .env")
+    print(f"TOKEN: {bool(TOKEN)}, USER: {USER}, EMAIL: {EMAIL}")
 
     repo_path = Path(__file__).resolve().parent.parent
 
@@ -31,12 +32,7 @@ def push_feeds():
 
         origin = repo.remote(name="origin")
         remote_url = origin.url
-
-        if remote_url.startswith("https://"):
-            authed_url = remote_url.replace("https://", f"https://{TOKEN}@")
-        else:
-            raise ValueError("Only HTTPS remote URLs are supported")
-
+        authed_url = remote_url.replace("https://", f"https://{TOKEN}@")
         origin.set_url(authed_url)
         origin.push()
         origin.set_url(remote_url)
