@@ -143,9 +143,8 @@ def update_feeds():
                     )
                     print(country["code"], category["filename"])
                 except subprocess.CalledProcessError as e:
-                    print(
-                        f"{country['code']} {category['filename']} failed: {e.stderr}"
-                    )
+                    error_message = f"Failed: https://podcasts.apple.com/{country['code']}/charts?genre={category['genre']}"
+                    print(error_message, e.stderr)
                     continue
         insert_downloads(db_path=paths.db_path, status="pending")
         results = get_shows(db_path=paths.db_path)
