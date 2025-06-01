@@ -175,7 +175,7 @@ def process_file(html, podcast_id, cursor, scraped_at):
                 print(f"Error updating frequency for podcast {podcast_id}: {e}")
 
 
-def insert_episode(db_path: Path, show_id, html):
+def insert_episodes(db_path: Path, show_id, html):
     scraped_at = datetime.now(timezone.utc).isoformat()
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()

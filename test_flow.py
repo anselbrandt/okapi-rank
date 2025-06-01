@@ -16,8 +16,8 @@ from test_tasks import (
     get_shows,
     group_results,
     insert_downloads,
-    insert_episode,
-    insert_podcast,
+    insert_episodes,
+    insert_podcasts,
     insert_scores,
     push_feeds,
     scrape_show,
@@ -71,11 +71,14 @@ def process_category(category, shows):
     global last_push_time
 
     for show in shows:
+
         result = scrape_show(show, db_path=paths.db_path)
         if result is None:
             continue
         show_id, show_page_html = result
-        insert_episode(db_path=paths.db_path, show_id=show_id, html=show_page_html)
+        insert_episodes(db_path=paths.db_path, show_id=show_id, html=show_page_html)
+        id, name, category, url, status = show
+        print(category, name)
 
     insert_scores(db_path=paths.db_path)
 
@@ -111,8 +114,8 @@ def update_feeds():
         data_dir.mkdir(exist_ok=True)
         create_tables(db_path=paths.db_path)
 
-        for country in countries[:1]:
-            for category in categories[:1]:
+        for country in countries:
+            for category in categories:
                 node_path = os.getenv("NODE_PATH") or shutil.which("node")
                 script_path = os.path.join("test_scraper", "scrape_charts.js")
                 commands = [
@@ -131,12 +134,13 @@ def update_feeds():
                     stderr=subprocess.PIPE,
                 )
                 html = result.stdout
-                insert_podcast(
+                insert_podcasts(
                     db_path=paths.db_path,
                     country=country["code"],
                     category=category["filename"],
                     html=html,
                 )
+                print(country["code"], category["filename"])
         insert_downloads(db_path=paths.db_path, status="pending")
         results = get_shows(db_path=paths.db_path)
         grouped = group_results(results)

@@ -47,7 +47,7 @@ def extract_show_id(url):
     return match.group(1) if match else None
 
 
-def insert_podcast(db_path: Path, country, category, html):
+def insert_podcasts(db_path: Path, country, category, html):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
