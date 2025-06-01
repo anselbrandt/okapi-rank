@@ -3,7 +3,6 @@ from git import Repo
 from dotenv import load_dotenv
 from pathlib import Path
 
-
 load_dotenv()
 TOKEN = os.getenv("GITHUB_TOKEN")
 USER = os.getenv("GITHUB_USER")
@@ -13,9 +12,11 @@ EMAIL = os.getenv("GITHUB_EMAIL")
 def push_feeds():
     if not TOKEN:
         raise ValueError("GITHUB_TOKEN not found in .env")
-    print(f"TOKEN: {bool(TOKEN)}, USER: {USER}, EMAIL: {EMAIL}")
+    if not USER or not EMAIL:
+        raise ValueError("GITHUB_USER or GITHUB_EMAIL not found in .env")
 
     repo_path = Path(__file__).resolve().parent.parent
+    print(f"Repo path: {repo_path}")
 
     repo = Repo(repo_path)
     assert not repo.bare
@@ -31,12 +32,23 @@ def push_feeds():
         print("Committed changes.")
 
         origin = repo.remote(name="origin")
-        remote_url = origin.url
-        authed_url = remote_url.replace("https://", f"https://{TOKEN}@")
-        origin.set_url(authed_url)
-        origin.push()
-        origin.set_url(remote_url)
-        print("Pushed to remote.")
+        original_url = origin.url
+
+        if original_url.startswith("https://") and "@" in original_url:
+            original_url = "https://" + original_url.split("@")[-1]
+
+        authed_url = original_url.replace("https://", f"https://{TOKEN}@")
+        print("Pushing to:", authed_url)
+
+        try:
+            origin.set_url(authed_url)
+            push_result = origin.push()
+            print("Push result:", push_result)
+        except Exception as e:
+            print("Push failed:", e)
+        finally:
+            origin.set_url(original_url)
+
     else:
         print("No changes to commit.")
 
