@@ -5,8 +5,6 @@ import sqlite3
 
 from selectolax.parser import HTMLParser
 
-from storage import DataIO
-
 
 def extract_list(html):
     tree = HTMLParser(html)
@@ -39,9 +37,7 @@ def extract_links_from_list(html):
     return links
 
 
-def get_links(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        html = f.read()
+def get_links(html):
     list_html = extract_list(html)
     return extract_links_from_list(list_html)
 
@@ -51,7 +47,7 @@ def extract_show_id(url):
     return match.group(1) if match else None
 
 
-def insert_podcasts(db_path: Path, charts_dir: Path):
+def insert_podcasts(db_path: Path, country, category, html):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
@@ -61,44 +57,39 @@ def insert_podcasts(db_path: Path, charts_dir: Path):
 
     conn.execute("BEGIN TRANSACTION")
 
-    dir = DataIO(path=charts_dir)
-    files = dir.list_files()
-    for file in files:
-        country = str(file.parent)
-        category = file.stem
-        links = get_links(file)
-        for i, (url, name) in enumerate(links):
-            show_id = extract_show_id(url)
-            if not show_id:
-                continue
+    links = get_links(html)
+    for i, (url, name) in enumerate(links):
+        show_id = extract_show_id(url)
+        if not show_id:
+            continue
 
-            cursor.execute(
-                """
-                INSERT OR IGNORE INTO podcast (
-                    name, category, url, show_id, created_at, last_seen_at
-                )
-                VALUES (?, ?, ?, ?, ?, ?)
-                """,
-                (name, category, url, show_id, timestamp, timestamp),
+        cursor.execute(
+            """
+            INSERT OR IGNORE INTO podcast (
+                name, category, url, show_id, created_at, last_seen_at
             )
+            VALUES (?, ?, ?, ?, ?, ?)
+            """,
+            (name, category, url, show_id, timestamp, timestamp),
+        )
 
-            cursor.execute(
-                """
-                UPDATE podcast SET last_seen_at = ? WHERE show_id = ?
-                """,
-                (timestamp, show_id),
-            )
+        cursor.execute(
+            """
+            UPDATE podcast SET last_seen_at = ? WHERE show_id = ?
+            """,
+            (timestamp, show_id),
+        )
 
-            cursor.execute(
-                "SELECT id FROM podcast WHERE show_id = ?",
-                (show_id,),
-            )
-            row = cursor.fetchone()
-            if not row:
-                continue
-            podcast_id = row[0]
+        cursor.execute(
+            "SELECT id FROM podcast WHERE show_id = ?",
+            (show_id,),
+        )
+        row = cursor.fetchone()
+        if not row:
+            continue
+        podcast_id = row[0]
 
-            ranking_batch.append((podcast_id, country, i + 1, timestamp, timestamp))
+        ranking_batch.append((podcast_id, country, i + 1, timestamp, timestamp))
 
     cursor.executemany(
         """
@@ -110,7 +101,3 @@ def insert_podcasts(db_path: Path, charts_dir: Path):
 
     conn.commit()
     conn.close()
-
-
-if __name__ == "__main__":
-    insert_podcasts(db_path=Path("db.sqlite"), charts_dir=Path("charts"))

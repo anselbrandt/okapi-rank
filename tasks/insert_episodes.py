@@ -4,8 +4,6 @@ from selectolax.parser import HTMLParser
 import json
 from datetime import datetime, timedelta, timezone
 
-from storage import DataIO
-
 
 def get_image(item, key):
     value = item.get(key)
@@ -44,10 +42,7 @@ def calculate_next_scrape(release_date, frequency):
     return release_date
 
 
-def process_file(file_path, podcast_id, cursor, scraped_at):
-    with open(file_path, "r", encoding="utf-8") as f:
-        html = f.read()
-
+def process_file(html, podcast_id, cursor, scraped_at):
     tree = HTMLParser(html)
     script = next(
         (
@@ -180,24 +175,17 @@ def process_file(file_path, podcast_id, cursor, scraped_at):
                 print(f"Error updating frequency for podcast {podcast_id}: {e}")
 
 
-def insert_episodes(db_path: Path, shows_dir: Path):
+def insert_episodes(db_path: Path, show_id, html):
     scraped_at = datetime.now(timezone.utc).isoformat()
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     conn.execute("PRAGMA foreign_keys = ON")
 
-    files = DataIO(path=shows_dir).list_files()
-    for file_path in files:
-        show_id = file_path.stem
-        cursor.execute("SELECT id FROM podcast WHERE show_id = ?", (show_id,))
-        row = cursor.fetchone()
-        if row:
-            podcast_id = row[0]
-            process_file(file_path, podcast_id, cursor, scraped_at)
+    cursor.execute("SELECT id FROM podcast WHERE show_id = ?", (show_id,))
+    row = cursor.fetchone()
+    if row:
+        podcast_id = row[0]
+        process_file(html, podcast_id, cursor, scraped_at)
 
     conn.commit()
     conn.close()
-
-
-if __name__ == "__main__":
-    insert_episodes(db_path=Path("db.sqlite"), shows_dir=Path("shows"))
