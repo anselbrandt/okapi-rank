@@ -126,21 +126,27 @@ def update_feeds():
                     country["name"],
                     str(category["genre"]),
                 ]
-                result = subprocess.run(
-                    commands,
-                    check=True,
-                    text=True,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                )
-                html = result.stdout
-                insert_podcasts(
-                    db_path=paths.db_path,
-                    country=country["code"],
-                    category=category["filename"],
-                    html=html,
-                )
-                print(country["code"], category["filename"])
+                try:
+                    result = subprocess.run(
+                        commands,
+                        check=True,
+                        text=True,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                    )
+                    html = result.stdout
+                    insert_podcasts(
+                        db_path=paths.db_path,
+                        country=country["code"],
+                        category=category["filename"],
+                        html=html,
+                    )
+                    print(country["code"], category["filename"])
+                except subprocess.CalledProcessError as e:
+                    print(
+                        f"{country['code']} {category['filename']} failed: {e.stderr}"
+                    )
+                    continue
         insert_downloads(db_path=paths.db_path, status="pending")
         results = get_shows(db_path=paths.db_path)
         grouped = group_results(results)
