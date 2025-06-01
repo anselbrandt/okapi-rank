@@ -1,11 +1,16 @@
 from pathlib import Path
 import json
+import os
+from dotenv import load_dotenv
 
 from fastapi import FastAPI, HTTPException, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import Optional
+
+load_dotenv()
+API_TOKEN = os.getenv("API_TOKEN")
 
 STATIC_DIR = Path("../static")
 STATIC_DIR.mkdir(parents=True, exist_ok=True)
