@@ -106,44 +106,45 @@ def process_category(category, shows):
 
 
 def update_feeds():
-    data_dir = paths.data_dir
-    data_dir.mkdir(exist_ok=True)
-    create_tables(db_path=paths.db_path)
+    while True:
+        data_dir = paths.data_dir
+        data_dir.mkdir(exist_ok=True)
+        create_tables(db_path=paths.db_path)
 
-    for country in countries[:1]:
-        for category in categories[:1]:
-            node_path = os.getenv("NODE_PATH") or shutil.which("node")
-            script_path = os.path.join("test_scraper", "scrape_charts.js")
-            commands = [
-                node_path,
-                script_path,
-                country["code"],
-                str(country["scrollDistance"]),
-                country["name"],
-                str(category["genre"]),
-            ]
-            result = subprocess.run(
-                commands,
-                check=True,
-                text=True,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-            )
-            html = result.stdout
-            insert_podcast(
-                db_path=paths.db_path,
-                country=country["code"],
-                category=category["filename"],
-                html=html,
-            )
-    insert_downloads(db_path=paths.db_path, status="pending")
-    results = get_shows(db_path=paths.db_path)
-    grouped = group_results(results)
-    for i, (category, shows) in enumerate(grouped.items()):
-        if i == 0 or i % 4 == 0:
-            process_category("news", grouped.get("news", []))
-        if category != "news":
-            process_category(category, shows)
+        for country in countries[:1]:
+            for category in categories[:1]:
+                node_path = os.getenv("NODE_PATH") or shutil.which("node")
+                script_path = os.path.join("test_scraper", "scrape_charts.js")
+                commands = [
+                    node_path,
+                    script_path,
+                    country["code"],
+                    str(country["scrollDistance"]),
+                    country["name"],
+                    str(category["genre"]),
+                ]
+                result = subprocess.run(
+                    commands,
+                    check=True,
+                    text=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                )
+                html = result.stdout
+                insert_podcast(
+                    db_path=paths.db_path,
+                    country=country["code"],
+                    category=category["filename"],
+                    html=html,
+                )
+        insert_downloads(db_path=paths.db_path, status="pending")
+        results = get_shows(db_path=paths.db_path)
+        grouped = group_results(results)
+        for i, (category, shows) in enumerate(grouped.items()):
+            if i == 0 or i % 4 == 0:
+                process_category("news", grouped.get("news", []))
+            if category != "news":
+                process_category(category, shows)
 
 
 if __name__ == "__main__":
