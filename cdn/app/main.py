@@ -21,8 +21,6 @@ class Upload(BaseModel):
     data: list[dict] | dict
 
 
-API_TOKEN = "sample-api-token"
-
 origins = [
     "http://localhost:3000",
     "https://air.anselbrandt.net",
