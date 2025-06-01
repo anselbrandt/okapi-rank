@@ -1,4 +1,3 @@
-from datetime import datetime, timedelta
 import os
 import shutil
 import subprocess
@@ -24,10 +23,6 @@ from tasks import (
 )
 
 load_dotenv()
-
-UPDATE_INTERVAL = 15
-
-last_push_time = None
 
 VERCEL_DEPLOY_HOOK_URL = os.getenv("VERCEL_DEPLOY_HOOK_URL")
 
@@ -68,7 +63,6 @@ categories = [
 
 
 def process_category(category, shows):
-    global last_push_time
 
     for show in shows:
 
@@ -97,15 +91,10 @@ def process_category(category, shows):
     )
     generate_top_stories(sections_dir=paths.sections_dir)
 
-    now = datetime.now()
-    if not last_push_time or (now - last_push_time) > timedelta(
-        minutes=UPDATE_INTERVAL
-    ):
-        push_feeds()
-        last_push_time = now
-        if VERCEL_DEPLOY_HOOK_URL:
-            response = httpx.get(VERCEL_DEPLOY_HOOK_URL)
-            print(response.text)
+    push_feeds()
+    if VERCEL_DEPLOY_HOOK_URL:
+        response = httpx.get(VERCEL_DEPLOY_HOOK_URL)
+        print(response.text)
 
 
 def update_feeds():
