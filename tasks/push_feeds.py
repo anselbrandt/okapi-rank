@@ -34,16 +34,17 @@ def push_feeds():
         origin = repo.remote(name="origin")
         original_url = origin.url
 
-        if original_url.startswith("https://") and "@" in original_url:
-            original_url = "https://" + original_url.split("@")[-1]
+        # if original_url.startswith("https://") and "@" in original_url:
+        #     original_url = "https://" + original_url.split("@")[-1]
 
         authed_url = original_url.replace("https://", f"https://{TOKEN}@")
         print("Pushing to:", authed_url)
 
         try:
-            origin.set_url(authed_url)
-            push_result = origin.push()
-            print("Push result:", push_result)
+            print(authed_url)
+            # origin.set_url(authed_url)
+            # push_result = origin.push()
+            # print("Push result:", push_result)
         except Exception as e:
             print("Push failed:", e)
         finally:
