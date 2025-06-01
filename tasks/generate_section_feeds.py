@@ -6,8 +6,13 @@ from urllib.parse import urlparse
 from pathlib import Path
 from storage import DataIO
 from categories import CATEGORY_MAPPINGS
+import os
+from dotenv import load_dotenv
 
 import httpx
+
+load_dotenv()
+API_TOKEN = os.getenv("API_TOKEN")
 
 
 def to_embed_url(url: str) -> str:
@@ -124,10 +129,7 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                 # file.write_json(matching_episodes)
 
                 url = "https://cdn.anselbrandt.net/upload"
-                headers = {
-                    "Content-Type": "application/json",
-                    "X-API-Token": "sample-api-token",
-                }
+                headers = {"Content-Type": "application/json", "X-API-Token": API_TOKEN}
                 payload = {
                     "filename": f"{section_name}/{subcat_name}.json",
                     "data": matching_episodes,

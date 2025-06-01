@@ -1,8 +1,13 @@
 from datetime import datetime, timezone
 from pathlib import Path
 from storage import DataIO
+import os
+from dotenv import load_dotenv
 
 import httpx
+
+load_dotenv()
+API_TOKEN = os.getenv("API_TOKEN")
 
 
 def parse_date(date_str: str):
@@ -32,7 +37,7 @@ def generate_top_stories(sections_dir: Path):
         response = httpx.get(url)
         if response.status_code == 200:
             data = response.json()
-            
+
         episodes = data
 
         filtered = []
@@ -74,7 +79,7 @@ def generate_top_stories(sections_dir: Path):
     # DataIO(path=output_path, mode="w", encoding="utf-8").write_json(top_stories_by_file)
 
     url = "https://cdn.anselbrandt.net/upload"
-    headers = {"Content-Type": "application/json", "X-API-Token": "sample-api-token"}
+    headers = {"Content-Type": "application/json", "X-API-Token": API_TOKEN}
     payload = {"filename": "top_stories/top_stories.json", "data": top_stories_by_file}
     response = httpx.post(url, headers=headers, json=payload)
     print(response.text)
