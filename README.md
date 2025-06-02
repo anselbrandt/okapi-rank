@@ -14,6 +14,7 @@ It aims to improve podcast discoverability by surfacing topical podcast episodes
 - Scrapes Apple Podcast Top Charts using [Puppeteer](https://pptr.dev/)
 - Checks individual show pages every 15 minutes for new episodes
 - Parses show pages and persists episode data to a local SQLite database
+- Classifies episodes using the zero-shot [Bart Large Mnli](https://huggingface.co/facebook/bart-large-mnli) model.
 - Generates static episode feeds for each category
 - Uploads feeds to a CDN
 - Triggers deployment (via commit push or webhook)
