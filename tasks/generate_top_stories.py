@@ -7,6 +7,7 @@ import httpx
 load_dotenv()
 
 API_TOKEN = os.getenv("API_TOKEN")
+CDN_URL = os.getenv("CDN_URL")
 
 
 def parse_date(date_str: str):
@@ -71,7 +72,7 @@ def generate_top_stories():
 
         top_stories_by_file[name.split("/")[1]] = top_episodes
 
-    url = "https://cdn.anselbrandt.net/upload"
+    url = f"{CDN_URL}/upload"
     top_stories_by_file["timestamp"] = datetime.now().isoformat()
     headers = {"Content-Type": "application/json", "X-API-Token": API_TOKEN}
     payload = {"filename": "top_stories/top_stories.json", "data": top_stories_by_file}

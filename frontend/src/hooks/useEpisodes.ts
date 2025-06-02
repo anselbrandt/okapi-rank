@@ -5,6 +5,7 @@ import {
   interleaveEpisodesByPodcast,
   enhanceEpisodes,
 } from "@/utils/episodeProcessing";
+import { NEXT_PUBLIC_CDN_URL } from "@/constants";
 
 type Episode = {
   title: string;
@@ -30,7 +31,7 @@ export function useEpisodes(section: string = "latest/latest") {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`https://cdn.anselbrandt.net/${section}.json`)
+    fetch(`${NEXT_PUBLIC_CDN_URL}/${section}.json`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
         return res.json();

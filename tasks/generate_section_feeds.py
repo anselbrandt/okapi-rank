@@ -7,10 +7,9 @@ import sqlite3
 import httpx
 from transformers.pipelines import pipeline
 
-from categories import CATEGORY_MAPPINGS
-
 load_dotenv()
 API_TOKEN = os.getenv("API_TOKEN")
+CDN_URL = os.getenv("CDN_URL")
 
 
 def to_embed_url(url: str) -> str:
@@ -120,7 +119,7 @@ def generate_section_feeds(db_path: Path, categories: dict):
                 print(subcat_name, len(matching_episodes))
                 matching_episodes.sort(key=lambda ep: ep["release_date"], reverse=True)
 
-                url = "https://cdn.anselbrandt.net/upload"
+                url = f"{CDN_URL}/upload"
                 headers = {"Content-Type": "application/json", "X-API-Token": API_TOKEN}
                 payload = {
                     "filename": f"{section_name}/{subcat_name}.json",

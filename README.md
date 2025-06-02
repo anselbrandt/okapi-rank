@@ -28,12 +28,14 @@ It aims to improve podcast discoverability by surfacing topical podcast episodes
 - Typescript, Next.js, Tailwind
 - Audio playback handled by Context provider to preserve state during navigation
 
-## Installation
+## Install and Run
 
 ### Data Pipeline
 
 ```bash
 uv sync
+
+uv run task flow.py
 ```
 
 ### CDN
@@ -42,6 +44,8 @@ uv sync
 cd cdn
 
 uv sync
+
+uv run task start
 ```
 
 ### Frontend
@@ -50,4 +54,6 @@ uv sync
 cd frontend
 
 npm install
+
+npm run dev
 ```
