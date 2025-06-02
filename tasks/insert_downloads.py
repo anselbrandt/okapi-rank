@@ -21,7 +21,3 @@ def insert_downloads(db_path: Path, status: Literal["pending", "active"]):  # or
 
     conn.commit()
     conn.close()
-
-
-if __name__ == "__main__":
-    insert_downloads(db_path=Path("db.sqlite"), status="pending")

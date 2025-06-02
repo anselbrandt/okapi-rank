@@ -80,8 +80,3 @@ def group_results(results):
         episode = (podcast_id, name, category, url, status)
         grouped_results[category].append(episode)
     return grouped_results
-
-
-if __name__ == "__main__":
-    results = get_shows(db_path=Path("db.sqlite"), retry=False)
-    grouped = group_results(results)

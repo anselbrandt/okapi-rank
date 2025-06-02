@@ -211,7 +211,3 @@ export const CATEGORIES: Categories =
         f.write(js_paths_str)
 
     return output
-
-
-if __name__ == "__main__":
-    generate_category_mappings(db_path=Path("db.sqlite"), base_index=BASE_INDEX)

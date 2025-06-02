@@ -53,7 +53,3 @@ def insert_scores(db_path: Path):
 
     conn.commit()
     conn.close()
-
-
-if __name__ == "__main__":
-    insert_scores(db_path=Path("db.sqlite"))

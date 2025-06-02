@@ -215,7 +215,3 @@ def create_tables(db_path: Path):
 
     finally:
         conn.close()
-
-
-if __name__ == "__main__":
-    create_tables(db_path=Path("db.sqlite"))

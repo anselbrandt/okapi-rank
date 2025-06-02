@@ -3,6 +3,9 @@ import os
 import shutil
 import subprocess
 
+import httpx
+from dotenv import load_dotenv
+
 from constants import paths
 from categories import BASE_INDEX
 from tasks import (
@@ -19,6 +22,10 @@ from tasks import (
     push_feeds,
     scrape_show,
 )
+
+load_dotenv()
+
+VERCEL_DEPLOY_HOOK_URL = os.getenv("VERCEL_DEPLOY_HOOK_URL")
 
 UPDATE_INTERVAL = 15
 
@@ -62,10 +69,12 @@ categories = [
 
 
 def process_category(category, shows):
+    if not VERCEL_DEPLOY_HOOK_URL:
+        raise ValueError("VERCEL_DEPLOY_HOOK_URL not found in .env")
+
     global last_push_time
 
     for show in shows:
-
         result = scrape_show(show, db_path=paths.db_path)
         if result is None:
             continue
@@ -95,7 +104,10 @@ def process_category(category, shows):
     if not last_push_time or (now - last_push_time) > timedelta(
         minutes=UPDATE_INTERVAL
     ):
-        push_feeds()
+        is_pushed = push_feeds()
+        if not is_pushed:
+            response = httpx.get(VERCEL_DEPLOY_HOOK_URL)
+            print(response.text)
         last_push_time = now
 
 

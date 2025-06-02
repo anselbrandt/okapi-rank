@@ -130,11 +130,3 @@ def generate_section_feeds(db_path: Path, categories: dict):
                 print(response.text)
 
     conn.close()
-
-
-if __name__ == "__main__":
-    generate_section_feeds(
-        db_path=Path("db.sqlite"),
-        sections_dir=Path("sections"),
-        categories=CATEGORY_MAPPINGS,
-    )
