@@ -1,9 +1,7 @@
+from datetime import datetime, timedelta
 import os
 import shutil
 import subprocess
-
-from dotenv import load_dotenv
-import httpx
 
 from constants import paths
 from categories import BASE_INDEX
@@ -22,9 +20,10 @@ from tasks import (
     scrape_show,
 )
 
-load_dotenv()
+UPDATE_INTERVAL = 15
 
-VERCEL_DEPLOY_HOOK_URL = os.getenv("VERCEL_DEPLOY_HOOK_URL")
+last_push_time = None
+
 
 countries = [
     {"name": "Australia", "code": "au", "scrollDistance": 600},
@@ -63,6 +62,7 @@ categories = [
 
 
 def process_category(category, shows):
+    global last_push_time
 
     for show in shows:
 
@@ -91,10 +91,13 @@ def process_category(category, shows):
     )
     generate_top_stories(sections_dir=paths.sections_dir)
 
-    push_feeds()
-    if VERCEL_DEPLOY_HOOK_URL:
-        response = httpx.get(VERCEL_DEPLOY_HOOK_URL)
-        print(response.text)
+    now = datetime.now()
+
+    if not last_push_time or (now - last_push_time) > timedelta(
+        minutes=UPDATE_INTERVAL
+    ):
+        push_feeds()
+        last_push_time = now
 
 
 def update_feeds():
