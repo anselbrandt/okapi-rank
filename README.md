@@ -35,7 +35,7 @@ It aims to improve podcast discoverability by surfacing topical podcast episodes
 ```bash
 uv sync
 
-uv run task flow.py
+uv run flow.py
 ```
 
 ### CDN
