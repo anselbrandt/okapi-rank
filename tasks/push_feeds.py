@@ -17,7 +17,6 @@ def push_feeds():
         raise ValueError("GITHUB_USER or GITHUB_EMAIL not found in .env")
 
     repo_path = Path(__file__).resolve().parent.parent
-    print(f"Repo path: {repo_path}")
 
     repo = Repo(repo_path)
     assert not repo.bare
