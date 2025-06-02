@@ -1,12 +1,11 @@
 from datetime import datetime, timezone
-from pathlib import Path
-from storage import DataIO
 import os
 from dotenv import load_dotenv
 
 import httpx
 
 load_dotenv()
+
 API_TOKEN = os.getenv("API_TOKEN")
 
 
@@ -18,7 +17,7 @@ def parse_date(date_str: str):
         return None
 
 
-def generate_top_stories(sections_dir: Path):
+def generate_top_stories():
     target_files = [
         "news/news",
         "news/world",
@@ -72,12 +71,6 @@ def generate_top_stories(sections_dir: Path):
 
         top_stories_by_file[name.split("/")[1]] = top_episodes
 
-    out_dir = sections_dir / "top_stories"
-    out_dir.mkdir(exist_ok=True, parents=True)
-    output_path = out_dir / "top_stories.json"
-
-    # DataIO(path=output_path, mode="w", encoding="utf-8").write_json(top_stories_by_file)
-
     url = "https://cdn.anselbrandt.net/upload"
     top_stories_by_file["timestamp"] = datetime.now().isoformat()
     headers = {"Content-Type": "application/json", "X-API-Token": API_TOKEN}
@@ -87,6 +80,4 @@ def generate_top_stories(sections_dir: Path):
 
 
 if __name__ == "__main__":
-    generate_top_stories(
-        sections_dir=Path("sections"),
-    )
+    generate_top_stories()

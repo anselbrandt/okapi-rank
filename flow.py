@@ -86,10 +86,9 @@ def process_category(category, shows):
     }
     generate_section_feeds(
         db_path=paths.db_path,
-        sections_dir=paths.sections_dir,
         categories=filtered_mappings,
     )
-    generate_top_stories(sections_dir=paths.sections_dir)
+    generate_top_stories()
 
     now = datetime.now()
 

@@ -1,15 +1,13 @@
-from pathlib import Path
-import json
-import sqlite3
-from transformers.pipelines import pipeline
-from urllib.parse import urlparse
-from pathlib import Path
-from storage import DataIO
-from categories import CATEGORY_MAPPINGS
-import os
 from dotenv import load_dotenv
+from pathlib import Path
+from urllib.parse import urlparse
+import os
+import sqlite3
 
 import httpx
+from transformers.pipelines import pipeline
+
+from categories import CATEGORY_MAPPINGS
 
 load_dotenv()
 API_TOKEN = os.getenv("API_TOKEN")
@@ -23,7 +21,7 @@ def to_embed_url(url: str) -> str:
     return url
 
 
-def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
+def generate_section_feeds(db_path: Path, categories: dict):
 
     classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
 
@@ -119,14 +117,8 @@ def generate_section_feeds(db_path: Path, sections_dir: Path, categories: dict):
                             episode["label_score"] = score
                             matching_episodes.append(episode)
 
-                out_dir = sections_dir / section_name
-                out_dir.mkdir(exist_ok=True, parents=True)
-                out_path = out_dir / f"{subcat_name}.json"
-
                 print(subcat_name, len(matching_episodes))
                 matching_episodes.sort(key=lambda ep: ep["release_date"], reverse=True)
-                # file = DataIO(path=out_path, mode="w", encoding="utf-8")
-                # file.write_json(matching_episodes)
 
                 url = "https://cdn.anselbrandt.net/upload"
                 headers = {"Content-Type": "application/json", "X-API-Token": API_TOKEN}
