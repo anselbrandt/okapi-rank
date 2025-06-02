@@ -1,5 +1,5 @@
 import os
-from git import Repo
+from git import Repo, GitCommandError
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -25,20 +25,27 @@ def push_feeds():
     with repo.config_writer() as git_config:
         git_config.set_value("user", "name", USER)
         git_config.set_value("user", "email", EMAIL)
+        git_config.set_value("pull", "rebase", "true")
+
+    origin = repo.remote(name="origin")
+    original_url = origin.url
+    authed_url = original_url.replace("https://", f"https://{TOKEN}@")
+    origin.set_url(authed_url)
+
+    try:
+        repo.git.pull("--rebase")
+    except GitCommandError as e:
+        print("Pull failed:", e)
+        origin.set_url(original_url)
+        return False
 
     repo.git.add(A=True)
 
     if repo.is_dirty(untracked_files=True):
         repo.index.commit("Update static files")
 
-        origin = repo.remote(name="origin")
-        original_url = origin.url
-
-        authed_url = original_url.replace("https://", f"https://{TOKEN}@")
-        print("Pushing to:", authed_url)
-
         try:
-            origin.set_url(authed_url)
+            print("Pushing to:", authed_url)
             push_result = origin.push()
             print(push_result)
             return True
@@ -47,7 +54,7 @@ def push_feeds():
             return False
         finally:
             origin.set_url(original_url)
-
     else:
         print("No changes to commit.")
+        origin.set_url(original_url)
         return False
