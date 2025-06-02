@@ -1,1 +1,1 @@
-export const NEXT_PUBLIC_CDN_URL = process.env.NEXT_PUBLIC_API_HOSTNAME;
+export const NEXT_PUBLIC_CDN_URL = process.env.NEXT_PUBLIC_CDN_URL;
