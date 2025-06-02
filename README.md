@@ -21,7 +21,7 @@ It aims to improve podcast discoverability by surfacing topical podcast episodes
 ### CDN
 
 - Lighweight FastAPI application for accepting precomputed JSON feeds
-- Serves JSON feeds to the frontend infracture for initial page load (subsequent requests are cached)
+- Serves JSON feeds to the frontend infrastructure for initial page load (subsequent requests are cached)
 
 ### Frontend
 
