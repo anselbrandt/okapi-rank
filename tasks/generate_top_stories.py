@@ -79,6 +79,7 @@ def generate_top_stories(sections_dir: Path):
     # DataIO(path=output_path, mode="w", encoding="utf-8").write_json(top_stories_by_file)
 
     url = "https://cdn.anselbrandt.net/upload"
+    top_stories_by_file["timestamp"] = datetime.now().isoformat()
     headers = {"Content-Type": "application/json", "X-API-Token": API_TOKEN}
     payload = {"filename": "top_stories/top_stories.json", "data": top_stories_by_file}
     response = httpx.post(url, headers=headers, json=payload)
