@@ -25,7 +25,7 @@ def push_feeds():
     with repo.config_writer() as git_config:
         git_config.set_value("user", "name", USER)
         git_config.set_value("user", "email", EMAIL)
-        git_config.set_value("pull", "rebase", "true")
+        git_config.set_value("pull", "rebase", "false")
 
     origin = repo.remote(name="origin")
     original_url = origin.url
@@ -33,7 +33,7 @@ def push_feeds():
     origin.set_url(authed_url)
 
     try:
-        repo.git.pull("--rebase")
+        repo.git.pull()
     except GitCommandError as e:
         print("Pull failed:", e)
         origin.set_url(original_url)
@@ -45,7 +45,6 @@ def push_feeds():
         repo.index.commit("Update static files")
 
         try:
-            print("Pushing to:", authed_url)
             push_result = origin.push()
             print(push_result)
             return True
