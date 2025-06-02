@@ -1,6 +1,6 @@
 # Okapi Rank
 
-Okapi Rank is an episode-first podcast feed platform built as a proof of concept and presently based on Apple Podcast Top Charts.
+Okapi Rank is an episode-first podcast feed platform, built as a proof of concept and currently powered by Apple Podcasts’ Top Charts.
 
 It aims to improve podcast discoverability by surfacing topical podcast episodes, organized thematically.
 
@@ -12,21 +12,21 @@ It aims to improve podcast discoverability by surfacing topical podcast episodes
 
 - Core ETL and scheduling loop
 - Scrapes Apple Podcast Top Charts using [Puppeteer](https://pptr.dev/)
-- Scrapes individual show pages every 15 mins checking for new episodes.
-- Parse show pages and persist episode data to local SQLite db
-- Generate static feeds of episodes for each category
-- Uploads feeds to the CDN
-- Triggers deployment (either by pushing a commit or triggering a webhook)
+- Checks individual show pages every 15 minutes for new episodes
+- Parses show pages and persists episode data to a local SQLite database
+- Generates static episode feeds for each category
+- Uploads feeds to a CDN
+- Triggers deployment (via commit push or webhook)
 
 ### CDN
 
-- Lighweight FastAPI application for accepting precomputed JSON feeds
-- Serves JSON feeds to the frontend infrastructure for initial page load (subsequent requests are cached)
+- Lightweight FastAPI application for accepting precomputed JSON feeds
+- Serves JSON feeds to the frontend for the initial page load (subsequent requests are cached)
 
 ### Frontend
 
-- Typescript, Next.js, Tailwind
-- Audio playback handled by Context provider to preserve state during navigation
+- Built with TypeScript, Next.js, and Tailwind CSS
+- Audio playback is managed by a Context provider to maintain state across navigation
 
 ## Install and Run
 
