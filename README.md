@@ -1,59 +1,53 @@
 # Okapi Rank
 
-### Install
+Okapi Rank is an episode-first podcast feed platform built as a proof of concept and presently based on Apple Podcast Top Charts.
+
+It aims to improve podcast discoverability by surfacing topical podcast episodes, organized thematically.
+
+## Architecture
+
+### Data Pipeline
+
+#### `flow.py`
+
+- Core ETL and scheduling loop
+- Scrapes Apple Podcast Top Charts using [Puppeteer](https://pptr.dev/)
+- Scrapes individual show pages every 15 mins checking for new episodes.
+- Parse show pages and persist episode data to local SQLite db
+- Generate static feeds of episodes for each category
+- Uploads feeds to the CDN
+- Triggers deployment (either by pushing a commit or triggering a webhook)
+
+### CDN
+
+- Lighweight FastAPI application for accepting precomputed JSON feeds
+- Serves JSON feeds to the frontend infracture for initial page load (subsequent requests are cached)
+
+### Frontend
+
+- Typescript, Next.js, Tailwind
+- Audio playback handled by Context provider to preserve state during navigation
+
+## Installation
+
+### Data Pipeline
 
 ```bash
 uv sync
 ```
 
-### Run
-
-#### 1. Scrape Charts
-
-First run the Node.js Puppeteer scraper:
+### CDN
 
 ```bash
-cd scraper
+cd cdn
 
-node scrape_charts.js
+uv sync
 ```
 
-#### 2. Run Workflows
-
-In the `workflow/` folder, run the following notebooks in this order:
-
-1. `db_ops`
-2. `shows` (may take 2 to 3 hours)
-3. `episodes`
-4. `section_feed`
-5. `home_feed`
-
-#### 3. Run locally
+### Frontend
 
 ```bash
 cd frontend
 
 npm install
-
-npm run dev
-```
-
-#### 4. Commit and Push (to deploy)
-
-Updated static content will be in the `frontend/public` folder.
-
-#### 5. Trigger Vercel Deploy Hook
-
-```
-curl -X POST https://api.vercel.com/v1/integrations/deploy/VERCEL_PROJECT_ID_AND_WEBHOOK_ID
-```
-
-```
-{
-  "job": {
-    "id": "okzCd50AIap1O31g0gne",
-    "state": "PENDING",
-    "createdAt": 1662825789999
-  }
-}
 ```
