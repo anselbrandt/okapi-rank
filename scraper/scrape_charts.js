@@ -49,7 +49,7 @@ async function scrape(countryCode, scrollDistance, countryName, genre) {
   const url = `https://podcasts.apple.com/${countryCode}/charts?genre=${genre}`;
 
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     defaultViewport: {
       width: 1600,
       height: 800,
