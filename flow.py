@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import os
 import shutil
 import subprocess
+import time
 
 import httpx
 from dotenv import load_dotenv
@@ -91,7 +92,7 @@ def process_category(category, shows):
     filtered_mappings = {
         k: v
         for k, v in category_mappings.items()
-        if k == category or category == "news" and k == "latest"
+        if k == category or (category == "news" and k == "latest")
     }
     generate_section_feeds(
         db_path=paths.db_path,
@@ -106,8 +107,21 @@ def process_category(category, shows):
     ):
         is_pushed = push_feeds()
         if not is_pushed:
-            response = httpx.get(VERCEL_DEPLOY_HOOK_URL)
-            print(response.text)
+            max_retries = 3
+            for attempt in range(1, max_retries + 1):
+                try:
+                    response = httpx.get(VERCEL_DEPLOY_HOOK_URL, timeout=30.0)
+                    print(
+                        f"Deploy hook response (attempt {attempt}): {response.status_code} {response.text}"
+                    )
+                    if response.status_code == 200:
+                        break
+                except httpx.ReadTimeout:
+                    print(f"ReadTimeout on attempt {attempt} to call deploy hook.")
+                except httpx.RequestError as e:
+                    print(f"RequestError on attempt {attempt}: {e}")
+                if attempt < max_retries:
+                    time.sleep(5)  # wait before retrying
         last_push_time = now
 
 
