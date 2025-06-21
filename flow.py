@@ -28,7 +28,7 @@ load_dotenv()
 
 VERCEL_DEPLOY_HOOK_URL = os.getenv("VERCEL_DEPLOY_HOOK_URL")
 
-UPDATE_INTERVAL = 20
+UPDATE_INTERVAL = 30
 
 last_push_time = None
 
