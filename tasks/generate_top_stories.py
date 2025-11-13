@@ -34,9 +34,19 @@ def generate_top_stories():
 
     for name in target_files:
         url = f"https://cdn.anselbrandt.net/{name}.json"
-        response = httpx.get(url)
-        if response.status_code == 200:
+        try:
+            response = httpx.get(url, timeout=30.0)
+            response.raise_for_status()
             data = response.json()
+        except httpx.ConnectError as e:
+            print(f"Network error fetching {url}: {e}")
+            continue
+        except httpx.HTTPStatusError as e:
+            print(f"HTTP error fetching {url}: {e}")
+            continue
+        except Exception as e:
+            print(f"Unexpected error fetching {url}: {e}")
+            continue
 
         episodes = data
 
