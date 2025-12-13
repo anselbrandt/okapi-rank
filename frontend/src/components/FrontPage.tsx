@@ -49,17 +49,17 @@ export const FrontPage = ({ currentEmbedUrl, setCurrentEmbedUrl }: Props) => {
     return <main className="p-8 text-gray-500">Loading...</main>;
   }
 
-  const [top_news, ...news] = sortEpisodesByScore(episodes["news"]);
-  const world = sortEpisodesByScore(episodes["world"]);
-  const europe = sortEpisodesByScore(episodes["europe"]);
+  const [top_news, ...news] = sortEpisodesByScore(episodes["news"] || []);
+  const world = sortEpisodesByScore(episodes["world"] || []);
+  const europe = sortEpisodesByScore(episodes["europe"] || []);
   const [top_commentary, ...commentary] = sortEpisodesByScore(
-    episodes["news_commentary"]
+    episodes["news_commentary"] || []
   );
-  const politics = sortEpisodesByScore(episodes["politics"]);
+  const politics = sortEpisodesByScore(episodes["politics"] || []);
   const [top_society, ...society] = sortEpisodesByScore(
-    episodes["society_and_culture"]
+    episodes["society_and_culture"] || []
   );
-  const arts = sortEpisodesByScore(episodes["arts"]);
+  const arts = sortEpisodesByScore(episodes["arts"] || []);
 
   return (
     <main className="w-screen flex flex-col items-center">
