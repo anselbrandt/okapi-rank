@@ -125,7 +125,7 @@ def generate_section_feeds(db_path: Path, categories: dict):
                     "filename": f"{section_name}/{subcat_name}.json",
                     "data": matching_episodes,
                 }
-                response = httpx.post(url, headers=headers, json=payload)
+                response = httpx.post(url, headers=headers, json=payload, timeout=10)
                 print(response.text)
 
     conn.close()
