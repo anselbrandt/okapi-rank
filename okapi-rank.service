@@ -1,0 +1,15 @@
+[Unit]
+Description=Okapi Rank feed updater
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=ansel
+WorkingDirectory=/home/ansel/dev/okapi-rank
+ExecStart=/home/ansel/.local/bin/uv run flow.py
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
