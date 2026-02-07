@@ -60,6 +60,9 @@ def process_file(html, podcast_id, cursor, scraped_at):
     except json.JSONDecodeError:
         return
 
+    if not isinstance(raw_json, list) or not raw_json:
+        return
+
     items = raw_json[0].get("data", {}).get("shelves", [])
 
     metadata_items = next(
