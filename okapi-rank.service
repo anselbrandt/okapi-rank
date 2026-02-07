@@ -7,6 +7,7 @@ Wants=network-online.target
 Type=simple
 User=ansel
 WorkingDirectory=/home/ansel/dev/okapi-rank
+Environment="PATH=/home/ansel/.nvm/versions/node/v22.13.1/bin:/home/ansel/.local/bin:/usr/local/bin:/usr/bin:/bin"
 ExecStart=/home/ansel/.local/bin/uv run flow.py
 Restart=on-failure
 RestartSec=30
