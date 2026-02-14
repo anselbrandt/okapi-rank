@@ -31,3 +31,5 @@ working/
 
 # CDN static files
 static/
+.vercel
+.env*.local

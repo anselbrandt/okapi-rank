@@ -20,9 +20,24 @@ def to_embed_url(url: str) -> str:
     return url
 
 
+def _needs_classifier(categories: dict) -> bool:
+    """Check if any subcategory has a desc field requiring classification."""
+    for section in categories.values():
+        subcategories = section.get("subcategories")
+        if subcategories:
+            for subcat in subcategories.values():
+                if subcat.get("desc") is not None:
+                    return True
+    return False
+
+
 def generate_section_feeds(db_path: Path, categories: dict):
 
-    classifier = pipeline("zero-shot-classification", model="facebook/bart-large-mnli")
+    classifier = None
+    if _needs_classifier(categories):
+        classifier = pipeline(
+            "zero-shot-classification", model="facebook/bart-large-mnli"
+        )
 
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
@@ -49,7 +64,7 @@ def generate_section_feeds(db_path: Path, categories: dict):
                         e.show_image,
                         e.duration
                     FROM episode e
-                    JOIN 
+                    JOIN
                         podcast p ON e.podcast_id = p.id
                     LEFT JOIN (
                         SELECT s1.podcast_id, s1.rank_score
@@ -64,7 +79,7 @@ def generate_section_feeds(db_path: Path, categories: dict):
                         (p.category, p.subcategory) IN ({placeholders})
                         AND replace(substr(e.release_date, 1, 19), 'T', ' ') <= datetime('now')
                         AND CAST(e.duration AS INTEGER) > 600
-                    ORDER BY 
+                    ORDER BY
                         replace(substr(e.release_date, 1, 19), 'T', ' ') DESC
                     LIMIT 1000;
                 """
@@ -73,8 +88,7 @@ def generate_section_feeds(db_path: Path, categories: dict):
                 cursor.execute(query, params)
                 results = cursor.fetchall()
 
-                matching_episodes = []
-
+                episodes = []
                 for result in results:
                     (
                         title,
@@ -90,7 +104,7 @@ def generate_section_feeds(db_path: Path, categories: dict):
                     ) = result
                     embed_url = to_embed_url(url)
                     image = episode_image or show_image
-                    episode = {
+                    episodes.append({
                         "title": title,
                         "subcategory": subcategory,
                         "release_date": release_date,
@@ -102,19 +116,25 @@ def generate_section_feeds(db_path: Path, categories: dict):
                         "embed_url": embed_url,
                         "duration": duration,
                         "tag": subcat_name,
-                    }
-                    if desc is None:
-                        matching_episodes.append(episode)
-                    else:
-                        candidate_text = f"{title}. {summary}" if summary else title
-                        classification = classifier(
-                            candidate_text, candidate_labels=[desc], multi_label=False
-                        )
+                    })
 
-                        score = classification["scores"][0]
+                if desc is None:
+                    matching_episodes = episodes
+                else:
+                    # Batch classify all episodes at once
+                    texts = [
+                        f"{ep['title']}. {ep['summary']}" if ep["summary"] else ep["title"]
+                        for ep in episodes
+                    ]
+                    classifications = classifier(
+                        texts, candidate_labels=[desc], batch_size=64
+                    )
+                    matching_episodes = []
+                    for ep, cls in zip(episodes, classifications):
+                        score = cls["scores"][0]
                         if score > 0.9:
-                            episode["label_score"] = score
-                            matching_episodes.append(episode)
+                            ep["label_score"] = score
+                            matching_episodes.append(ep)
 
                 print(subcat_name, len(matching_episodes))
                 matching_episodes.sort(key=lambda ep: ep["release_date"], reverse=True)

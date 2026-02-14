@@ -1,6 +1,8 @@
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 import os
 import shutil
+import sqlite3
 import subprocess
 import time
 
@@ -21,8 +23,8 @@ from tasks import (
     insert_podcasts,
     insert_scores,
     push_feeds,
-    scrape_show,
 )
+from tasks.scrape_show import extract_show_id
 
 load_dotenv()
 
@@ -69,20 +71,64 @@ categories = [
 ]
 
 
+def download_show(show):
+    """Download a show page via HTTP. Returns (show, show_id, html, final_url) or (show, show_id, None, None) on error."""
+    podcast_id, name, category, url, status = show
+    show_id = extract_show_id(url)
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 15.4.1) AppleWebKit/537.36 (KHTML, like Gecko) Safari/18.4"
+    }
+
+    try:
+        with httpx.Client(headers=headers, timeout=10.0, follow_redirects=True) as client:
+            response = client.get(url)
+            response.raise_for_status()
+            return (show, show_id, response.text, str(response.url))
+    except httpx.HTTPError as error:
+        print(str(error))
+        return (show, show_id, None, None)
+
+
 def process_category(category, shows):
     if not VERCEL_DEPLOY_HOOK_URL:
         raise ValueError("VERCEL_DEPLOY_HOOK_URL not found in .env")
 
-    global last_push_time
+    # Download all show pages in parallel
+    download_results = []
+    with ThreadPoolExecutor(max_workers=20) as executor:
+        futures = {executor.submit(download_show, show): show for show in shows}
+        for future in as_completed(futures):
+            download_results.append(future.result())
 
-    for show in shows:
-        result = scrape_show(show, db_path=paths.db_path)
-        if result is None:
-            continue
-        show_id, show_page_html = result
-        insert_episodes(db_path=paths.db_path, show_id=show_id, html=show_page_html)
-        id, name, category, url, status = show
-        print(category, name)
+    # Process DB writes sequentially
+    scraped_at = datetime.now().isoformat()
+    conn = sqlite3.connect(paths.db_path)
+    cursor = conn.cursor()
+
+    for show, show_id, html, final_url in download_results:
+        podcast_id, name, cat, url, status = show
+        if html is not None:
+            if final_url != url:
+                cursor.execute(
+                    "UPDATE podcast SET url = ? WHERE id = ?",
+                    (final_url, podcast_id),
+                )
+            cursor.execute(
+                "INSERT OR REPLACE INTO download (id, status, scraped_at) VALUES (?, ?, ?)",
+                (podcast_id, "active", scraped_at),
+            )
+            conn.commit()
+            insert_episodes(db_path=paths.db_path, show_id=show_id, html=html)
+            print(cat, name)
+        else:
+            cursor.execute(
+                "INSERT OR REPLACE INTO download (id, status, scraped_at) VALUES (?, ?, ?)",
+                (podcast_id, "error", scraped_at),
+            )
+            conn.commit()
+
+    conn.close()
 
     insert_scores(db_path=paths.db_path)
 
@@ -100,6 +146,36 @@ def process_category(category, shows):
     )
     generate_top_stories()
 
+    _push_and_deploy()
+
+
+def refresh_news_feeds():
+    """Regenerate news/latest feeds from existing DB data without re-scraping."""
+    if not VERCEL_DEPLOY_HOOK_URL:
+        raise ValueError("VERCEL_DEPLOY_HOOK_URL not found in .env")
+
+    insert_scores(db_path=paths.db_path)
+
+    category_mappings = generate_category_mappings(
+        db_path=paths.db_path, base_index=BASE_INDEX
+    )
+    filtered_mappings = {
+        k: v
+        for k, v in category_mappings.items()
+        if k == "news" or k == "latest"
+    }
+    generate_section_feeds(
+        db_path=paths.db_path,
+        categories=filtered_mappings,
+    )
+    generate_top_stories()
+
+    _push_and_deploy()
+
+
+def _push_and_deploy():
+    """Push feeds and trigger deploy if enough time has passed."""
+    global last_push_time
     now = datetime.now()
 
     if not last_push_time or (now - last_push_time) > timedelta(
@@ -114,7 +190,7 @@ def process_category(category, shows):
                     print(
                         f"Deploy hook response (attempt {attempt}): {response.status_code} {response.text}"
                     )
-                    if response.status_code == 200:
+                    if response.status_code in (200, 201):
                         break
                 except httpx.ReadTimeout:
                     print(f"ReadTimeout on attempt {attempt} to call deploy hook.")
@@ -167,8 +243,10 @@ def update_feeds():
         results = get_shows(db_path=paths.db_path)
         grouped = group_results(results)
         for i, (category, shows) in enumerate(grouped.items()):
-            if i == 0 or i % 4 == 0:
+            if i == 0:
                 process_category("news", grouped.get("news", []))
+            elif i % 4 == 0:
+                refresh_news_feeds()
             if category != "news":
                 process_category(category, shows)
 
