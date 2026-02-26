@@ -182,7 +182,7 @@ def _push_and_deploy():
         minutes=UPDATE_INTERVAL
     ):
         is_pushed = push_feeds()
-        if not is_pushed:
+        if is_pushed:
             max_retries = 3
             for attempt in range(1, max_retries + 1):
                 try:
