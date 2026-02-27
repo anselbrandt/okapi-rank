@@ -36,7 +36,7 @@ def generate_section_feeds(db_path: Path, categories: dict):
     classifier = None
     if _needs_classifier(categories):
         classifier = pipeline(
-            "zero-shot-classification", model="facebook/bart-large-mnli"
+            "zero-shot-classification", model="MoritzLaurer/deberta-v3-large-zeroshot-v2.0"
         )
 
     conn = sqlite3.connect(db_path)
