@@ -14,6 +14,7 @@ from categories import BASE_INDEX
 from tasks import (
     create_tables,
     generate_category_mappings,
+    generate_search_index,
     generate_section_feeds,
     generate_top_stories,
     get_shows,
@@ -239,6 +240,7 @@ def update_feeds():
                 process_category(category, shows, category_mappings)
 
         generate_top_stories()
+        generate_search_index()
         _push_and_deploy()
 
 
