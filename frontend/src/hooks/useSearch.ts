@@ -42,6 +42,7 @@ async function initIndex(): Promise<Orama<any>> {
 
     const instance = await create({
       schema: {
+        id: "string",
         t: "string",
         p: "string",
         s: "string",
@@ -54,8 +55,8 @@ async function initIndex(): Promise<Orama<any>> {
       },
     });
 
-    for (const entry of data) {
-      await insert(instance, entry);
+    for (let i = 0; i < data.length; i++) {
+      await insert(instance, { id: String(i), ...data[i] });
     }
 
     db = instance;
@@ -83,17 +84,11 @@ export function useSearch() {
   const [suggestions, setSuggestions] = useState<SearchResult[]>([]);
   const [results, setResults] = useState<SearchResult[]>([]);
   const [loading, setLoading] = useState(false);
-  const [indexReady, setIndexReady] = useState(false);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const loadIndex = useCallback(async () => {
-    if (db) {
-      setIndexReady(true);
-      return;
-    }
     try {
       await initIndex();
-      setIndexReady(true);
     } catch (err) {
       console.error("Failed to load search index:", err);
     }
@@ -108,8 +103,8 @@ export function useSearch() {
     }
 
     debounceRef.current = setTimeout(async () => {
-      if (!db) return;
-      const results = await search(db, {
+      const instance = await initIndex();
+      const results = await search(instance, {
         term,
         properties: ["t", "p", "s"],
         limit: 8,
@@ -145,7 +140,6 @@ export function useSearch() {
     suggestions,
     results,
     loading,
-    indexReady,
     loadIndex,
     onQueryChange,
     fullSearch,
