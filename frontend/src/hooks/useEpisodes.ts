@@ -31,7 +31,7 @@ export function useEpisodes(section: string = "latest/latest") {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${NEXT_PUBLIC_CDN_URL}/${section}.json`)
+    fetch(`${NEXT_PUBLIC_CDN_URL}/${section}.json`, { cache: "no-store" })
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
         return res.json();
