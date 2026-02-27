@@ -90,10 +90,7 @@ def download_show(show):
         return (show, show_id, None, None)
 
 
-def process_category(category, shows):
-    if not VERCEL_DEPLOY_HOOK_URL:
-        raise ValueError("VERCEL_DEPLOY_HOOK_URL not found in .env")
-
+def process_category(category, shows, category_mappings):
     # Download all show pages in parallel
     download_results = []
     with ThreadPoolExecutor(max_workers=20) as executor:
@@ -130,11 +127,6 @@ def process_category(category, shows):
 
     conn.close()
 
-    insert_scores(db_path=paths.db_path)
-
-    category_mappings = generate_category_mappings(
-        db_path=paths.db_path, base_index=BASE_INDEX
-    )
     filtered_mappings = {
         k: v
         for k, v in category_mappings.items()
@@ -144,21 +136,10 @@ def process_category(category, shows):
         db_path=paths.db_path,
         categories=filtered_mappings,
     )
-    generate_top_stories()
-
-    _push_and_deploy()
 
 
-def refresh_news_feeds():
+def refresh_news_feeds(category_mappings):
     """Regenerate news/latest feeds from existing DB data without re-scraping."""
-    if not VERCEL_DEPLOY_HOOK_URL:
-        raise ValueError("VERCEL_DEPLOY_HOOK_URL not found in .env")
-
-    insert_scores(db_path=paths.db_path)
-
-    category_mappings = generate_category_mappings(
-        db_path=paths.db_path, base_index=BASE_INDEX
-    )
     filtered_mappings = {
         k: v
         for k, v in category_mappings.items()
@@ -169,8 +150,6 @@ def refresh_news_feeds():
         categories=filtered_mappings,
     )
     generate_top_stories()
-
-    _push_and_deploy()
 
 
 def _push_and_deploy():
@@ -202,6 +181,9 @@ def _push_and_deploy():
 
 
 def update_feeds():
+    if not VERCEL_DEPLOY_HOOK_URL:
+        raise ValueError("VERCEL_DEPLOY_HOOK_URL not found in .env")
+
     while True:
         data_dir = paths.data_dir
         data_dir.mkdir(exist_ok=True)
@@ -240,15 +222,24 @@ def update_feeds():
                     print(error_message, e.stderr)
                     continue
         insert_downloads(db_path=paths.db_path, status="pending")
+        insert_scores(db_path=paths.db_path)
+        category_mappings = generate_category_mappings(
+            db_path=paths.db_path, base_index=BASE_INDEX
+        )
+
         results = get_shows(db_path=paths.db_path)
         grouped = group_results(results)
         for i, (category, shows) in enumerate(grouped.items()):
             if i == 0:
-                process_category("news", grouped.get("news", []))
+                process_category("news", grouped.get("news", []), category_mappings)
+                generate_top_stories()
             elif i % 4 == 0:
-                refresh_news_feeds()
+                refresh_news_feeds(category_mappings)
             if category != "news":
-                process_category(category, shows)
+                process_category(category, shows, category_mappings)
+
+        generate_top_stories()
+        _push_and_deploy()
 
 
 if __name__ == "__main__":
