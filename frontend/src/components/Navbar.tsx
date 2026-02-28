@@ -2,8 +2,6 @@ import { CATEGORIES } from "@/data/categories";
 import { use } from "react";
 import Link from "next/link";
 import { UpdatedAt } from "@/components/UpdatedAt";
-import { SearchBar } from "@/components/SearchBar";
-
 const updatedAt = process.env.NEXT_PUBLIC_BUILD_TIME || "";
 
 export const Navbar = ({
@@ -28,10 +26,6 @@ export const Navbar = ({
         <div className="mb-2 font-sans text-sm">
           <UpdatedAt isoTime={updatedAt} />
         </div>
-      </div>
-
-      <div className="w-full flex justify-center px-4 py-2">
-        <SearchBar />
       </div>
 
       {/* Main Category Tabs */}
