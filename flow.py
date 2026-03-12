@@ -222,6 +222,10 @@ def update_feeds():
         data_dir.mkdir(exist_ok=True)
         create_tables(db_path=paths.db_path)
 
+        # Refresh main page immediately from existing feeds
+        generate_top_stories()
+        _push_and_deploy()
+
         # Load checkpoint of already-scraped pairs this cycle
         scraped_json = _get_meta("scraped_pairs")
         scraped_pairs = set(json.loads(scraped_json)) if scraped_json else set()
@@ -263,6 +267,7 @@ def update_feeds():
         if "news" in grouped:
             process_category("news", grouped["news"], category_mappings)
             generate_top_stories()
+            _push_and_deploy()
 
         for i, (category, shows) in enumerate(grouped.items()):
             if category == "news":
