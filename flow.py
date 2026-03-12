@@ -1,5 +1,6 @@
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
+import json
 import os
 import shutil
 import sqlite3
@@ -29,7 +30,28 @@ load_dotenv()
 
 UPDATE_INTERVAL = 30
 
-last_push_time = None
+
+def _get_meta(key):
+    conn = sqlite3.connect(paths.db_path)
+    row = conn.execute("SELECT value FROM meta WHERE key = ?", (key,)).fetchone()
+    conn.close()
+    return row[0] if row else None
+
+
+def _set_meta(key, value):
+    conn = sqlite3.connect(paths.db_path)
+    conn.execute(
+        "INSERT OR REPLACE INTO meta (key, value) VALUES (?, ?)", (key, value)
+    )
+    conn.commit()
+    conn.close()
+
+
+def _delete_meta(key):
+    conn = sqlite3.connect(paths.db_path)
+    conn.execute("DELETE FROM meta WHERE key = ?", (key,))
+    conn.commit()
+    conn.close()
 
 
 countries = [
@@ -151,14 +173,15 @@ def refresh_news_feeds(category_mappings):
 
 def _push_and_deploy():
     """Push feeds if enough time has passed. Vercel auto-deploys on push."""
-    global last_push_time
     now = datetime.now()
+    last_push = _get_meta("last_push_time")
+    last_push_time = datetime.fromisoformat(last_push) if last_push else None
 
     if not last_push_time or (now - last_push_time) > timedelta(
         minutes=UPDATE_INTERVAL
     ):
         push_feeds()
-        last_push_time = now
+        _set_meta("last_push_time", now.isoformat())
 
 
 def _scrape_category(country, category):
@@ -199,17 +222,34 @@ def update_feeds():
         data_dir.mkdir(exist_ok=True)
         create_tables(db_path=paths.db_path)
 
+        # Load checkpoint of already-scraped pairs this cycle
+        scraped_json = _get_meta("scraped_pairs")
+        scraped_pairs = set(json.loads(scraped_json)) if scraped_json else set()
+
         # Scrape news category first across all countries
         news_category = next(c for c in categories if c["filename"] == "news")
         other_categories = [c for c in categories if c["filename"] != "news"]
 
         for country in countries:
+            pair = f"{country['code']}:{news_category['filename']}"
+            if pair in scraped_pairs:
+                print(f"Skipping {pair} (already scraped)")
+                continue
             _scrape_category(country, news_category)
+            scraped_pairs.add(pair)
+            _set_meta("scraped_pairs", json.dumps(sorted(scraped_pairs)))
 
         for country in countries:
             for category in other_categories:
+                pair = f"{country['code']}:{category['filename']}"
+                if pair in scraped_pairs:
+                    print(f"Skipping {pair} (already scraped)")
+                    continue
                 _scrape_category(country, category)
+                scraped_pairs.add(pair)
+                _set_meta("scraped_pairs", json.dumps(sorted(scraped_pairs)))
 
+        _delete_meta("scraped_pairs")
         insert_downloads(db_path=paths.db_path, status="pending")
         insert_scores(db_path=paths.db_path)
         category_mappings = generate_category_mappings(
