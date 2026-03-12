@@ -38,9 +38,14 @@ def push_feeds():
         origin.set_url(original_url)
         return False
 
-    repo.git.add(A=True)
+    frontend_files = [
+        "categories/category_mappings.py",
+        "frontend/src/data/categories.ts",
+        "frontend/src/data/paths.ts",
+    ]
+    repo.index.add(frontend_files)
 
-    if repo.is_dirty(untracked_files=True):
+    if repo.is_dirty():
         repo.index.commit("Update static files")
 
         try:

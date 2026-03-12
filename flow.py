@@ -4,7 +4,6 @@ import os
 import shutil
 import sqlite3
 import subprocess
-import time
 
 import httpx
 from dotenv import load_dotenv
@@ -27,8 +26,6 @@ from tasks import (
 from tasks.scrape_show import extract_show_id
 
 load_dotenv()
-
-VERCEL_DEPLOY_HOOK_URL = os.getenv("VERCEL_DEPLOY_HOOK_URL")
 
 UPDATE_INTERVAL = 30
 
@@ -153,90 +150,86 @@ def refresh_news_feeds(category_mappings):
 
 
 def _push_and_deploy():
-    """Push feeds and trigger deploy if enough time has passed."""
+    """Push feeds if enough time has passed. Vercel auto-deploys on push."""
     global last_push_time
     now = datetime.now()
 
     if not last_push_time or (now - last_push_time) > timedelta(
         minutes=UPDATE_INTERVAL
     ):
-        is_pushed = push_feeds()
-        if is_pushed:
-            max_retries = 3
-            for attempt in range(1, max_retries + 1):
-                try:
-                    response = httpx.get(VERCEL_DEPLOY_HOOK_URL, timeout=30.0)
-                    print(
-                        f"Deploy hook response (attempt {attempt}): {response.status_code} {response.text}"
-                    )
-                    if response.status_code in (200, 201):
-                        break
-                except httpx.ReadTimeout:
-                    print(f"ReadTimeout on attempt {attempt} to call deploy hook.")
-                except httpx.RequestError as e:
-                    print(f"RequestError on attempt {attempt}: {e}")
-                if attempt < max_retries:
-                    time.sleep(5)  # wait before retrying
+        push_feeds()
         last_push_time = now
 
 
-def update_feeds():
-    if not VERCEL_DEPLOY_HOOK_URL:
-        raise ValueError("VERCEL_DEPLOY_HOOK_URL not found in .env")
+def _scrape_category(country, category):
+    """Scrape a single category for a single country."""
+    node_path = os.getenv("NODE_PATH") or shutil.which("node")
+    script_path = os.path.join("scraper", "scrape_charts.js")
+    commands = [
+        node_path,
+        script_path,
+        country["code"],
+        str(country["scrollDistance"]),
+        country["name"],
+        str(category["genre"]),
+    ]
+    try:
+        result = subprocess.run(
+            commands,
+            check=True,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        insert_podcasts(
+            db_path=paths.db_path,
+            country=country["code"],
+            category=category["filename"],
+            html=result.stdout,
+        )
+        print(country["code"], category["filename"])
+    except subprocess.CalledProcessError as e:
+        error_message = f"Failed: https://podcasts.apple.com/{country['code']}/charts?genre={category['genre']}"
+        print(error_message, e.stderr)
 
+
+def update_feeds():
     while True:
         data_dir = paths.data_dir
         data_dir.mkdir(exist_ok=True)
         create_tables(db_path=paths.db_path)
 
+        # Scrape news category first across all countries
+        news_category = next(c for c in categories if c["filename"] == "news")
+        other_categories = [c for c in categories if c["filename"] != "news"]
+
         for country in countries:
-            for category in categories:
-                node_path = os.getenv("NODE_PATH") or shutil.which("node")
-                script_path = os.path.join("scraper", "scrape_charts.js")
-                commands = [
-                    node_path,
-                    script_path,
-                    country["code"],
-                    str(country["scrollDistance"]),
-                    country["name"],
-                    str(category["genre"]),
-                ]
-                try:
-                    result = subprocess.run(
-                        commands,
-                        check=True,
-                        text=True,
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.PIPE,
-                    )
-                    html = result.stdout
-                    insert_podcasts(
-                        db_path=paths.db_path,
-                        country=country["code"],
-                        category=category["filename"],
-                        html=html,
-                    )
-                    print(country["code"], category["filename"])
-                except subprocess.CalledProcessError as e:
-                    error_message = f"Failed: https://podcasts.apple.com/{country['code']}/charts?genre={category['genre']}"
-                    print(error_message, e.stderr)
-                    continue
+            _scrape_category(country, news_category)
+
+        for country in countries:
+            for category in other_categories:
+                _scrape_category(country, category)
+
         insert_downloads(db_path=paths.db_path, status="pending")
         insert_scores(db_path=paths.db_path)
         category_mappings = generate_category_mappings(
             db_path=paths.db_path, base_index=BASE_INDEX
         )
 
+        # Process news shows first, upload to CDN immediately
         results = get_shows(db_path=paths.db_path)
         grouped = group_results(results)
+
+        if "news" in grouped:
+            process_category("news", grouped["news"], category_mappings)
+            generate_top_stories()
+
         for i, (category, shows) in enumerate(grouped.items()):
-            if i == 0:
-                process_category("news", grouped.get("news", []), category_mappings)
-                generate_top_stories()
-            elif i % 4 == 0:
+            if category == "news":
+                continue
+            if i % 4 == 0:
                 refresh_news_feeds(category_mappings)
-            if category != "news":
-                process_category(category, shows, category_mappings)
+            process_category(category, shows, category_mappings)
 
         generate_top_stories()
         _push_and_deploy()
