@@ -275,6 +275,7 @@ def update_feeds():
             if i % 4 == 0:
                 refresh_news_feeds(category_mappings)
             process_category(category, shows, category_mappings)
+            _push_and_deploy()
 
         generate_top_stories()
         _push_and_deploy()

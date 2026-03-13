@@ -41,7 +41,7 @@ def get_shows(db_path: Path, retry=False):
         FROM ranked_podcasts
         WHERE rn = 1
         ORDER BY rank_score DESC
-        LIMIT 10000;
+        LIMIT 2000;
         """,
         (status, scraped_at),
     )
