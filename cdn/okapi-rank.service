@@ -1,0 +1,14 @@
+[Unit]
+Description=okapi-rank
+After=network.target
+
+[Service]
+User=ansel
+WorkingDirectory=/home/ansel/dev/okapi-rank/cdn
+ExecStart=/home/ansel/.local/bin/uv run uvicorn app.main:app --host 0.0.0.0 --port 8001
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
