@@ -44,6 +44,7 @@ def push_feeds():
         "frontend/src/data/paths.ts",
     ]
     repo.index.add(frontend_files)
+    repo.index.add(["static"])
 
     if repo.is_dirty():
         repo.index.commit("Update static files")
