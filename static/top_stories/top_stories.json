@@ -1417,6 +1417,19 @@
   ],
   "arts": [
     {
+      "title": "What’s The State Of The Bagel?",
+      "subcategory": "Arts",
+      "release_date": "2026-04-06T09:55:00Z",
+      "score": 204.9556,
+      "podcast_name": "The Sporkful",
+      "url": "https://podcasts.apple.com/au/podcast/whats-the-state-of-the-bagel/id350709629?i=1000759512845",
+      "summary": "Should bagels ever be toasted? Why does the restaurant industry have so many scandals? And what could possibly possess someone to feed their baby a straight-up stick of butter? We answer all these questions and more in this very special live edition of the Salad Spinner — our rapid-fire, roundtable discussion of all the biggest and buzziest food news of the moment. Joining us in the Spinner are best-selling cookbook author and YouTuber Kenji López-Alt and legendary comic Judy Gold. The Sporkful production team includes Dan Pashman, Emma Morgenstern, Andres O'Hara, Kameel Stanley, Jared O'Connell, India Rice, and Morgan Johnson. Right now, Sporkful listeners can get three months free of the SiriusXM app by going to siriusxm.com/sporkful. Get all your favorite podcasts, more than 200 ad-free music channels curated by genre and era, and live sports coverage with the SiriusXM app.  Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
+      "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9a/a6/3c/9aa63c10-e144-98a1-b8ed-b3c68bada5ac/mza_3197870396554557396.jpg/270x270bb.webp 270w",
+      "embed_url": "https://embed.podcasts.apple.com/au/podcast/whats-the-state-of-the-bagel/id350709629?i=1000759512845",
+      "duration": "2439",
+      "tag": "arts"
+    },
+    {
       "title": "Catherine Lacey Reads \"Rate Your Happiness\"",
       "subcategory": "Arts",
       "release_date": "2026-04-05T10:00:00Z",
@@ -1433,26 +1446,13 @@
       "title": "Friday Focus: Trump has no good options in Iran and the NDP leans into left-wing populism",
       "subcategory": "Arts",
       "release_date": "2026-04-03T15:50:13Z",
-      "score": 963.4819,
+      "score": 965.4444,
       "podcast_name": "The Munk Debates Podcast",
       "url": "https://podcasts.apple.com/ca/podcast/friday-focus-trump-has-no-good-options-in-iran-and/id1486184902?i=1000759067423",
       "summary": "While Trump made public statements this week about bringing the war to an end soon, there is significant troop movement in the Middle East suggesting the opposite. There is no telling what comes next, and there is no path to opening up the Strait of Hormuz without a huge escalation. Iran now has control over the Strait and who passes through, benefiting their allies and America's adversaries. Meanwhile higher energy prices won't go away when the war stops and if we get another dose of inflation - which tends to fuel political radicalization - can the centre hold? In the second half of the show Rudyard and Janice turn to the NDP and the election of Avi Lewis as the new party leader. He is moving the NDP further left, promising free public grocery stores and transportation. What is the appetite in Canada for this kind of hard-left politics? Can Lewis excite the public with the same energy that propelled Zohran Mamdani to victory in New York City? And are we underestimating the combination of Avi Lewis and his wife Naomi Klein as a powerful political force capable of reworking the NDP into a populist party?  Become a Munk Donor ($50 annually) to get 72-hour advanced access to the full length editions of Friday Focus. Go to www.munkdebates.com to sign up.",
       "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9b/db/ac/9bdbac78-96fb-9048-d473-c5d0c3631ba9/mza_13649894096189389255.jpg/270x270bb.webp 270w",
       "embed_url": "https://embed.podcasts.apple.com/ca/podcast/friday-focus-trump-has-no-good-options-in-iran-and/id1486184902?i=1000759067423",
       "duration": "1858",
-      "tag": "arts"
-    },
-    {
-      "title": "A Passover & Easter Doubleheader (Reheat)",
-      "subcategory": "Arts",
-      "release_date": "2026-04-03T15:00:00Z",
-      "score": 204.9556,
-      "podcast_name": "The Sporkful",
-      "url": "https://podcasts.apple.com/au/podcast/a-passover-easter-doubleheader-reheat/id350709629?i=1000759059511",
-      "summary": "We ponder the question that Jews have been pondering since they crossed the desert: Can matzoh be salvaged? We also discuss techniques for dipping your egg into salt water, and trivia that will make the Earl of Sandwich tremble in his grave. Plus, in preparation for Easter Sunday, we debate whether spiral cut ham represents one of humanity's greatest achievements or its impending downfall. Co-host Mark Garrison explains why the Easter Bunny is like a benevolent dragon, and guest Win Rosenfeld suggests a novel use for jelly beans. These episodes originally aired on April 16, 2011, and April 22, 2011, and were produced by Dan Pashman and Mark Garrison. The Sporkful team now includes Dan Pashman, Emma Morgenstern, Andres O'Hara, Kameel Stanley, Jared O'Connell, and India Rice. This update was produced by Gianna Palmer. Every Friday, we reach into our deep freezer and reheat an episode to serve up to you. We're calling these our Reheats. If you have a show you want reheated, send us an email or voice memo at hello@sporkful.com, and include your name, your location, which episode, and why. Right now, Sporkful listeners can get three months free of the SiriusXM app by going to siriusxm.com/sporkful. Get all your favorite podcasts, more than 200 ad-free music channels curated by genre and era, and live sports coverage with the SiriusXM app.  Hosted by Simplecast, an AdsWizz company. See pcm.adswizz.com for information about our collection and use of personal data for advertising.",
-      "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/9a/a6/3c/9aa63c10-e144-98a1-b8ed-b3c68bada5ac/mza_3197870396554557396.jpg/270x270bb.webp 270w",
-      "embed_url": "https://embed.podcasts.apple.com/au/podcast/a-passover-easter-doubleheader-reheat/id350709629?i=1000759059511",
-      "duration": "2112",
       "tag": "arts"
     },
     {
@@ -1472,7 +1472,7 @@
       "title": "Navigate By Dog",
       "subcategory": "Arts",
       "release_date": "2026-04-02T00:00:00Z",
-      "score": 2375.11,
+      "score": 2396.9298,
       "podcast_name": "ill-advised by Bill Nighy",
       "url": "https://podcasts.apple.com/ca/podcast/navigate-by-dog/id1842190360?i=1000758747469",
       "summary": "Dog etiquette, cravats, air saxophone solos and sugar addiction are among the subjects addressed by Bill in this episode.  This episode's playlist is called 'Instead of School' and includes: 'I’m Tore down’ by Freddie King ‘Right Place, Wrong Time’ by Dr John ‘Nutbush City Limits’ by Ike & Tina Turner ‘Stutter’ by Elastica ‘Daylight’ by Kellow Rowland (ft. Travis McCoy) ‘Suffragette City’ by David Bowie  You can find the playlist here on Spotify and on Apple Music here The book that Bill recommends this week is 'The Idiot' by Elif Batuman We'd love to hear from you! Send us questions for Bill or 'I'm With The Band' submissions via instagram @illadvisedbybillnighy or by email: contactus@ill-advisedbybillnighy.com  Hosted on Acast. See acast.com/privacy for more information.",
@@ -1498,7 +1498,7 @@
       "title": "Jonah Hill",
       "subcategory": "Arts",
       "release_date": "2026-04-01T07:00:00Z",
-      "score": 371.1437,
+      "score": 372.164,
       "podcast_name": "Tetragrammaton with Rick Rubin",
       "url": "https://podcasts.apple.com/au/podcast/jonah-hill/id1671669052?i=1000758602289",
       "summary": "Jonah Hill is a film actor, writer, and filmmaker. He broke out in comedy with Superbad in 2007, before earning critical acclaim in dramatic roles in Moneyball and The Wolf of Wall Street. He transitioned into filmmaking with his directorial debut Mid90s, a raw and culturally resonant coming-of-age story that established his distinct, emotionally honest voice. Expanding across mediums, he has directed music videos, commercial campaigns, and television, while producing and developing projects through Strong Baby Productions, including the Netflix documentary Stutz. Now a multidisciplinary filmmaker, he continues to shape character-driven stories—most recently directing Outcome, scheduled for release on April 10, 2026.  ------ Thank you to the sponsors that fuel our podcast and our team: AG1 https://DrinkAG1.com/tetra ------ LMNT Electrolytes https://DrinkLMNT.com/tetra Use code 'TETRA' ------ Squarespace https://Squarespace.com/tetra Use code 'TETRA' ------ Lectio 365 https://Lectio365.com ------ Sign up to receive Tetragrammaton Transmissions https://www.tetragrammaton.com/join-newsletter",
@@ -1537,7 +1537,7 @@
       "title": "S8E9 鲁豫对话李睿｜我只是一名记者，留在了战争发生的地方",
       "subcategory": "Arts",
       "release_date": "2026-03-22T02:30:44Z",
-      "score": 1369.8036,
+      "score": 1370.7567,
       "podcast_name": "岩中花述",
       "url": "https://podcasts.apple.com/au/podcast/s8e9-%E9%B2%81%E8%B1%AB%E5%AF%B9%E8%AF%9D%E6%9D%8E%E7%9D%BF-%E6%88%91%E5%8F%AA%E6%98%AF%E4%B8%80%E5%90%8D%E8%AE%B0%E8%80%85-%E7%95%99%E5%9C%A8%E4%BA%86%E6%88%98%E4%BA%89%E5%8F%91%E7%94%9F%E7%9A%84%E5%9C%B0%E6%96%B9/id1582119137?i=1000756535656",
       "summary": "– 本节目由GIADA出品，JustPod制作发行 – 【本期嘉宾】 李睿，记者 陈鲁豫，媒体人、主持人 【本期节目介绍】 岩中花述第八季第九期节目，鲁豫与在伊朗工作的前同事李睿隔空相见。 很幸运，通话没有被打断。没有爆炸声，也没有警报。这让人安心——李睿此刻是安全的。 战争伊始，她把丈夫和两个孩子送回中国，独自留下。她想看看，已经生活了二十年的国家会变成什么样子。 战争与日常在她的笔下交错。街道寂静得只剩炮弹的回声，被冲击波掀翻的汽车倒在路边。与此同时，邻居照常为花瓶插上鲜花，朋友开始讨论诺鲁孜节。有人对她说，哪怕只剩一个伊朗人活着，也会在那一天跳舞。 她不太认同“战地记者”这个称呼，说自己只是一名记者，留在了战争发生的地方。 很多年前，她从宁夏考到上海，学了波斯语，又走到德黑兰，在伊朗的大学教书。2006年，她进入新闻现场，成为凤凰卫视第一位驻伊朗记者。波斯语替她打开了一扇门，她往深处走去。 她从未计划过这一切，只是一步一步，如此热气腾腾二十年。 她说，听，内心的声音，跟着走就好。 【内容提要】 Part1 当记者遇见战争 00:04:45 战争打响那一刻，马路上没人按喇叭 00:09:18 尽量要靠近现场去报道，是一个记者的天职 00:13:27 在外面尽兴工作，温暖的家庭是真正的后盾 00:21:12 如果说我有ptsd，现在整个德黑兰人都有ptsd 00:27:31 只剩一个伊朗人活着，他也会在诺鲁孜节那天跳舞 Part2 当中国人遇见波斯文明 00:34:00 中国帮伊朗修地铁，于是我进入了上外第一届波斯语专业 00:40:27 到了凤凰发现，记者才是喜欢的工作 00:42:08 语言是走进一个文明的敲门砖，敞开心态浸淫其中才是真正的开始 00:54:10 伊朗女性像波斯传说中壁画上的母狮子，不屈不挠付出一切去抗争 01:00:04 忍受无法忍受的痛苦的唯一方法就是一笑置之 01:09:37 痛苦是累加的，战争之下的努力太值得诉说 01:12:29 伊朗社会很多元，没有绝对的主流 Part3 当异乡成为家乡 01:17:20 看不到路的时候，选择跟着内心走 01:23:35 长时间在不同城市生活，那里的一部分长成我的血脉 01:27:15 此刻懂得生死不由命，只能尽可能如常地生活 01:34:17 体会别人的悲欢离合，同时想办法理性地报道 01:43:06 我们是Simurgh，浴火重生后更加辉煌灿烂 – 主题曲 – 《岩中花述》陈婧霏 – 节目中提及的作品与人物 – 《我在伊朗长大》（Persepolis），玛嘉·莎塔琵著。同名动画片由文森特·帕兰德（Vincent Paronnaud）、玛嘉·莎塔琵（Marjane Satrapi）共同导演，2007年上映。 《小鞋子》（ بچههای آسمان），由马基德·马基迪（Majid Majidi）导演的1997年电影。 《一次别离》 （جدایی نادر از سیمین），由阿斯加·法哈蒂（Asghar Farhadi）导演的2011年电影。 《这不是一部电影》（این فیلم نیست），由墨塔巴·米塔玛斯博（Mojtaba Mirtahmasb）、贾法·帕纳西共同执导的纪录片，2011年上映。 玛丽·科尔文（Marie Colvin），美国战地女记者。 罗伯特·卡帕（Robert Capa），匈牙利裔美籍摄影记者，经典语录：“如果你的照片拍的不够好，那是因为你靠的不够近。” 赛义德·穆罕默德·哈塔米（Seyyed Mohammad Khatami），伊朗第5任总统。 玛嘉·莎塔琵（Marjane Satrapi），伊朗漫画小说作家，插图画家。参与编剧、执导了以她的自传体漫画 《我在伊朗长大》改编的同名动画片。 贾法·帕纳西（Jafar Panahi），伊朗电影导演、编剧。 法拉赫·巴列维（Faraḥ Dība），伊朗王后。 马克·罗斯科（Mark Rothko），美国抽象派画家。 威廉·德·库宁（Willem de Kooning），荷兰籍美国画家。 阿尔贝托·贾科梅蒂（Giacometti, Alberto），瑞士存在主义雕塑家、画家 弗朗西斯·培根（Francis Bacon），生于爱尔兰的英国画家。 拱玉书，北京大学外国语学院东语系教授 萨迪·设拉兹（Abū-Muhammad Muslih al-Dīn bin Abdallāh Shīrāzī），13世纪波斯（今伊朗）诗人 西摩格（Simurgh/Simorgh/Senmurv/Angha），古代波斯的神鸟 「岩中花述」同名图书《岩中花述》（全四册）10月28日正式上市啦！ 书中收录了由鲁豫老师参与主持的第3-6季中34位嘉宾的对谈内容，并根据不同的话题维度，分为了4本书出版：《我决定，要活得很久》《她们重新发明知识》《不退场的勇气》《这是我修改世界的方式》。 希望我们都能在嘈杂、偏见的声音中，活到「后来」！ 【《岩中花述》(全四册)】陈鲁豫印签版：store.weixin.qq.com – 互动方式 – GIADA官网：www.giada.cn GIADA小红书：GIADA • 岩中花述 GIADA公众号：mp.weixin.qq.com GIADA 微博：weibo.com",
@@ -1677,5 +1677,5 @@
       "tag": "arts"
     }
   ],
-  "timestamp": "2026-04-06T13:28:47.966897"
+  "timestamp": "2026-04-06T18:46:54.192227"
 }
