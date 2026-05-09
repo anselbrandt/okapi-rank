@@ -54,12 +54,12 @@ async function scrape(countryCode, scrollDistance, countryName, genre) {
       width: 1600,
       height: 800,
     },
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-ipv6"],
   });
 
   const page = await browser.newPage();
   await page.goto(url, {
-    waitUntil: "networkidle2",
+    waitUntil: "domcontentloaded",
   });
 
   const dropdownButton = await page.$(

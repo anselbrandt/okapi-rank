@@ -99,8 +99,9 @@ def download_show(show):
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 15.4.1) AppleWebKit/537.36 (KHTML, like Gecko) Safari/18.4"
     }
 
+    transport = httpx.HTTPTransport(local_address="0.0.0.0")
     try:
-        with httpx.Client(headers=headers, timeout=10.0, follow_redirects=True) as client:
+        with httpx.Client(headers=headers, timeout=10.0, follow_redirects=True, transport=transport) as client:
             response = client.get(url)
             response.raise_for_status()
             return (show, show_id, response.text, str(response.url))
