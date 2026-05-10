@@ -107,7 +107,7 @@ async function scrape(countryCode, scrollDistance, countryName, genre) {
     );
 
     await page.goto(url, {
-      waitUntil: "networkidle2",
+      waitUntil: "domcontentloaded",
     });
   }
 
