@@ -1,5 +1,31 @@
 [
   {
+    "title": "What I told Lael Stone about my worst year",
+    "subcategory": "Education",
+    "release_date": "2026-05-20T20:00:00Z",
+    "score": 89.1304,
+    "podcast_name": "How I Work",
+    "url": "https://podcasts.apple.com/au/podcast/what-i-told-lael-stone-about-my-worst-year/id1415266924?i=1000768799969",
+    "summary": "**This week I'm sharing a crossover episode from the Humans, being. podcast with the wonderful Lael Stone. It's one of the more personal chats I've done in a while. We talk about my burnout year, the tiny experiments that brought me back, AI and where I think it's headed, and the uncomfortable question of whether being ordinary might actually be enough. I hope you love it as much as I loved having it. You can find the original episode on Humans Being here.**     Amantha calls her AI 'Sunny'. She talks to it on the drive to the gym, like she's chatting to a friend. And it has quietly changed how she works, how she writes, and how she gets the thinking out of her own head.  Dr. Amantha Imber is one of the sharpest, most generous humans I know. An organisational psychologist, the founder of Inventium, host of How I Work, the first Australian to win a Thinkers50 Innovation Award, the author of four bestselling books, and her brand new one, The Energy Game, lands in July.  In this episode, we discuss Amantha's burnout year and the tiny experiments that crawled her back, the ones she calls boosts, rest, and protect. Why \"fake rest\" (Netflix while you scroll) won't fill the bucket. And we talk about the childhood praise imprint that drives so many of us: what if the goal isn't to be more, but to be okay with being ordinary?  We explore:   The pressure we accept being human and thinking we must do it all The hit-by-a-bus fantasy and what it tells us about how women carry stress AI as a thought partner, and how Amantha uses it without losing the human bit What we want for our daughters, and the thinking skills we don't want to outsource  Connect with Humans, being™:   Web: humansbeing.au YouTube: @humansbeingwithlaelstone  My latest book The Energy Game is out on July 7, 2026. You can order a copy here: https://amzn.to/48ID29M  Connect with me on the socials: Linkedin (https://www.linkedin.com/in/amanthaimber)  Instagram (https://www.instagram.com/amanthai)  If you are looking for more tips to improve the way you work and live, I write a weekly newsletter where I share practical and simple to apply tips to improve your life. You can sign up for that at https://amantha.substack.com/  Visit https://www.amantha.com/podcast for full show notes from all episodes.  Get in touch at amantha@inventium.com.au  Credits:  Host: Amantha Imber  Sound Engineer: Martin Imber See omnystudio.com/listener for privacy information.",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/de/f5/32/def532d6-0429-fd0d-0fde-7266e2eb5e8c/mza_6842951062422200969.jpg/270x270bb.webp 270w",
+    "embed_url": "https://embed.podcasts.apple.com/au/podcast/what-i-told-lael-stone-about-my-worst-year/id1415266924?i=1000768799969",
+    "duration": "4270",
+    "tag": "latest"
+  },
+  {
+    "title": "Can AIs already start 'rogue deployments' inside AI companies? (Landmark new METR report)",
+    "subcategory": "Education",
+    "release_date": "2026-05-20T15:23:55Z",
+    "score": 94.0049,
+    "podcast_name": "80,000 Hours Podcast",
+    "url": "https://podcasts.apple.com/au/podcast/can-ais-already-start-rogue-deployments-inside-ai-companies/id1245002988?i=1000768760531",
+    "summary": "A red-teamer was embedded inside Anthropic for three weeks, told to imagine he was an evil Claude, and asked to figure out how to launch a ‘rogue AI deployment’ without getting caught. It’s one part of a landmark report released yesterday by METR — the outfit behind the task-completion time horizon graph which has become the single most watched measure of AI progress. This major new research push is being conducted with close collaboration from OpenAI, Google DeepMind, Meta, and Anthropic, and led by METR researchers Hjalmar Wijk and Ajeya Cotra. It represents the first systematic study of what newly trained AI models could get away with inside the companies that built them, before anyone outside the company even knows they exist. The conclusion: AI models now have the means, the motive, and the opportunity to start “minimal rogue deployments” in pursuit of their own independent goals, like acquiring more compute, at all four companies studied. David Rein, the red-teamer placed inside Anthropic, identified a number of weaknesses models could exploit there: expansive permissions, cloud jobs outside of monitoring, and monitors that are trivial to jailbreak. But he also found that frontier models were comically bad at key parts of the process, which means they can’t cause meaningful damage for now. In this video, Rob Wiblin reconciles the conflicting picture and looks forward to METR’s second round of stress tests. They’ll begin in just a few months, a necessary move with AI advancing so quickly. This episode was recorded on May 15, 2026. Learn more, video, and full transcript: https://80k.info/metr-report Chapters: What could an unreleased AI get away with? – the new METR report (00:00:00)Motive: Why grab more compute? (00:01:54)Opportunity: YOLO mode and jailbreaks (00:05:46)Means: Brilliant idiots in data centres (00:11:02)We have to test unreleased models (00:15:45)Especially if AI R&D is coming in 2028 (00:18:30)Video and audio editing: Dominic Armstrong, Milo McGuire, Luke Monsour, and Josh AlwardCamera operator: Dominic ArmstrongProduction: Elizabeth Cox, Nick Stockton, and Katy Moore",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/05/4d/06/054d065e-8c8e-dc95-b97e-44e625c35adf/mza_2562325544792523524.jpg/270x270bb.webp 270w",
+    "embed_url": "https://embed.podcasts.apple.com/au/podcast/can-ais-already-start-rogue-deployments-inside-ai-companies/id1245002988?i=1000768760531",
+    "duration": "1202",
+    "tag": "latest"
+  },
+  {
     "title": "Will This Be The End of MAGA? Disturbing Pro-Crime GOP Primary Results",
     "subcategory": "News",
     "release_date": "2026-05-20T14:00:00Z",
@@ -257,6 +283,19 @@
     "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/1e/87/f3/1e87f31a-5d59-0100-7241-f23beb4f7aa4/mza_15475713807200556259.jpg/270x270bb.webp 270w",
     "embed_url": "https://embed.podcasts.apple.com/au/podcast/decoding-america-who-really-writes-trumps-truth-social/id1482061243?i=1000768701849",
     "duration": "1507",
+    "tag": "latest"
+  },
+  {
+    "title": "Empathy Is Not Weakness | Will Guidara",
+    "subcategory": "Education",
+    "release_date": "2026-05-20T07:00:00Z",
+    "score": 1004.0344,
+    "podcast_name": "The Daily Stoic",
+    "url": "https://podcasts.apple.com/au/podcast/empathy-is-not-weakness-will-guidara/id1430315931?i=1000768699083",
+    "summary": "Empathy is not the opposite of Stoic strength. It’s part of what keeps that strength from becoming coldness. In today’s episode, Ryan talks with Will Guidara, author of Unreasonable Hospitality, about why empathy is one of the most powerful skills a leader can build. They discuss why hospitality is really about making people feel seen, the Stoic idea of slowing down to speed up, the importance of not wasting adversity, and why we should never let someone else’s bad behavior pull us away from the person we want to be. Will Guidara is a restaurateur, speaker, and the author of Unreasonable Hospitality: The Remarkable Power of Giving People More Than They Expect and the new Unreasonable Hospitality: The Field Guide. He is the former co-owner of Eleven Madison Park, which earned three Michelin stars and was named the number one restaurant in the world. Will’s work on hospitality has been featured in his TED Talk, The Secret Ingredients of Great Hospitality, and his book Unreasonable Hospitality was featured in the hit series The Bear. 📚 Pick up signed copies of Unreasonable Hospitality and the NEW Unreasonable Hospitality: The Field Guide at The Painted Porch: https://www.thepaintedporch.com/ 👉 You can follow Will on Instagram @wguidara Ryan Holiday is coming to a city near you! Grab tickets here |  https://www.dailystoiclive.com/ 🇺🇸 USA dates: Portland, Oregon - June 8  San Francisco, California - June 11 Minneapolis, Minnesota - August 18  Chicago, Illinois - August 19  Detroit, Michigan - August 20  🎙️ AD-FREE | Support the podcast and go deeper into Stoicism by subscribing to The Daily Stoic Premium - unlock ad-free listening, early access, and bonus content: https://dailystoic.supercast.com/ 🎥 VIDEO EPISODES| Watch the video episodes on The Daily Stoic YouTube channel: https://www.youtube.com/@DailyStoic/videos ✉️ FREE STOIC WISDOM | Want Stoic wisdom delivered to your inbox daily? Sign up for the FREE Daily Stoic email at https://dailystoic.com/dailyemail See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/be/fe/82/befe827c-ef64-93e5-8535-32929ebd6628/mza_16990888328670267814.jpeg/270x270bb.webp 270w",
+    "embed_url": "https://embed.podcasts.apple.com/au/podcast/empathy-is-not-weakness-will-guidara/id1430315931?i=1000768699083",
+    "duration": "3810",
     "tag": "latest"
   },
   {
@@ -12958,45 +12997,6 @@
     "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/78/8c/aa/788caa90-261e-6d1f-743b-0113d1320513/mza_15510731714601372207.jpg/270x270bb.webp 270w",
     "embed_url": "https://embed.podcasts.apple.com/au/podcast/booktuber-cindy-pham-on-escapist-book-trends-and-her/id1820975555?i=1000766188991",
     "duration": "2484",
-    "tag": "latest"
-  },
-  {
-    "title": "Something’s Gotta Give: Age Gaps, Rom-Coms & Nancy Meyers",
-    "subcategory": "Books",
-    "release_date": "2026-05-05T07:00:00Z",
-    "score": 123.1906,
-    "podcast_name": "Glamorous Trash: A Celebrity Memoir Podcast",
-    "url": "https://podcasts.apple.com/au/podcast/somethings-gotta-give-age-gaps-rom-coms-nancy-meyers/id1533722524?i=1000766156097",
-    "summary": "Chelsea teams up with the hosts of Podstruck for a special crossover episode diving into “Something’s Gotta Give,” the Nancy Meyers rom-com classic starring Diane Keaton, Jack Nicholson, and Keanu Reeves. Together, they break down the film’s take on age-gap relationships and ask: Would you be okay if your mom dated someone you almost hooked up with? Plus: behind-the-scenes context from Diane Keaton’s memoir, Nancy Meyers’ filmmaking career, and a debate about whether Diane and Jack actually had any chemistry. Contact us or send us your voice notes: hello@glamoroustrash.com Follow Chelsea: Instagram @chelseadevantez Join the cookie community: Become a member of the Patreon Thank you to our sponsors: Quince  - Go to quince.com/glamorous for free shipping on your order and 365-day returns.  Thrive Causemetics - Get 20% off your first order at thrivecausemetics.com/glamorous  Ritual - Save 25% on your first month at ritual.com/glamorous.  Libro.fm - Click here to get 2 audiobooks for the price of 1 with your first month of membership using code TRASH. Show Notes: Diane Keaton Memoir Episode “Nancy Meyers” by Deborah Jermyn Where to find our guests: Elena Crevello & Chelsea Davison Podstruck podcast Podstruck Patreon Podstruck Instagram  Podstruck TikTok  Elena’s Instagram  Chelsea’s Instagram *** Glamorous Trash is all about going high and low at the same time— Glam and Trash. We recap and book club celebrity memoirs, deconstruct pop culture, and sometimes, we cry! If you've ever referenced Mariah Carey in therapy... then this is the podcast for you. Learn more about your ad choices. Visit podcastchoices.com/adchoices",
-    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/90/ed/8a/90ed8a92-457f-46aa-ccd4-4c460c74367c/mza_15881114155549581879.jpg/270x270bb.webp 270w",
-    "embed_url": "https://embed.podcasts.apple.com/au/podcast/somethings-gotta-give-age-gaps-rom-coms-nancy-meyers/id1533722524?i=1000766156097",
-    "duration": "5017",
-    "tag": "latest"
-  },
-  {
-    "title": "1322: Courtney Conley | The Step-by-Step Guide to Living Longer",
-    "subcategory": "Education",
-    "release_date": "2026-05-05T07:00:00Z",
-    "score": 712.8159,
-    "podcast_name": "The Jordan Harbinger Show",
-    "url": "https://podcasts.apple.com/au/podcast/1322-courtney-conley-the-step-by-step-guide-to-living-longer/id1344999619?i=1000766188671",
-    "summary": "Want to live longer, sleep better, and feel sharper? Start walking. Dr. Courtney Conley is here to show you how to make every step pay compound interest. Full show notes and resources can be found here: jordanharbinger.com/1322 What We Discuss with Courtney Conley: Walking isn't optional cardio you bolt onto your week — it's a core biological input on par with breathing and sleeping. Courtney Conley argues we've engineered it out of daily life, with the average person logging just 4,700 steps a day, running what amounts to a slow systems failure on the body.The longevity sweet spot is 7,000 to 8,000 steps per day, not the famous 10,000 — that number was literally a marketing campaign for a Japanese pedometer during the Tokyo Olympics, with zero science behind it. Past 10,000 to 12,000 steps, the benefits plateau hard.A 10 to 15 minute walk within 30 minutes of eating is a metabolic cheat code. Muscle contraction pulls glucose out of your bloodstream alongside the pancreas — sit after a meal and you're only using half your blood-sugar regulation system, which is brutal news for anyone with insulin resistance.Your toes are a longevity marker hiding in plain sight. Toe strength declines before grip strength, correlates with glucose levels, and predicts falls as you age — and the foot loses sensitivity so dramatically that by age 80 it takes 75% more pressure to stimulate the same sensory receptors as it did at 50.Start with a five-minute \"micro walk\" — that's roughly 500 steps, and for sedentary folks under 2,500 daily steps, that tiny addition meaningfully decreases all-cause mortality. Pair it with a post-meal walk and a \"relationship walk\" with a spouse, kid, or friend, and you've stacked metabolic, mental health, and social benefits into one ridiculously simple habit.And much more...And if you're still game to support us, please leave a review here — even one sentence helps!  Sign up for Six-Minute Networking — our free networking and relationship development mini course — at jordanharbinger.com/course!Subscribe to our once-a-week Wee Bit Wiser newsletter today and start filling your Wednesdays with wisdom!Do you even Reddit, bro? Join us at r/JordanHarbinger!This Episode Is Brought To You By Our Fine Sponsors:  Dell PCs: Find technology built for you: dell.com/dellpcsAura Frames: $35 off: auraframes.com, code JORDANBetterHelp: 10% off first month: betterhelp.com/jordanDeleteMe: 20% off: joindeleteme.com/jordan, code JORDANI Told You So!: Scientists Who Were Ridiculed, Exiled, and Imprisoned for Being Right by Matt KaplanSee Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/8f/1d/0a/8f1d0a01-32d4-f88d-7723-efd5b26514a7/mza_1621808038515939706.jpeg/270x270bb.webp 270w",
-    "embed_url": "https://embed.podcasts.apple.com/au/podcast/1322-courtney-conley-the-step-by-step-guide-to-living-longer/id1344999619?i=1000766188671",
-    "duration": "5542",
-    "tag": "latest"
-  },
-  {
-    "title": "What if you were accused of murdering your mother?",
-    "subcategory": "Documentary",
-    "release_date": "2026-05-05T07:00:00Z",
-    "score": 215.8539,
-    "podcast_name": "This Is Actually Happening",
-    "url": "https://podcasts.apple.com/au/podcast/what-if-you-were-accused-of-murdering-your-mother/id497227384?i=1000766068498",
-    "summary": "After years of caring for her mother through a devastating decline, a woman helps ease her final suffering, only to be accused of murdering the person she loved most.   Today’s episode featured Rachel Waters. If you’d like to reach out to Rachel, you email her at RFosterWaters@gmail.com.  You can find Rachel on Instagram: @distinguishedheathen and TikTok: @distinguishedheathen, and on Reddit @notedheathen  To read Rachel’s story in The Guardian: ​​https://www.theguardian.com/us-news/ng-interactive/2026/apr/07/rachel-waters-mom-morphine-murder   Producers: Whit Missildine, Andrew Waits   Content/Trigger Warnings: dementia, cancer, terminal illness, caregiving stress, end-of-life suffering, death of a parent, grief, accusations of murder, incarceration, family estrangement, bullying, corporal punishment, medical trauma, and chronic illness, explicit language   Social Media: Instagram: @actuallyhappening Twitter/X: @TIAHPodcast Facebook: This Is Actually Happening Discussion Group   Website: thisisactuallyhappening.com   Website for Andrew Waits: andrdewwaits.com   Support the Show: Support The Show on Patreon: patreon.com/happening Audible subscribers can listen to all episodes of THIS IS ACTUALLY HAPPENING ad-free right now. Join Audible today by downloading the Audible app or visit Audible.com.  Read more about Whit’s insights into each episode on Beyond The Story Substack: whitmissildine.substack.com. On the Substack, Whit will be sharing personal reflections on the deeper themes that emerge from each episode and from across the conversations he’s been immersed in for years, including the psychology of radical transformation, the power of storytelling, the lessons of trauma and healing, and how we die to an old Self and are reborn. He’ll share behind-the-scenes glimpses into the making of the show and his own personal journey in creating it.  Shop at the Store: The This Is Actually Happening online store is now officially open. Follow this link: thisisactuallyhappening.com/shop to access branded t-shirts, posters, stickers and more from the shop.    Transcripts: Full transcripts of each episode are now available on the website, thisisactuallyhappening.com   Intro Music: “Sleep Paralysis” - Scott Velasquez Music Bed: Ambient Themes   Services If you or someone you know is struggling with the effects of trauma or mental illness, please refer to the following resources:   National Suicide and Crisis Lifeline: Text or Call 988  National Alliance on Mental Illness: 1-800-950-6264 National Sexual Assault Hotline (RAINN): 1-800-656-HOPE (4673) See Privacy Policy at https://art19.com/privacy and California Privacy Notice at https://art19.com/privacy#do-not-sell-my-info.",
-    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/c0/8d/6b/c08d6bd1-96af-9b0c-7eb3-8a72c4e8f6e6/mza_11317121403892111889.jpeg/270x270bb.webp 270w",
-    "embed_url": "https://embed.podcasts.apple.com/au/podcast/what-if-you-were-accused-of-murdering-your-mother/id497227384?i=1000766068498",
-    "duration": "4398",
     "tag": "latest"
   }
 ]
