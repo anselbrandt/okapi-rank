@@ -1,5 +1,44 @@
 [
   {
+    "title": "Album reviews",
+    "subcategory": "Film Reviews",
+    "release_date": "2026-05-22T20:31:00Z",
+    "score": 85.756,
+    "podcast_name": "Arena",
+    "url": "https://podcasts.apple.com/ie/podcast/album-reviews/id331543709?i=1000769139834",
+    "summary": "John Meagher and Zara Hedderman review new releases from Paul McCartney, Future Islands, and Ed O’Brien.See omnystudio.com/listener for privacy information.",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/54/ff/e1/54ffe14c-e34c-2376-1903-10baf4518dae/mza_3951035843243444331.jpg/270x270bb.webp 270w",
+    "embed_url": "https://embed.podcasts.apple.com/ie/podcast/album-reviews/id331543709?i=1000769139834",
+    "duration": "939",
+    "tag": "film_reviews"
+  },
+  {
+    "title": "TV reviews",
+    "subcategory": "Film Reviews",
+    "release_date": "2026-05-22T20:31:00Z",
+    "score": 85.756,
+    "podcast_name": "Arena",
+    "url": "https://podcasts.apple.com/ie/podcast/tv-reviews/id331543709?i=1000769139924",
+    "summary": "Jenn Gannon and Chris Wasser review Kylie (Netflix), Falling (Channel 4), and Maximum Pleasure Guaranteed (Apple TV).See omnystudio.com/listener for privacy information.",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/c6/fc/c6/c6fcc637-908c-c00a-05d6-70375be728ef/mza_12259542045227471742.jpg/270x270bb.webp 270w",
+    "embed_url": "https://embed.podcasts.apple.com/ie/podcast/tv-reviews/id331543709?i=1000769139924",
+    "duration": "1667",
+    "tag": "film_reviews"
+  },
+  {
+    "title": "Arena Encore - Ali Smith // \"Kylie\" director Michael Harte // Elif Shafak // Matt Berniger of The National",
+    "subcategory": "Film Reviews",
+    "release_date": "2026-05-22T18:51:00Z",
+    "score": 85.756,
+    "podcast_name": "Arena",
+    "url": "https://podcasts.apple.com/ie/podcast/arena-encore-ali-smith-kylie-director-michael-harte/id331543709?i=1000769130781",
+    "summary": "The best of Arena's week with Dublin Literary Award winner, Ali Smith... the Irish director of the new Netflix doc series about Kylie Minogue, Michael Harte... the renowned Turkish novelist Elif Shafak... and musician Matt Berniger of The NationalSee omnystudio.com/listener for privacy information.",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts211/v4/b2/e6/1c/b2e61c9e-4921-e472-3211-d56f35261698/mza_1441677975438771418.jpg/270x270bb.webp 270w",
+    "embed_url": "https://embed.podcasts.apple.com/ie/podcast/arena-encore-ali-smith-kylie-director-michael-harte/id331543709?i=1000769130781",
+    "duration": "4819",
+    "tag": "film_reviews"
+  },
+  {
     "title": "Ali Smith wins 2026 Dublin Literary Award",
     "subcategory": "Film Reviews",
     "release_date": "2026-05-21T21:07:00Z",
